@@ -1,0 +1,5 @@
+download assets from reference
+
+setup aws lambda backend for form submitions
+
+identify lambda functions; their inputs and expected outputs
