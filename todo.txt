@@ -1,6 +1,23 @@
-download assets from reference
-ref: https://www.edenoasisrealty.com/
+Extract data uris to assets folder
 
-setup aws lambda backend for form submitions
+Book shortlet section
 
-identify lambda functions; their inputs and expected outputs
+Properties listing
+
+Contact form
+
+Inquiry form
+
+
+
+Extract data uris to assets folder
+* use the data uri extractor cli
+
+Book shortlet section
+* The customer should see shortlets with media, location and price.
+* When booking, the customer should see the summation based on their selected booking dates on a calendar
+* The admin should get an email from the form submission.
+* The admin should see the dates it is being booked for.
+
+Properties listing
+* property adding and categorization
