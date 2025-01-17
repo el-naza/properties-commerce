@@ -63,7 +63,7 @@ export default function Searchform() {
             </SelectContent>
           </Select>
         </div>
-        <div className="bg-[#FF6731] text-white text-base rounded px-14 mt-auto py-2">
+        <div className="bg-[#100D2C] text-white text-base rounded px-14 mt-auto py-2">
           <p>Search</p>
         </div>
       </div>
