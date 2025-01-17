@@ -1,13 +1,13 @@
 import { cn } from 'src/utilities/cn'
-import { Poppins } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import React from 'react'
 
 import './globals.css'
 
-const poppins = Poppins({
-  weight: ['400', '500', '600', '700'],
+const montserrat = Montserrat({
+  // weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-poppins',
+  variable: '--font-montserrat',
   display: 'swap',
   fallback: ['sans-serif'],
 })
@@ -15,7 +15,7 @@ const poppins = Poppins({
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      className={cn(poppins.variable, poppins.className, 'tracking-[0.37px]')}
+      className={cn(montserrat.variable, montserrat.className, 'tracking-[0.37px]')}
       lang="en"
       suppressHydrationWarning
     >
