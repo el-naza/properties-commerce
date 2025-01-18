@@ -1,5 +1,5 @@
 import { cn } from 'src/utilities/cn'
-import { Montserrat } from 'next/font/google'
+import { Montserrat, Sora } from 'next/font/google'
 import React from 'react'
 
 import './globals.css'
@@ -12,10 +12,18 @@ const montserrat = Montserrat({
   fallback: ['sans-serif'],
 })
 
+const sora = Sora({
+  // weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-sora',
+  display: 'swap',
+  fallback: ['sans-serif'],
+})
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      className={cn(montserrat.variable, montserrat.className, 'tracking-[0.37px]')}
+      className={cn(sora.variable, montserrat.variable, montserrat.className)}
       lang="en"
       suppressHydrationWarning
     >

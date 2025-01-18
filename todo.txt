@@ -1,0 +1,5 @@
+Change "Featured Listing" to "Our Hot Sales"
+Change "Looking for" to "SEARCHING FOR"
+Change "Featured Listing" to "Our Hot Sales"
+
+Change "Eden Oasis" in the card footer to "Date Uploaded"

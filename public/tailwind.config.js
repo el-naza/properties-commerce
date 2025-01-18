@@ -1,13 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-    // './public/**/*.{htm,html}',
+    './**/*.{htm,html}',
   ],
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+  // plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
   prefix: '',
   safelist: ['lg:col-span-4', 'lg:col-span-6', 'lg:col-span-8', 'lg:col-span-12'],
   theme: {
@@ -37,11 +33,11 @@ export default {
       colors: {
         primary: {
           DEFAULT: '#100D2C',
-          foreground: 'white',
+          // foreground: 'white',
         },
         secondary: {
           DEFAULT: '#fc861e',
-          foreground: '#1C2635',
+          // foreground: '#1C2635',
         },
       },
       fontFamily: {
