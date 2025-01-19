@@ -3,7 +3,6 @@ const config = {
     plugins: [
         require('autoprefixer'),
         require('tailwindcss'),
-        require('./postcss-add-important'),
     ]
   }
   
