@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Select,
   SelectContent,
@@ -11,15 +13,15 @@ export default function Searchform() {
     <div className="  ">
       <div className="py-8 justify-center flex border-2 border-solid mx-auto rounded gap-2">
         <div>
-          <p className="text-">LOOKING FOR</p>
+          <p className="text-">SEARCHING FOR</p>
           <Select>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="All Cities"></SelectValue>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
+              <SelectItem value="Abeokuta">Abeokuta</SelectItem>
+              <SelectItem value="Asokoro">Asokoro</SelectItem>
+              <SelectItem value="Ibadan">Ibadan</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -31,9 +33,9 @@ export default function Searchform() {
               <SelectValue placeholder="All Cities"></SelectValue>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
+              <SelectItem value="Abeokuta">Abeokuta</SelectItem>
+              <SelectItem value="Asokoro">Asokoro</SelectItem>
+              <SelectItem value="Ibadan">Ibadan</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -44,9 +46,9 @@ export default function Searchform() {
               <SelectValue placeholder="All Cities"></SelectValue>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
+              <SelectItem value="Abeokuta">Abeokuta</SelectItem>
+              <SelectItem value="Asokoro">Asokoro</SelectItem>
+              <SelectItem value="Ibadan">Ibadan</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -57,9 +59,9 @@ export default function Searchform() {
               <SelectValue placeholder="All Cities"></SelectValue>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
+              <SelectItem value="Abeokuta">Abeokuta</SelectItem>
+              <SelectItem value="Asokoro">Asokoro</SelectItem>
+              <SelectItem value="Ibadan">Ibadan</SelectItem>
             </SelectContent>
           </Select>
         </div>
