@@ -17,6 +17,9 @@ importers:
       '@payloadcms/next':
         specifier: latest
         version: 3.14.0(@types/react@19.0.1)(graphql@16.9.0)(monaco-editor@0.52.0)(next@15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.14.0(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      '@payloadcms/ui':
+        specifier: ^3.17.1
+        version: 3.17.1(@types/react@19.0.1)(monaco-editor@0.52.0)(next@15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.14.0(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       '@radix-ui/react-label':
         specifier: ^2.1.0
         version: 2.1.0(@types/react-dom@19.0.1)(@types/react@19.0.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -571,8 +574,17 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
+  '@floating-ui/react@0.27.3':
+    resolution: {integrity: sha512-CLHnes3ixIFFKVQDdICjel8muhFLOBdQH7fgtHNPY8UbCNqbeKZ262G7K66lGQOUQWWnYocf7ZbUsLJgGfsLHg==}
+    peerDependencies:
+      react: '>=17.0.0'
+      react-dom: '>=17.0.0'
+
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+
+  '@floating-ui/utils@0.2.9':
+    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -832,12 +844,24 @@ packages:
   '@payloadcms/translations@3.14.0':
     resolution: {integrity: sha512-rkjpJubbqpZKYSXZn/mW65oO5wykjRsflfwGutXwukorQJBQG1DlhZ83yb0rJtkeHUXnWaUMs3WFNZ2InUBw7g==}
 
+  '@payloadcms/translations@3.17.1':
+    resolution: {integrity: sha512-Po95yVwOME5TZuKaBylTrHpmrCbLbcviWAAfAU2DBjOv5+s+aev/LmGl3bAFxTL+5ZVLlzy7m/JwBX43gdgaBg==}
+
   '@payloadcms/ui@3.14.0':
     resolution: {integrity: sha512-mWENSRkm64F5Z9UtbeLpu3LbtTx4C3zuOZTmD9shGO73K9nq6XkcpDl17VU1rOLic1g84dq4V5nPmvNMHYSK4w==}
     engines: {node: ^18.20.2 || >=20.9.0}
     peerDependencies:
       next: ^15.0.0
       payload: 3.14.0
+      react: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
+      react-dom: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
+
+  '@payloadcms/ui@3.17.1':
+    resolution: {integrity: sha512-XuqSBzBEkPV9T/ER+FtdMHk77g15cBWwT9lPsaPtCWzeRqEakRVLCsH+5I5q7VID3CoWFMLLqOBExYkBV627ug==}
+    engines: {node: ^18.20.2 || >=20.9.0}
+    peerDependencies:
+      next: ^15.0.0
+      payload: 3.17.1
       react: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
       react-dom: ^19.0.0 || ^19.0.0-rc-65a56d0e-20241020
 
@@ -2896,6 +2920,12 @@ packages:
       react: ^16.9.0 || ^17 || ^18
       react-dom: ^16.9.0 || ^17 || ^18
 
+  react-datepicker@7.6.0:
+    resolution: {integrity: sha512-9cQH6Z/qa4LrGhzdc3XoHbhrxNcMi9MKjZmYgF/1MNNaJwvdSjv3Xd+jjvrEEbKEf71ZgCA3n7fQbdwd70qCRw==}
+    peerDependencies:
+      react: ^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc
+
   react-diff-viewer-continued@3.2.6:
     resolution: {integrity: sha512-GrzyqQnjIMoej+jMjWvtVSsQqhXgzEGqpXlJ2dAGfOk7Q26qcm8Gu6xtI430PBUyZsERe8BJSQf+7VZZo8IBNQ==}
     engines: {node: '>= 8'}
@@ -4294,7 +4324,17 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       tabbable: 6.2.0
 
+  '@floating-ui/react@0.27.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@floating-ui/react-dom': 2.1.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@floating-ui/utils': 0.2.9
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      tabbable: 6.2.0
+
   '@floating-ui/utils@0.2.8': {}
+
+  '@floating-ui/utils@0.2.9': {}
 
   '@humanfs/core@0.19.1': {}
 
@@ -4534,6 +4574,10 @@ snapshots:
     dependencies:
       date-fns: 4.1.0
 
+  '@payloadcms/translations@3.17.1':
+    dependencies:
+      date-fns: 4.1.0
+
   '@payloadcms/ui@3.14.0(@types/react@19.0.1)(monaco-editor@0.52.0)(next@15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.14.0(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
     dependencies:
       '@dnd-kit/core': 6.0.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -4554,6 +4598,40 @@ snapshots:
       qs-esm: 7.0.2
       react: 19.0.0
       react-datepicker: 7.5.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react-dom: 19.0.0(react@19.0.0)
+      react-image-crop: 10.1.8(react@19.0.0)
+      react-select: 5.9.0(@types/react@19.0.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      scheduler: 0.25.0
+      sonner: 1.7.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      ts-essentials: 10.0.3(typescript@5.7.2)
+      use-context-selector: 2.0.0(react@19.0.0)(scheduler@0.25.0)
+      uuid: 10.0.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - monaco-editor
+      - supports-color
+      - typescript
+
+  '@payloadcms/ui@3.17.1(@types/react@19.0.1)(monaco-editor@0.52.0)(next@15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.14.0(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)':
+    dependencies:
+      '@dnd-kit/core': 6.0.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@dnd-kit/sortable': 7.0.2(@dnd-kit/core@6.0.8(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+      '@faceless-ui/modal': 3.0.0-beta.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@faceless-ui/scroll-info': 2.0.0-beta.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@faceless-ui/window-info': 3.0.0-beta.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@monaco-editor/react': 4.6.0(monaco-editor@0.52.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@payloadcms/translations': 3.17.1
+      body-scroll-lock: 4.0.0-beta.0
+      bson-objectid: 2.0.4
+      date-fns: 4.1.0
+      dequal: 2.0.3
+      md5: 2.3.0
+      next: 15.1.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4)
+      object-to-formdata: 4.5.1
+      payload: 3.14.0(graphql@16.9.0)(monaco-editor@0.52.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      qs-esm: 7.0.2
+      react: 19.0.0
+      react-datepicker: 7.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-dom: 19.0.0(react@19.0.0)
       react-image-crop: 10.1.8(react@19.0.0)
       react-select: 5.9.0(@types/react@19.0.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -6924,6 +7002,14 @@ snapshots:
       clsx: 2.1.1
       date-fns: 3.6.0
       prop-types: 15.8.1
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+
+  react-datepicker@7.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@floating-ui/react': 0.27.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      clsx: 2.1.1
+      date-fns: 3.6.0
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 

@@ -167,9 +167,10 @@ export interface Property {
   title: string;
   price: string;
   type: string | PropertyType;
+  location: string | Location;
   address: string;
   sizes: string;
-  media: string;
+  media: (string | Media)[];
   updatedAt: string;
   createdAt: string;
 }
@@ -380,6 +381,7 @@ export interface PropertiesSelect<T extends boolean = true> {
   title?: T;
   price?: T;
   type?: T;
+  location?: T;
   address?: T;
   sizes?: T;
   media?: T;
