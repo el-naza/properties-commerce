@@ -474,119 +474,122 @@ video {
     padding-left: 2rem;
   }
 }
-.t-absolute {
+.tw .t-absolute {
   position: absolute;
 }
-.t-relative {
+.tw .t-relative {
   position: relative;
 }
-.t-bottom-0 {
+.tw .t-bottom-0 {
   bottom: 0px;
 }
-.t-top-0 {
+.tw .t-top-0 {
   top: 0px;
 }
-.t-z-10 {
+.tw .t-z-10 {
   z-index: 10;
 }
-.t-z-40 {
+.tw .t-z-40 {
   z-index: 40;
 }
-.t-mb-\[22\.34px\] {
+.tw .t-mb-\[22\.34px\] {
   margin-bottom: 22.34px;
 }
-.t-mt-\[-116\.78px\] {
+.tw .t-mt-\[-116\.78px\] {
   margin-top: -116.78px;
 }
-.t-flex {
+.tw .t-flex {
   display: flex;
 }
-.t-min-h-\[45\.11vw\] {
+.tw .t-min-h-\[45\.11vw\] {
   min-height: 45.11vw;
 }
-.t-w-full {
+.tw .t-w-full {
   width: 100%;
 }
-.t-max-w-\[626px\] {
+.tw .t-max-w-\[626px\] {
   max-width: 626px;
 }
-.t-max-w-\[700px\] {
+.tw .t-max-w-\[700px\] {
   max-width: 700px;
 }
-.t-items-center {
+.tw .t-items-center {
   align-items: center;
 }
-.t-justify-between {
+.tw .t-justify-between {
   justify-content: space-between;
 }
-.t-gap-11 {
+.tw .t-gap-11 {
   gap: 2.75rem;
 }
-.t-gap-2 {
+.tw .t-gap-2 {
   gap: 0.5rem;
 }
-.t-gap-6 {
+.tw .t-gap-6 {
   gap: 1.5rem;
 }
-.t-border-b-\[1px\] {
+.tw .t-border-b-\[1px\] {
   border-bottom-width: 1px;
 }
-.t-border-b-\[\#5D5BA9\] {
+.tw .t-border-b-\[\#5D5BA9\] {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(93 91 169 / var(--tw-border-opacity, 1));
 }
-.t-bg-primary\/45 {
+.tw .t-bg-primary\/45 {
   background-color: rgb(16 13 44 / 0.45);
 }
-.t-py-7 {
+.tw .t-py-7 {
   padding-top: 1.75rem;
   padding-bottom: 1.75rem;
 }
-.t-text-justify {
+.tw .t-text-justify {
   text-align: justify;
 }
-.t-font-sora {
+.tw .t-font-sora {
   font-family: var(--font-sora);
 }
-.t-text-\[15\.66px\] {
+.tw .t-text-\[15\.66px\] {
   font-size: 15.66px;
 }
-.t-text-\[57\.94px\] {
+.tw .t-text-\[57\.94px\] {
   font-size: 57.94px;
 }
-.t-text-sm {
+.tw .t-text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
-.t-text-xs {
+.tw .t-text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.t-font-semibold {
+.tw .t-font-semibold {
   font-weight: 600;
 }
-.t-leading-\[15\.12px\] {
+.tw .t-leading-\[15\.12px\] {
   line-height: 15.12px;
 }
-.t-leading-\[17\.64px\] {
+.tw .t-leading-\[17\.64px\] {
   line-height: 17.64px;
 }
-.t-leading-\[24\.66px\] {
+.tw .t-leading-\[24\.66px\] {
   line-height: 24.66px;
 }
-.t-leading-\[70\.63px\] {
+.tw .t-leading-\[70\.63px\] {
   line-height: 70.63px;
 }
-.t-text-secondary {
+.tw .\!t-text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
+}
+.tw .t-text-secondary {
   --tw-text-opacity: 1;
   color: rgb(252 134 30 / var(--tw-text-opacity, 1));
 }
-.t-text-white {
+.tw .t-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
-.t-shadow {
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+.tw .hover\:t-text-secondary:hover {
+  --tw-text-opacity: 1;
+  color: rgb(252 134 30 / var(--tw-text-opacity, 1));
 }

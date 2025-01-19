@@ -57,4 +57,5 @@ export default {
       },
     },
   },
+  important: ".tw"
 }
