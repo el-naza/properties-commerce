@@ -14,8 +14,10 @@ export interface Config {
     media: Media;
     users: User;
     properties: Property;
-    'property-types': PropertyType;
-    locations: Location;
+    'property-categories': PropertyCategory;
+    cities: City;
+    features: Feature;
+    statuses: Status;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -25,8 +27,10 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     properties: PropertiesSelect<false> | PropertiesSelect<true>;
-    'property-types': PropertyTypesSelect<false> | PropertyTypesSelect<true>;
-    locations: LocationsSelect<false> | LocationsSelect<true>;
+    'property-categories': PropertyCategoriesSelect<false> | PropertyCategoriesSelect<true>;
+    cities: CitiesSelect<false> | CitiesSelect<true>;
+    features: FeaturesSelect<false> | FeaturesSelect<true>;
+    statuses: StatusesSelect<false> | StatusesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -81,64 +85,6 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    square?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    small?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    medium?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    xlarge?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    og?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -165,34 +111,79 @@ export interface User {
 export interface Property {
   id: string;
   title: string;
-  price: string;
-  type: string | PropertyType;
-  location: string | Location;
+  price: number;
+  categories: (string | PropertyCategory)[];
+  city: string | City;
+  area: string;
   address: string;
-  sizes: string;
+  /**
+   * Uses a google maps location coordinates for the map feature in the search page
+   *
+   * @minItems 2
+   * @maxItems 2
+   */
+  gpsCoordinates?: [number, number] | null;
   media: (string | Media)[];
+  bedroomCounts?: number[] | null;
+  bathroomCounts?: number[] | null;
+  squareMeters?: number[] | null;
+  yearBuilt?: string | null;
+  features?: (string | Feature)[] | null;
+  youtubeVideo?: string | null;
+  additionalDeatils?:
+    | {
+        title: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  isFeatured?: boolean | null;
+  statuses?: (string | Status)[] | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "property-types".
+ * via the `definition` "property-categories".
  */
-export interface PropertyType {
+export interface PropertyCategory {
   id: string;
-  name: string;
+  title: string;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "locations".
+ * via the `definition` "cities".
  */
-export interface Location {
+export interface City {
   id: string;
-  city: string;
-  state: string;
+  cityName: string;
+  stateOrCounty: string;
   country: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "features".
+ */
+export interface Feature {
+  id: string;
+  title: string;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "statuses".
+ */
+export interface Status {
+  id: string;
+  title: string;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -216,12 +207,20 @@ export interface PayloadLockedDocument {
         value: string | Property;
       } | null)
     | ({
-        relationTo: 'property-types';
-        value: string | PropertyType;
+        relationTo: 'property-categories';
+        value: string | PropertyCategory;
       } | null)
     | ({
-        relationTo: 'locations';
-        value: string | Location;
+        relationTo: 'cities';
+        value: string | City;
+      } | null)
+    | ({
+        relationTo: 'features';
+        value: string | Feature;
+      } | null)
+    | ({
+        relationTo: 'statuses';
+        value: string | Status;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -282,80 +281,6 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
-  sizes?:
-    | T
-    | {
-        thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        square?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        small?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        medium?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        large?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        xlarge?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        og?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -380,31 +305,68 @@ export interface UsersSelect<T extends boolean = true> {
 export interface PropertiesSelect<T extends boolean = true> {
   title?: T;
   price?: T;
-  type?: T;
-  location?: T;
-  address?: T;
-  sizes?: T;
-  media?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "property-types_select".
- */
-export interface PropertyTypesSelect<T extends boolean = true> {
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "locations_select".
- */
-export interface LocationsSelect<T extends boolean = true> {
+  categories?: T;
   city?: T;
-  state?: T;
+  area?: T;
+  address?: T;
+  gpsCoordinates?: T;
+  media?: T;
+  bedroomCounts?: T;
+  bathroomCounts?: T;
+  squareMeters?: T;
+  yearBuilt?: T;
+  features?: T;
+  youtubeVideo?: T;
+  additionalDeatils?:
+    | T
+    | {
+        title?: T;
+        value?: T;
+        id?: T;
+      };
+  isFeatured?: T;
+  statuses?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "property-categories_select".
+ */
+export interface PropertyCategoriesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cities_select".
+ */
+export interface CitiesSelect<T extends boolean = true> {
+  cityName?: T;
+  stateOrCounty?: T;
   country?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "features_select".
+ */
+export interface FeaturesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "statuses_select".
+ */
+export interface StatusesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }

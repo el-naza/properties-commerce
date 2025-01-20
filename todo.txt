@@ -3,3 +3,50 @@ Change "Looking for" to "SEARCHING FOR"
 Change "Featured Listing" to "Our Hot Sales"
 
 Change "Eden Oasis" in the card footer to "Date Uploaded"
+
+
+
+TOUR SCHEDULE
+    type: [In Person, Video Chat]
+    date
+    time
+    fullName
+    email
+    phone
+    message
+    propertyId
+
+MESSAGE
+    fullName
+    email
+    phone
+    countryCode
+    message
+
+Review
+    email
+    title
+    rating: [1-5]
+    review
+    propertyRel
+
+Contact
+    fullName
+    email
+    phone
+    whatsappNo(optional)
+    identity: [New Customer, Returning Customer, An agent]
+    message
+
+Inquiry
+    type: [Purchase, Rent, Mortgage]
+    info: 
+    firtsName
+    lastName
+    email
+    phone
+    countryCode
+    propertyType(s)Interested
+    maxPrice
+    numberOfBeds
+    message

@@ -9,8 +9,10 @@ import { Media } from './collections/Media'
 import { Users } from './collections/Users'
 import { getServerSideURL } from './utilities/getURL'
 import { Properties } from './collections/Properties'
-import { PropertyTypes } from './collections/PropertyTypes'
-import { Locations } from './collections/Locations'
+import { PropertyCategories } from './collections/PropertyCategories'
+import { Cities } from './collections/Cities'
+import { Features } from './collections/Features'
+import { Statuses } from './collections/Statuses'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,12 +20,11 @@ const dirname = path.dirname(filename)
 export default buildConfig({
   admin: {
     components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeLogin` statement on line 15.
       beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below and the import `BeforeDashboard` statement on line 15.
-      beforeDashboard: ['@/components/BeforeDashboard'],
+      graphics: {
+        Logo: '@/components/Logo/Logo#Logo',
+        // Icon: '@/components/LogoIcon'
+      },
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -57,7 +58,7 @@ export default buildConfig({
     url: process.env.DATABASE_URI,
   }),
   // database-adapter-config-end
-  collections: [Media, Users, Properties, PropertyTypes, Locations],
+  collections: [Media, Users, Properties, PropertyCategories, Cities, Features, Statuses],
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [
     // storage-adapter-placeholder
