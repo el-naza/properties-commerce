@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Header from '../header/page'
 
@@ -21,9 +20,10 @@ export default function Page() {
         </h1>
         <p className="max-w-[626px] text-justify leading-[24.66px] text-[15.66px]">
           Welcome to <span className="text-secondary font-semibold">Vastel Credence Limited,</span>{' '}
-          where versatility meets excellence in the world of real estate. Whether you're searching
-          for your dream home, selling your current property, or exploring investment opportunities,
-          our dynamic team is here to provide unmatched service and innovative solutions.
+          where versatility meets excellence in the world of real estate. Whether you&apos;re
+          searching for your dream home, selling your current property, or exploring investment
+          opportunities, our dynamic team is here to provide unmatched service and innovative
+          solutions.
         </p>
       </div>
     </div>

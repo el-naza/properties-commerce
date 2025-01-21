@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 
-let data = [{}]
+// let data = [{}]
 
 export default function Listing() {
   return (

@@ -3,16 +3,15 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Header() {
-  const [isLight, setIsLight] = useState(false)
+  // const [isLight, setIsLight] = useState(false)
 
   useEffect(() => {
     const pathname = window.parent ? window.parent.location.pathname : window.location.pathname
     if (pathname !== '/heo' && pathname !== '/home/index.html') {
-      setIsLight(true)
+      // setIsLight(true)
     }
   }, [])
 

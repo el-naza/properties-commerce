@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function LogoIcon(props: Props) {
-  const { loading: loadingFromProps, priority: priorityFromProps, className, isDark } = props
+  const { loading: loadingFromProps, priority: priorityFromProps, className } = props
 
   const loading = loadingFromProps || 'lazy'
   const priority = priorityFromProps || 'low'
