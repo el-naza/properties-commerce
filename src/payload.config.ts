@@ -5,7 +5,6 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import { s3Storage } from '@payloadcms/storage-s3'
-import { secret } from '@aws-amplify/backend'
 
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
@@ -90,3 +89,6 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
 })
+
+// aws secret stub
+function secret(key: string) {}
