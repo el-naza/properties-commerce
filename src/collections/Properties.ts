@@ -40,21 +40,15 @@ export const Properties: CollectionConfig = {
       minRows: 1,
     },
     {
-      name: 'city',
+      name: 'area',
       type: 'relationship',
       relationTo: 'cities',
       required: true,
       index: true,
     },
     {
-      name: 'area',
-      type: 'text',
-      required: true,
-    },
-    {
       name: 'address',
       type: 'text',
-      required: false,
     },
     {
       name: 'gpsCoordinates',

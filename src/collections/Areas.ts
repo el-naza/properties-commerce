@@ -12,25 +12,22 @@ export const Cities: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    useAsTitle: 'name',
-    listSearchableFields: ['name', 'stateOrCounty'],
+    useAsTitle: 'cityName',
+    listSearchableFields: ['cityName', 'stateOrCounty'],
   },
   fields: [
     {
       name: 'name',
-      type: 'text',
-      label: 'City Name',
-      required: true,
-    },
-    {
-      name: 'stateOrCounty',
+      label: 'Area Name',
       type: 'text',
       required: true,
     },
     {
-      name: 'country',
-      type: 'text',
+      name: 'city',
+      type: 'relationship',
+      relationTo: 'cities',
       required: true,
+      index: true,
     },
   ],
 }
