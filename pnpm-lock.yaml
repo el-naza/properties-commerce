@@ -18,7 +18,7 @@ importers:
         specifier: ^3.17.1
         version: 3.17.1(@types/react@19.0.1)(monaco-editor@0.52.2)(next@15.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.4))(payload@3.17.1(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
       '@payloadcms/storage-s3':
-        specifier: ^3.18.0
+        specifier: ^3.17.1
         version: 3.18.0(payload@3.17.1(graphql@16.10.0)(monaco-editor@0.52.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))
       '@payloadcms/ui':
         specifier: ^3.17.1
