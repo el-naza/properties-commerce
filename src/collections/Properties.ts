@@ -54,7 +54,7 @@ export const Properties: CollectionConfig = {
     {
       name: 'address',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'gpsCoordinates',
