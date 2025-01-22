@@ -73,7 +73,6 @@ export interface UserAuthOperations {
  */
 export interface Media {
   id: string;
-  alt?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -83,8 +82,6 @@ export interface Media {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -113,9 +110,8 @@ export interface Property {
   title: string;
   price: number;
   categories: (string | PropertyCategory)[];
-  city: string | City;
-  area: string;
-  address: string;
+  area: string | City;
+  address?: string | null;
   /**
    * Uses a google maps location coordinates for the map feature in the search page
    *
@@ -159,7 +155,7 @@ export interface PropertyCategory {
  */
 export interface City {
   id: string;
-  cityName: string;
+  name: string;
   stateOrCounty: string;
   country: string;
   updatedAt: string;
@@ -269,7 +265,6 @@ export interface PayloadMigration {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -279,8 +274,6 @@ export interface MediaSelect<T extends boolean = true> {
   filesize?: T;
   width?: T;
   height?: T;
-  focalX?: T;
-  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -306,7 +299,6 @@ export interface PropertiesSelect<T extends boolean = true> {
   title?: T;
   price?: T;
   categories?: T;
-  city?: T;
   area?: T;
   address?: T;
   gpsCoordinates?: T;
@@ -344,7 +336,7 @@ export interface PropertyCategoriesSelect<T extends boolean = true> {
  * via the `definition` "cities_select".
  */
 export interface CitiesSelect<T extends boolean = true> {
-  cityName?: T;
+  name?: T;
   stateOrCounty?: T;
   country?: T;
   updatedAt?: T;

@@ -4,6 +4,8 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb' // database-adapter-imp
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
+import { s3Storage } from '@payloadcms/storage-s3'
+import { secret } from '@aws-amplify/backend'
 
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
@@ -55,15 +57,35 @@ export default buildConfig({
   },
   // database-adapter-config-start
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI,
+    url: process.env.DATABASE_URI || (secret('DATABASE_URI') as unknown as string),
   }),
   // database-adapter-config-end
   collections: [Media, Users, Properties, PropertyCategories, Cities, Features, Statuses],
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [
-    // storage-adapter-placeholder
+    ...(process.env.S3_BUCKET! || (secret('S3_BUCKET') as unknown as string)
+      ? [
+          s3Storage({
+            collections: {
+              media: true,
+            },
+            bucket: process.env.S3_BUCKET! || (secret('S3_BUCKET') as unknown as string),
+            config: {
+              credentials: {
+                accessKeyId:
+                  process.env.S3_ACCESS_KEY_ID! ||
+                  (secret('S3_ACCESS_KEY_ID') as unknown as string),
+                secretAccessKey:
+                  process.env.S3_SECRET_ACCESS_KEY! ||
+                  (secret('S3_SECRET_ACCESS_KEY') as unknown as string),
+              },
+              region: process.env.S3_REGION || (secret('S3_REGION') as unknown as string),
+            },
+          }),
+        ]
+      : []),
   ],
-  secret: process.env.PAYLOAD_SECRET,
+  secret: process.env.PAYLOAD_SECRET || (secret('PAYLOAD_SECRET') as unknown as string),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
