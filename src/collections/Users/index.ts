@@ -1,19 +1,21 @@
 import type { CollectionConfig } from 'payload'
 
 import { authenticated } from '../../access/authenticated'
-import { self } from '@/access/self'
+
+import { superAdmin } from '@/access/superAdmin'
+import { selfOrSuperAdminSelf } from '@/access/selfOrSuperAdminSelf'
 
 export const Users: CollectionConfig = {
   slug: 'users',
   access: {
-    admin: authenticated,
-    create: authenticated,
-    delete: self,
+    admin: superAdmin,
+    create: superAdmin,
+    delete: selfOrSuperAdminSelf,
     read: authenticated,
-    update: self,
+    update: selfOrSuperAdminSelf,
   },
   admin: {
-    defaultColumns: ['name', 'email'],
+    defaultColumns: ['name', 'email', 'role'],
     useAsTitle: 'name',
   },
   auth: true,
@@ -21,6 +23,12 @@ export const Users: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+    },
+    {
+      name: 'role',
+      type: 'select',
+      options: ['Super Admin', 'Agent'],
+      defaultValue: 'Agent',
     },
   ],
   timestamps: true,
