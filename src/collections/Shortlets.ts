@@ -2,14 +2,15 @@ import type { CollectionConfig } from 'payload'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
+import { uploadedByOrSuperAdmin } from '@/access/uploadedByOrSuperAdmin'
 
-export const Properties: CollectionConfig = {
-  slug: 'properties',
+export const Shortlets: CollectionConfig = {
+  slug: 'shortlets',
   access: {
     create: authenticated,
-    delete: authenticated,
+    delete: uploadedByOrSuperAdmin,
     read: anyone,
-    update: authenticated,
+    update: uploadedByOrSuperAdmin,
   },
   admin: {
     useAsTitle: 'title',
@@ -29,15 +30,6 @@ export const Properties: CollectionConfig = {
       type: 'number',
       required: true,
       index: true,
-    },
-    {
-      name: 'categories',
-      type: 'relationship',
-      required: true,
-      relationTo: 'property-categories',
-      index: true,
-      hasMany: true,
-      minRows: 1,
     },
     {
       name: 'area',
@@ -129,10 +121,10 @@ export const Properties: CollectionConfig = {
       name: 'uploadedBy',
       type: 'relationship',
       relationTo: 'admins',
-      defaultValue: async (args) => args.user!.id,
       admin: {
         readOnly: true,
       },
+      defaultValue: async (args) => args.user!.id,
       // hooks: {
       //   beforeValidate: [
       //     ({ req }) => {

@@ -3,8 +3,8 @@ import type { CollectionConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
-export const Statuses: CollectionConfig = {
-  slug: 'statuses',
+export const PropertyFeatures: CollectionConfig = {
+  slug: 'property-features',
   access: {
     create: authenticated,
     delete: authenticated,

@@ -8,16 +8,19 @@
 
 export interface Config {
   auth: {
-    users: UserAuthOperations;
+    admins: AdminAuthOperations;
   };
   collections: {
     media: Media;
-    users: User;
+    admins: Admin;
+    cities: City;
     properties: Property;
     'property-categories': PropertyCategory;
-    cities: City;
-    features: Feature;
-    statuses: Status;
+    'property-features': PropertyFeature;
+    'property-statuses': PropertyStatus;
+    shortlets: Shortlet;
+    'id-documents': IdDocument;
+    'shortlet-bookings': ShortletBooking;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -25,12 +28,15 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     media: MediaSelect<false> | MediaSelect<true>;
-    users: UsersSelect<false> | UsersSelect<true>;
+    admins: AdminsSelect<false> | AdminsSelect<true>;
+    cities: CitiesSelect<false> | CitiesSelect<true>;
     properties: PropertiesSelect<false> | PropertiesSelect<true>;
     'property-categories': PropertyCategoriesSelect<false> | PropertyCategoriesSelect<true>;
-    cities: CitiesSelect<false> | CitiesSelect<true>;
-    features: FeaturesSelect<false> | FeaturesSelect<true>;
-    statuses: StatusesSelect<false> | StatusesSelect<true>;
+    'property-features': PropertyFeaturesSelect<false> | PropertyFeaturesSelect<true>;
+    'property-statuses': PropertyStatusesSelect<false> | PropertyStatusesSelect<true>;
+    shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
+    'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
+    'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -41,15 +47,15 @@ export interface Config {
   globals: {};
   globalsSelect: {};
   locale: null;
-  user: User & {
-    collection: 'users';
+  user: Admin & {
+    collection: 'admins';
   };
   jobs: {
     tasks: unknown;
     workflows: unknown;
   };
 }
-export interface UserAuthOperations {
+export interface AdminAuthOperations {
   forgotPassword: {
     email: string;
     password: string;
@@ -85,9 +91,9 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "admins".
  */
-export interface User {
+export interface Admin {
   id: string;
   name?: string | null;
   role?: ('Super Admin' | 'Agent') | null;
@@ -101,6 +107,18 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cities".
+ */
+export interface City {
+  id: string;
+  name: string;
+  stateOrCounty: string;
+  country: string;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -125,7 +143,7 @@ export interface Property {
   bathroomCounts?: number[] | null;
   squareMeters?: number[] | null;
   yearBuilt?: string | null;
-  features?: (string | Feature)[] | null;
+  features?: (string | PropertyFeature)[] | null;
   youtubeVideo?: string | null;
   additionalDeatils?:
     | {
@@ -135,7 +153,8 @@ export interface Property {
       }[]
     | null;
   isFeatured?: boolean | null;
-  statuses?: (string | Status)[] | null;
+  statuses?: (string | PropertyStatus)[] | null;
+  uploadedBy?: (string | null) | Admin;
   updatedAt: string;
   createdAt: string;
 }
@@ -152,21 +171,9 @@ export interface PropertyCategory {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cities".
+ * via the `definition` "property-features".
  */
-export interface City {
-  id: string;
-  name: string;
-  stateOrCounty: string;
-  country: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "features".
- */
-export interface Feature {
+export interface PropertyFeature {
   id: string;
   title: string;
   description?: string | null;
@@ -175,12 +182,86 @@ export interface Feature {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "statuses".
+ * via the `definition` "property-statuses".
  */
-export interface Status {
+export interface PropertyStatus {
   id: string;
   title: string;
   description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlets".
+ */
+export interface Shortlet {
+  id: string;
+  title: string;
+  price: number;
+  area: string | City;
+  address?: string | null;
+  /**
+   * Uses a google maps location coordinates for the map feature in the search page
+   *
+   * @minItems 2
+   * @maxItems 2
+   */
+  gpsCoordinates?: [number, number] | null;
+  media: (string | Media)[];
+  bedroomCounts?: number[] | null;
+  bathroomCounts?: number[] | null;
+  squareMeters?: number[] | null;
+  yearBuilt?: string | null;
+  features?: (string | PropertyFeature)[] | null;
+  youtubeVideo?: string | null;
+  additionalDeatils?:
+    | {
+        title: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  isFeatured?: boolean | null;
+  statuses?: (string | PropertyStatus)[] | null;
+  uploadedBy?: (string | null) | Admin;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "id-documents".
+ */
+export interface IdDocument {
+  id: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlet-bookings".
+ */
+export interface ShortletBooking {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  shortlet: string | Shortlet;
+  checkInDay?: string | null;
+  checkOutDay?: string | null;
+  idType: 'NATIONAL ID' | 'PASSPORT' | 'DRIVERS LICENSE' | 'VOTERS CARD';
+  idDocument: string | IdDocument;
+  /**
+   * Only the Super Admin can confirm payments
+   */
+  paymentConfirmed?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -196,8 +277,12 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'users';
-        value: string | User;
+        relationTo: 'admins';
+        value: string | Admin;
+      } | null)
+    | ({
+        relationTo: 'cities';
+        value: string | City;
       } | null)
     | ({
         relationTo: 'properties';
@@ -208,21 +293,29 @@ export interface PayloadLockedDocument {
         value: string | PropertyCategory;
       } | null)
     | ({
-        relationTo: 'cities';
-        value: string | City;
+        relationTo: 'property-features';
+        value: string | PropertyFeature;
       } | null)
     | ({
-        relationTo: 'features';
-        value: string | Feature;
+        relationTo: 'property-statuses';
+        value: string | PropertyStatus;
       } | null)
     | ({
-        relationTo: 'statuses';
-        value: string | Status;
+        relationTo: 'shortlets';
+        value: string | Shortlet;
+      } | null)
+    | ({
+        relationTo: 'id-documents';
+        value: string | IdDocument;
+      } | null)
+    | ({
+        relationTo: 'shortlet-bookings';
+        value: string | ShortletBooking;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: 'users';
-    value: string | User;
+    relationTo: 'admins';
+    value: string | Admin;
   };
   updatedAt: string;
   createdAt: string;
@@ -234,8 +327,8 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: 'users';
-    value: string | User;
+    relationTo: 'admins';
+    value: string | Admin;
   };
   key?: string | null;
   value?:
@@ -278,9 +371,9 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
+ * via the `definition` "admins_select".
  */
-export interface UsersSelect<T extends boolean = true> {
+export interface AdminsSelect<T extends boolean = true> {
   name?: T;
   role?: T;
   updatedAt?: T;
@@ -292,6 +385,17 @@ export interface UsersSelect<T extends boolean = true> {
   hash?: T;
   loginAttempts?: T;
   lockUntil?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cities_select".
+ */
+export interface CitiesSelect<T extends boolean = true> {
+  name?: T;
+  stateOrCounty?: T;
+  country?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -320,6 +424,7 @@ export interface PropertiesSelect<T extends boolean = true> {
       };
   isFeatured?: T;
   statuses?: T;
+  uploadedBy?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -335,20 +440,9 @@ export interface PropertyCategoriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cities_select".
+ * via the `definition` "property-features_select".
  */
-export interface CitiesSelect<T extends boolean = true> {
-  name?: T;
-  stateOrCounty?: T;
-  country?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "features_select".
- */
-export interface FeaturesSelect<T extends boolean = true> {
+export interface PropertyFeaturesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   updatedAt?: T;
@@ -356,11 +450,73 @@ export interface FeaturesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "statuses_select".
+ * via the `definition` "property-statuses_select".
  */
-export interface StatusesSelect<T extends boolean = true> {
+export interface PropertyStatusesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlets_select".
+ */
+export interface ShortletsSelect<T extends boolean = true> {
+  title?: T;
+  price?: T;
+  area?: T;
+  address?: T;
+  gpsCoordinates?: T;
+  media?: T;
+  bedroomCounts?: T;
+  bathroomCounts?: T;
+  squareMeters?: T;
+  yearBuilt?: T;
+  features?: T;
+  youtubeVideo?: T;
+  additionalDeatils?:
+    | T
+    | {
+        title?: T;
+        value?: T;
+        id?: T;
+      };
+  isFeatured?: T;
+  statuses?: T;
+  uploadedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "id-documents_select".
+ */
+export interface IdDocumentsSelect<T extends boolean = true> {
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlet-bookings_select".
+ */
+export interface ShortletBookingsSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  shortlet?: T;
+  checkInDay?: T;
+  checkOutDay?: T;
+  idType?: T;
+  idDocument?: T;
+  paymentConfirmed?: T;
   updatedAt?: T;
   createdAt?: T;
 }

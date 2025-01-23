@@ -7,13 +7,16 @@ import { fileURLToPath } from 'url'
 import { s3Storage } from '@payloadcms/storage-s3'
 
 import { Media } from './collections/Media'
-import { Users } from './collections/Users'
+import { Admins } from './collections/Admins'
 import { getServerSideURL } from './utilities/getURL'
 import { Properties } from './collections/Properties'
 import { PropertyCategories } from './collections/PropertyCategories'
 import { Cities } from './collections/Cities'
-import { Features } from './collections/Features'
-import { Statuses } from './collections/Statuses'
+import { PropertyFeatures } from './collections/PropertyFeatures'
+import { PropertyStatuses } from './collections/PropertyStatuses'
+import { Shortlets } from './collections/Shortlets'
+import { IdDocuments } from './collections/IdDocuments'
+import { ShortletBookings } from './collections/ShortletBookings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -30,7 +33,7 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
-    user: Users.slug,
+    user: Admins.slug,
     livePreview: {
       breakpoints: [
         {
@@ -59,7 +62,18 @@ export default buildConfig({
     url: process.env.DATABASE_URI || (secret('DATABASE_URI') as unknown as string),
   }),
   // database-adapter-config-end
-  collections: [Media, Users, Properties, PropertyCategories, Cities, Features, Statuses],
+  collections: [
+    Media,
+    Admins,
+    Cities,
+    Properties,
+    PropertyCategories,
+    PropertyFeatures,
+    PropertyStatuses,
+    Shortlets,
+    IdDocuments,
+    ShortletBookings,
+  ],
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [
     ...(process.env.S3_BUCKET! || (secret('S3_BUCKET') as unknown as string)
