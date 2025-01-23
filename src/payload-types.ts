@@ -259,7 +259,7 @@ export interface ShortletBooking {
   idType: 'NATIONAL ID' | 'PASSPORT' | 'DRIVERS LICENSE' | 'VOTERS CARD';
   idDocument: string | IdDocument;
   /**
-   * Only the Super Admin can confirm payments
+   * Only the Super Admin can confirm payments to approve the booking
    */
   paymentConfirmed?: boolean | null;
   updatedAt: string;

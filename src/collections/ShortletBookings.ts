@@ -50,10 +50,20 @@ export const ShortletBookings: CollectionConfig = {
     {
       name: 'checkInDay',
       type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayOnly',
+        },
+      },
     },
     {
       name: 'checkOutDay',
       type: 'date',
+      admin: {
+        date: {
+          pickerAppearance: 'dayOnly',
+        },
+      },
     },
     {
       name: 'idType',
@@ -76,7 +86,7 @@ export const ShortletBookings: CollectionConfig = {
         update: superAdmin,
       },
       admin: {
-        description: 'Only the Super Admin can confirm payments',
+        description: 'Only the Super Admin can confirm payments to approve the booking',
       },
     },
   ],
