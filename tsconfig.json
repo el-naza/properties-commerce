@@ -41,7 +41,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
+    ".next/types/**/*.ts", "src/app/(frontend)/partners-carousel",
   ],
   "exclude": [
     "node_modules"
