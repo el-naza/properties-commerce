@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <div>
-      <div className="flex bg-[#FF6731] pt-[100px] pb-[70px] px-20 text-white text-sm gap-44">
+      <div className="md:flex bg-[#FF6731] md:pt-[100px] pb-[70px] md:px-20 text-white text-sm gap-44 p-5">
         <div>
           <h3 className="pb-[25px] text-lg font-medium">Discover</h3>
 
@@ -65,8 +65,8 @@ export default function Footer() {
           </Link>
         </div>
         <div>
-          <h3 className="pb-[25px] text-lg font-medium">Contact Us</h3>
-          <div className="max-w-sm py-[5px] leading-6 flex gap-1">
+          <h3 className="pb-[25px] text-lg font-medium pt-5">Contact Us</h3>
+          <div className="md:max-w-sm py-[5px] leading-6 flex gap-1">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
                 <rect width="24" height="24" fill="none" />
@@ -95,16 +95,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="py-[50px] bg-[#E24B14] text-white flex px-20  items-center">
-        <p className="text-sm">&copy; Eden Oasis - All rights reserved</p>
+      <div className="py-[50px] bg-[#E24B14] text-white md:flex md:px-20 items-center">
+        <p className="text-sm text-center">&copy; Eden Oasis - All rights reserved</p>
         <Image
           alt=""
           src="/Home/Eden-Oasis-Logo-Retina-white.png"
           width={96}
           height={48}
-          className="mx-auto"
+          className="mx-auto py-4"
         />
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-center">
           <Link href="/">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
               <rect width="24" height="24" fill="none" />
