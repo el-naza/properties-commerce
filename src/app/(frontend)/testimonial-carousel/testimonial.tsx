@@ -1,49 +1,17 @@
-import Marquee from '@/components/animata/container/marquee'
 import Image from 'next/image'
 
-export default function TestimonialCarousel() {
+export default function TestimonialCarousel({ src }) {
   return (
     <div>
-      <div className="storybook-fix relative flex h-full w-full min-w-72 items-center justify-center overflow-hidden">
-        <Marquee pauseOnHover>
-          <div role="img" aria-label="9">
-            <Image
-              alt=""
-              src="/Home/Testimonial/test1.png"
-              width={300}
-              height={400}
-              className="flex-1 relative z-10"
-            />
-            <div className="w-[300px] absolute h-96 bg-black-1 opacity-20  z-20"></div>
-          </div>
-          <div role="img" aria-label="9">
-            <Image
-              alt=""
-              src="/Home/Testimonial/Test2.png"
-              width={300}
-              height={400}
-              className="flex-1"
-            />
-          </div>
-          <div role="img" aria-label="9">
-            <Image
-              alt=""
-              src="/Home/Testimonial/Test3.png"
-              width={300}
-              height={400}
-              className="flex-1"
-            />
-          </div>
-          <div role="img" aria-label="9">
-            <Image
-              alt=""
-              src="/Home/Testimonial/Test4.png"
-              width={300}
-              height={400}
-              className="flex-1"
-            />
-          </div>
-        </Marquee>
+      <div className="relative w-[18.75rem] h-[25rem]">
+        <Image
+          src={src}
+          alt="House"
+          width={300}
+          height={400}
+          className="rounded-md w-[18.75rem] h-[25rem]"
+        />
+        <div className="absolute w-[18.75rem] h-[25rem] bg-gray-900 hover:opacity-30 top-0 rounded-md opacity-0"></div>
       </div>
     </div>
   )

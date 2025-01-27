@@ -7,10 +7,30 @@ export default function Populars() {
         <h1 className="text-[1.75rem]">Explore Our Most Popular Areas</h1>
         <p className="text-sm">See what these areas have to offer and buy your perfect home.</p>
       </div>
-      <Popular />
-      <Popular />
-      <Popular />
-      <Popular />
+      <Popular
+        src="/Home/Fully-detached-3.jpg"
+        numberOfProperties="12 Properties"
+        propertyLocation="Lekki Phase 1"
+        link="/"
+      />
+      <Popular
+        src="/Home/Fully-detached-3.jpg"
+        numberOfProperties="12 Properties"
+        propertyLocation="Lekki Phase 1"
+        link="/"
+      />
+      <Popular
+        src="/Home/Fully-detached-3.jpg"
+        numberOfProperties="12 Properties"
+        propertyLocation="Lekki Phase 1"
+        link="/"
+      />
+      <Popular
+        src="/Home/Fully-detached-3.jpg"
+        numberOfProperties="12 Properties"
+        propertyLocation="Lekki Phase 1"
+        link="/"
+      />
     </div>
   )
 }

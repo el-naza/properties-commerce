@@ -1,6 +1,6 @@
 import Footer from '../footer/footer'
 import PartnersCarousel from '../partners-carousel/partners'
-import TestimonialCarousel from '../testimonial-carousel/testimonial'
+import Testimonial from '../testimonials/page'
 import Cards from '../cards/page'
 import Inquiry from '../inquiry/page'
 import Populars from '../populars/page'
@@ -18,7 +18,7 @@ export default function () {
         <Populars />
       </div>
       <div className="py-5">
-        <TestimonialCarousel />
+        <Testimonial />
       </div>
       <div className="py-5">
         <PartnersCarousel />

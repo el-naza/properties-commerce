@@ -8,7 +8,7 @@ export default function PartnersCarousel() {
         <div className="px-10">
           <Image
             decoding="async"
-            className="eael-lc-img-src"
+            className="self-center"
             src="/Home/DCGBlak.png"
             width={50}
             height={200}
@@ -19,7 +19,7 @@ export default function PartnersCarousel() {
         <div className="px-10">
           <Image
             decoding="async"
-            className="eael-lc-img-src"
+            className="self-center"
             src="/Home/DEECREATIVEZLOGO.png"
             width={50}
             height={200}
@@ -30,7 +30,7 @@ export default function PartnersCarousel() {
         <div className="px-10">
           <Image
             decoding="async"
-            className="eael-lc-img-src"
+            className="self-center"
             src="/Home/Ganancia.png"
             width={50}
             height={200}

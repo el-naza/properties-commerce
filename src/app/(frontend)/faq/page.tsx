@@ -31,7 +31,7 @@ export default function AccordionDemo() {
               line for more information.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem value="item-4">
             <AccordionTrigger>How do I make payment</AccordionTrigger>
             <AccordionContent>
               We can help with securing some level of mortgage facility. Contact our customer care
