@@ -3,8 +3,8 @@ import type { CollectionConfig } from 'payload'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
-export const Cities: CollectionConfig = {
-  slug: 'cities',
+export const Areas: CollectionConfig = {
+  slug: 'areas',
   access: {
     create: authenticated,
     delete: authenticated,
@@ -12,13 +12,13 @@ export const Cities: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    useAsTitle: 'cityName',
-    listSearchableFields: ['cityName', 'stateOrCounty'],
+    useAsTitle: 'name',
+    listSearchableFields: ['name', 'city.name'],
   },
   fields: [
     {
       name: 'name',
-      label: 'Area Name',
+      label: 'Name of the Area',
       type: 'text',
       required: true,
     },

@@ -1,12 +1,12 @@
 import type { CollectionConfig } from 'payload'
 
-import { anyone } from '../access/anyone'
 import { superAdmin } from '@/access/superAdmin'
+import { notFromAdminPanel } from '@/access/notFromAdminPanel'
 
 export const ShortletEnquiries: CollectionConfig = {
   slug: 'shortlet-enquiries',
   access: {
-    create: anyone,
+    create: notFromAdminPanel,
     update: () => false,
     delete: superAdmin,
   },

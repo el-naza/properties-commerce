@@ -14,13 +14,19 @@ export interface Config {
     media: Media;
     admins: Admin;
     cities: City;
-    properties: Property;
+    areas: Area;
     'property-categories': PropertyCategory;
     'property-features': PropertyFeature;
     'property-statuses': PropertyStatus;
+    properties: Property;
     shortlets: Shortlet;
     'id-documents': IdDocument;
     'shortlet-bookings': ShortletBooking;
+    messages: Message;
+    reviews: Review;
+    contacts: Contact;
+    inquiries: Inquiry;
+    'tour-schedules': TourSchedule;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -30,13 +36,19 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     admins: AdminsSelect<false> | AdminsSelect<true>;
     cities: CitiesSelect<false> | CitiesSelect<true>;
-    properties: PropertiesSelect<false> | PropertiesSelect<true>;
+    areas: AreasSelect<false> | AreasSelect<true>;
     'property-categories': PropertyCategoriesSelect<false> | PropertyCategoriesSelect<true>;
     'property-features': PropertyFeaturesSelect<false> | PropertyFeaturesSelect<true>;
     'property-statuses': PropertyStatusesSelect<false> | PropertyStatusesSelect<true>;
+    properties: PropertiesSelect<false> | PropertiesSelect<true>;
     shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
     'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
     'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
+    messages: MessagesSelect<false> | MessagesSelect<true>;
+    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
+    contacts: ContactsSelect<false> | ContactsSelect<true>;
+    inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
+    'tour-schedules': TourSchedulesSelect<false> | TourSchedulesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -122,39 +134,12 @@ export interface City {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "properties".
+ * via the `definition` "areas".
  */
-export interface Property {
+export interface Area {
   id: string;
-  title: string;
-  price: number;
-  categories: (string | PropertyCategory)[];
-  area: string | City;
-  address?: string | null;
-  /**
-   * Uses a google maps location coordinates for the map feature in the search page
-   *
-   * @minItems 2
-   * @maxItems 2
-   */
-  gpsCoordinates?: [number, number] | null;
-  media: (string | Media)[];
-  bedroomCounts?: number[] | null;
-  bathroomCounts?: number[] | null;
-  squareMeters?: number[] | null;
-  yearBuilt?: string | null;
-  features?: (string | PropertyFeature)[] | null;
-  youtubeVideo?: string | null;
-  additionalDeatils?:
-    | {
-        title: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  isFeatured?: boolean | null;
-  statuses?: (string | PropertyStatus)[] | null;
-  uploadedBy?: (string | null) | Admin;
+  name: string;
+  city: string | City;
   updatedAt: string;
   createdAt: string;
 }
@@ -193,13 +178,14 @@ export interface PropertyStatus {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "shortlets".
+ * via the `definition` "properties".
  */
-export interface Shortlet {
+export interface Property {
   id: string;
   title: string;
   price: number;
-  area: string | City;
+  categories: (string | PropertyCategory)[];
+  area: string | Area;
   address?: string | null;
   /**
    * Uses a google maps location coordinates for the map feature in the search page
@@ -209,8 +195,45 @@ export interface Shortlet {
    */
   gpsCoordinates?: [number, number] | null;
   media: (string | Media)[];
-  bedroomCounts?: number[] | null;
-  bathroomCounts?: number[] | null;
+  bedroomsCount?: number[] | null;
+  bathroomsCount?: number[] | null;
+  squareMeters?: number[] | null;
+  yearBuilt?: string | null;
+  features?: (string | PropertyFeature)[] | null;
+  youtubeVideo?: string | null;
+  additionalDeatils?:
+    | {
+        title: string;
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
+  isFeatured?: boolean | null;
+  statuses?: (string | PropertyStatus)[] | null;
+  uploadedBy?: (string | null) | Admin;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlets".
+ */
+export interface Shortlet {
+  id: string;
+  title: string;
+  price: number;
+  area: string | Area;
+  address?: string | null;
+  /**
+   * Uses a google maps location coordinates for the map feature in the search page
+   *
+   * @minItems 2
+   * @maxItems 2
+   */
+  gpsCoordinates?: [number, number] | null;
+  media: (string | Media)[];
+  bedroomsCount?: number[] | null;
+  bathroomsCount?: number[] | null;
   squareMeters?: number[] | null;
   yearBuilt?: string | null;
   features?: (string | PropertyFeature)[] | null;
@@ -267,6 +290,83 @@ export interface ShortletBooking {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages".
+ */
+export interface Message {
+  id: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+  message: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews".
+ */
+export interface Review {
+  id: string;
+  email?: string | null;
+  title?: string | null;
+  review?: string | null;
+  rating?: number | null;
+  property: string | Property;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  whatsapp?: string | null;
+  identifiesAs: 'New Customer' | 'Returning Customer' | 'An Agent';
+  message?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries".
+ */
+export interface Inquiry {
+  id: string;
+  type: 'Purchase' | 'Rent' | 'Mortgage';
+  firstName: string;
+  lastName: string;
+  identifiesAsA: 'First Time Buyer' | 'Real Estate Investor' | 'Real Estate Agent';
+  email: string;
+  phone: string;
+  categoryInterested: string | PropertyCategory;
+  maxPrice?: number | null;
+  numberOfBeds?: number | null;
+  message?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tour-schedules".
+ */
+export interface TourSchedule {
+  id: string;
+  type: 'In Person' | 'Video Chat';
+  date: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  message?: string | null;
+  property: string | Property;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -285,8 +385,8 @@ export interface PayloadLockedDocument {
         value: string | City;
       } | null)
     | ({
-        relationTo: 'properties';
-        value: string | Property;
+        relationTo: 'areas';
+        value: string | Area;
       } | null)
     | ({
         relationTo: 'property-categories';
@@ -301,6 +401,10 @@ export interface PayloadLockedDocument {
         value: string | PropertyStatus;
       } | null)
     | ({
+        relationTo: 'properties';
+        value: string | Property;
+      } | null)
+    | ({
         relationTo: 'shortlets';
         value: string | Shortlet;
       } | null)
@@ -311,6 +415,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'shortlet-bookings';
         value: string | ShortletBooking;
+      } | null)
+    | ({
+        relationTo: 'messages';
+        value: string | Message;
+      } | null)
+    | ({
+        relationTo: 'reviews';
+        value: string | Review;
+      } | null)
+    | ({
+        relationTo: 'contacts';
+        value: string | Contact;
+      } | null)
+    | ({
+        relationTo: 'inquiries';
+        value: string | Inquiry;
+      } | null)
+    | ({
+        relationTo: 'tour-schedules';
+        value: string | TourSchedule;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -399,32 +523,11 @@ export interface CitiesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "properties_select".
+ * via the `definition` "areas_select".
  */
-export interface PropertiesSelect<T extends boolean = true> {
-  title?: T;
-  price?: T;
-  categories?: T;
-  area?: T;
-  address?: T;
-  gpsCoordinates?: T;
-  media?: T;
-  bedroomCounts?: T;
-  bathroomCounts?: T;
-  squareMeters?: T;
-  yearBuilt?: T;
-  features?: T;
-  youtubeVideo?: T;
-  additionalDeatils?:
-    | T
-    | {
-        title?: T;
-        value?: T;
-        id?: T;
-      };
-  isFeatured?: T;
-  statuses?: T;
-  uploadedBy?: T;
+export interface AreasSelect<T extends boolean = true> {
+  name?: T;
+  city?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -460,6 +563,37 @@ export interface PropertyStatusesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties_select".
+ */
+export interface PropertiesSelect<T extends boolean = true> {
+  title?: T;
+  price?: T;
+  categories?: T;
+  area?: T;
+  address?: T;
+  gpsCoordinates?: T;
+  media?: T;
+  bedroomsCount?: T;
+  bathroomsCount?: T;
+  squareMeters?: T;
+  yearBuilt?: T;
+  features?: T;
+  youtubeVideo?: T;
+  additionalDeatils?:
+    | T
+    | {
+        title?: T;
+        value?: T;
+        id?: T;
+      };
+  isFeatured?: T;
+  statuses?: T;
+  uploadedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "shortlets_select".
  */
 export interface ShortletsSelect<T extends boolean = true> {
@@ -469,8 +603,8 @@ export interface ShortletsSelect<T extends boolean = true> {
   address?: T;
   gpsCoordinates?: T;
   media?: T;
-  bedroomCounts?: T;
-  bathroomCounts?: T;
+  bedroomsCount?: T;
+  bathroomsCount?: T;
   squareMeters?: T;
   yearBuilt?: T;
   features?: T;
@@ -517,6 +651,78 @@ export interface ShortletBookingsSelect<T extends boolean = true> {
   idType?: T;
   idDocument?: T;
   paymentConfirmed?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages_select".
+ */
+export interface MessagesSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reviews_select".
+ */
+export interface ReviewsSelect<T extends boolean = true> {
+  email?: T;
+  title?: T;
+  review?: T;
+  rating?: T;
+  property?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts_select".
+ */
+export interface ContactsSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  whatsapp?: T;
+  identifiesAs?: T;
+  message?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries_select".
+ */
+export interface InquiriesSelect<T extends boolean = true> {
+  type?: T;
+  firstName?: T;
+  lastName?: T;
+  identifiesAsA?: T;
+  email?: T;
+  phone?: T;
+  categoryInterested?: T;
+  maxPrice?: T;
+  numberOfBeds?: T;
+  message?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tour-schedules_select".
+ */
+export interface TourSchedulesSelect<T extends boolean = true> {
+  type?: T;
+  date?: T;
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
+  property?: T;
   updatedAt?: T;
   createdAt?: T;
 }

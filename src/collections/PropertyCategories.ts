@@ -13,6 +13,7 @@ export const PropertyCategories: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
+    listSearchableFields: ['title', 'description'],
   },
   fields: [
     {

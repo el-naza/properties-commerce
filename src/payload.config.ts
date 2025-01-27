@@ -17,6 +17,12 @@ import { PropertyStatuses } from './collections/PropertyStatuses'
 import { Shortlets } from './collections/Shortlets'
 import { IdDocuments } from './collections/IdDocuments'
 import { ShortletBookings } from './collections/ShortletBookings'
+import { Areas } from './collections/Areas'
+import { Contacts } from './collections/Contacts'
+import { Inquiries } from './collections/Inquiries'
+import { TourSchedules } from './collections/TourSchedules'
+import { Reviews } from './collections/Reviews'
+import { Messages } from './collections/Messages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -66,13 +72,19 @@ export default buildConfig({
     Media,
     Admins,
     Cities,
-    Properties,
+    Areas,
     PropertyCategories,
     PropertyFeatures,
     PropertyStatuses,
+    Properties,
     Shortlets,
     IdDocuments,
     ShortletBookings,
+    Messages,
+    Reviews,
+    Contacts,
+    Inquiries,
+    TourSchedules,
   ],
   cors: [getServerSideURL()].filter(Boolean),
   plugins: [

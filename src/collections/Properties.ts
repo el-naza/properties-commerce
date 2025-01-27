@@ -13,7 +13,7 @@ export const Properties: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    // listSearchableFields: ['title', 'description'],
+    listSearchableFields: ['title', 'area'],
   },
   fields: [
     {
@@ -42,7 +42,7 @@ export const Properties: CollectionConfig = {
     {
       name: 'area',
       type: 'relationship',
-      relationTo: 'cities',
+      relationTo: 'areas',
       required: true,
       index: true,
     },
@@ -67,13 +67,13 @@ export const Properties: CollectionConfig = {
       minRows: 1,
     },
     {
-      name: 'bedroomCounts',
+      name: 'bedroomsCount',
       type: 'number',
       hasMany: true,
       minRows: 1,
     },
     {
-      name: 'bathroomCounts',
+      name: 'bathroomsCount',
       type: 'number',
       hasMany: true,
       minRows: 1,
