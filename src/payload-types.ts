@@ -22,11 +22,8 @@ export interface Config {
     shortlets: Shortlet;
     'id-documents': IdDocument;
     'shortlet-bookings': ShortletBooking;
-    messages: Message;
-    reviews: Review;
     contacts: Contact;
     inquiries: Inquiry;
-    'tour-schedules': TourSchedule;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -44,11 +41,8 @@ export interface Config {
     shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
     'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
     'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
-    messages: MessagesSelect<false> | MessagesSelect<true>;
-    reviews: ReviewsSelect<false> | ReviewsSelect<true>;
     contacts: ContactsSelect<false> | ContactsSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
-    'tour-schedules': TourSchedulesSelect<false> | TourSchedulesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -290,33 +284,6 @@ export interface ShortletBooking {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "messages".
- */
-export interface Message {
-  id: string;
-  fullName: string;
-  email: string;
-  phone?: string | null;
-  message: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "reviews".
- */
-export interface Review {
-  id: string;
-  email?: string | null;
-  title?: string | null;
-  review?: string | null;
-  rating?: number | null;
-  property: string | Property;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contacts".
  */
 export interface Contact {
@@ -346,22 +313,6 @@ export interface Inquiry {
   maxPrice?: number | null;
   numberOfBeds?: number | null;
   message?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tour-schedules".
- */
-export interface TourSchedule {
-  id: string;
-  type: 'In Person' | 'Video Chat';
-  date: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  message?: string | null;
-  property: string | Property;
   updatedAt: string;
   createdAt: string;
 }
@@ -417,24 +368,12 @@ export interface PayloadLockedDocument {
         value: string | ShortletBooking;
       } | null)
     | ({
-        relationTo: 'messages';
-        value: string | Message;
-      } | null)
-    | ({
-        relationTo: 'reviews';
-        value: string | Review;
-      } | null)
-    | ({
         relationTo: 'contacts';
         value: string | Contact;
       } | null)
     | ({
         relationTo: 'inquiries';
         value: string | Inquiry;
-      } | null)
-    | ({
-        relationTo: 'tour-schedules';
-        value: string | TourSchedule;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -656,31 +595,6 @@ export interface ShortletBookingsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "messages_select".
- */
-export interface MessagesSelect<T extends boolean = true> {
-  fullName?: T;
-  email?: T;
-  phone?: T;
-  message?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "reviews_select".
- */
-export interface ReviewsSelect<T extends boolean = true> {
-  email?: T;
-  title?: T;
-  review?: T;
-  rating?: T;
-  property?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contacts_select".
  */
 export interface ContactsSelect<T extends boolean = true> {
@@ -708,21 +622,6 @@ export interface InquiriesSelect<T extends boolean = true> {
   maxPrice?: T;
   numberOfBeds?: T;
   message?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tour-schedules_select".
- */
-export interface TourSchedulesSelect<T extends boolean = true> {
-  type?: T;
-  date?: T;
-  fullName?: T;
-  email?: T;
-  phone?: T;
-  message?: T;
-  property?: T;
   updatedAt?: T;
   createdAt?: T;
 }

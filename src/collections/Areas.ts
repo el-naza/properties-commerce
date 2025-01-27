@@ -14,6 +14,8 @@ export const Areas: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     listSearchableFields: ['name', 'city.name'],
+    hidden: true,
+    hideAPIURL: true,
   },
   fields: [
     {

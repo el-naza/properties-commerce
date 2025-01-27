@@ -14,6 +14,8 @@ export const Cities: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     listSearchableFields: ['name', 'stateOrCounty'],
+    hidden: true,
+    hideAPIURL: true,
   },
   fields: [
     {

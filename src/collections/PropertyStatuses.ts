@@ -14,6 +14,8 @@ export const PropertyStatuses: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     listSearchableFields: ['title', 'description'],
+    hidden: true,
+    hideAPIURL: true,
   },
   fields: [
     {
