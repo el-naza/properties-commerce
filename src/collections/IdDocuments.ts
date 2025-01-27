@@ -11,6 +11,10 @@ const dirname = path.dirname(filename)
 
 export const IdDocuments: CollectionConfig = {
   slug: 'id-documents',
+  admin: {
+    hidden: true,
+    hideAPIURL: true,
+  },
   access: {
     create: anyone,
     delete: superAdmin,

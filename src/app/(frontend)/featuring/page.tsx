@@ -21,7 +21,7 @@ export default function Featuring() {
   )
 }
 
-export function PropertyOrShortletCard(props: Property | Shortlet) {
+function PropertyOrShortletCard(props: Property | Shortlet) {
   return (
     <Card>
       <div className="relative w-[400px] h-[300px]">

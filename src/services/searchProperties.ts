@@ -29,8 +29,8 @@ export default async function searchProperties(search: Search): Promise<Property
       },
     }),
     ...(search.categories && { category: { in: search.categories } }),
-    ...(search.area && { area: search.area }),
-    ...(search.city && { 'area.city': search.city }),
+    ...(search.area && { area: { equals: search.area } }),
+    ...(search.city && { 'area.city': { equals: search.city } }),
     ...(search.bedroomsCount && { bedroomsCount: { contains: search.bedroomsCount } }),
     ...(search.bathroomsCount && { bathroomsCount: { contains: search.bathroomsCount } }),
     ...(search.squareMetersRange?.length && {
@@ -40,13 +40,13 @@ export default async function searchProperties(search: Search): Promise<Property
       },
     }),
     ...(search.features && { features: { contains: search.features } }),
-    ...(search.isFeatured && { isFeatured: { equals: true } }),
+    ...(search.isFeatured && { isFeatured: { equals: Boolean(search.isFeatured) } }),
     ...(search.statuses && { statuses: { contains: search.statuses } }),
   }
 
   const stringifiedQuery = stringify(
     {
-      where: query, // ensure that `qs-esm` adds the `where` property, too!
+      where: query,
     },
     { addQueryPrefix: true },
   )
