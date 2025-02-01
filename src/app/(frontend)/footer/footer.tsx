@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <h3 className="pb-[25px] text-lg font-medium">Discover</h3>
 
-          <Link href="/" className="flex gap-1 pt-2 'leading-6'">
+          <Link href="#" className="flex gap-1 pt-2">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24">
                 <rect width="24" height="24" fill="none" />
@@ -22,7 +22,7 @@ export default function Footer() {
             <p>Lagos Island</p>
           </Link>
 
-          <Link href="/" className="flex gap-1 pt-2 leading-6">
+          <Link href="#" className="flex gap-1 pt-2">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24">
                 <rect width="24" height="24" fill="none" />
@@ -36,7 +36,7 @@ export default function Footer() {
             <p>Ibadan</p>
           </Link>
 
-          <Link href="/" className="flex gap-1 pt-2 leading-6">
+          <Link href="#" className="flex gap-1 pt-2">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24">
                 <rect width="24" height="24" fill="none" />
@@ -50,7 +50,7 @@ export default function Footer() {
             <p>Lagos Mainland</p>
           </Link>
 
-          <Link href="/" className="flex gap-1 pt-2 leading-6">
+          <Link href="#" className="flex gap-1 pt-2">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24">
                 <rect width="24" height="24" fill="none" />
@@ -66,7 +66,7 @@ export default function Footer() {
         </div>
         <div>
           <h3 className="pb-[25px] text-lg font-medium pt-5">Contact Us</h3>
-          <div className="md:max-w-sm py-[5px] leading-6 flex gap-1">
+          <div className="md:max-w-sm py-[5px] items-center flex gap-2">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
                 <rect width="24" height="24" fill="none" />
@@ -78,7 +78,7 @@ export default function Footer() {
             </span>
             <p>4th floor Kunech Towers, Km 18 Osapa, Lekki Penninsula II, Lagos, Nigeria</p>
           </div>
-          <div className="max-w-sm py-[5px] leading-6 flex gap-1">
+          <div className="max-w-sm py-[5px] items-center flex gap-2">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 36 36">
                 <rect width="36" height="36" fill="none" />
@@ -105,7 +105,7 @@ export default function Footer() {
           className="mx-auto py-4"
         />
         <div className="flex gap-2 justify-center">
-          <Link href="/">
+          <Link href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
               <rect width="24" height="24" fill="none" />
               <path
@@ -118,7 +118,7 @@ export default function Footer() {
               />
             </svg>
           </Link>
-          <Link href="/">
+          <Link href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
               <rect width="16" height="16" fill="none" />
               <path
@@ -127,7 +127,7 @@ export default function Footer() {
               />
             </svg>
           </Link>
-          <Link href="/">
+          <Link href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
               <rect width="24" height="24" fill="none" />
               <path
@@ -141,7 +141,7 @@ export default function Footer() {
               />
             </svg>
           </Link>
-          <Link href="/">
+          <Link href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
               <rect width="24" height="24" fill="none" />
               <g fill="none" fill-rule="evenodd">
@@ -153,7 +153,7 @@ export default function Footer() {
               </g>
             </svg>
           </Link>
-          <Link href="/">
+          <Link href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
               <rect width="24" height="24" fill="none" />
               <g fill="none">

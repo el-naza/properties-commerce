@@ -2,7 +2,7 @@ import ResidentialCard from '../card/page'
 
 export default function Cards() {
   return (
-    <div className="flex flex-wrap gap-8 justify-center">
+    <div className="container flex flex-wrap gap-8 justify-center">
       <div className="w-80 h-80">
         <div className="pt-28">
           <h2 className="text-[28px]">Residential</h2>

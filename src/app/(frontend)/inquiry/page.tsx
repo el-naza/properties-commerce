@@ -1,8 +1,8 @@
 export default function Inquiry() {
   return (
     <div>
-      <div className="flex px-14 gap-12 bg-[url('/Home/Fully-detached-3.jpg')] bg-cover text-white py-24  items-start">
-        <div className="w-[27.5%]">
+      <div className="flex flex-wrap px-14 gap-12 bg-[url('/Home/Fully-detached-3.jpg')] bg-cover text-white py-24  items-start justify-center">
+        <div className="md:max-w-[27.5%]">
           <div>
             <h1 className="text-[1.7rem] py-36">Why You Should Deal With Eden Oasis.</h1>
             <div className="w-[30%] bg-white h-[1px]"></div>
@@ -18,7 +18,7 @@ export default function Inquiry() {
             <div className="w-[30%] bg-white h-[1px] mt-10"></div>
           </div>
         </div>
-        <div className="w-[27.5%]">
+        <div className="md:max-w-[27.5%]">
           <div>
             <h1 className="pb-3 text-[2.5rem]">02.</h1>
             <h2 className="text-[1.38rem]">We Know What To Look For</h2>
@@ -42,7 +42,7 @@ export default function Inquiry() {
             <div className="w-[30%] bg-white h-[1px] mt-10"></div>
           </div>
         </div>
-        <div className="bg-white p-12 text-black-1 w-[45%]">
+        <div className="bg-white p-12 text-black-1 md:max-w-[45%]">
           <form action="">
             <h2 className="text-2xl font-[500]">Got Any Inquiry?</h2>
             <p className="text-[1.2rem] pt-1 pb-6">Start here</p>
@@ -54,7 +54,7 @@ export default function Inquiry() {
                 Inquiry Type <span className="text-red-800">*</span>
               </label>
               <select name="" id="" className="block w-full h-10 px-2 border solid border-black-1">
-                <option value="" selected="selected">
+                <option value="" selected>
                   Select
                 </option>
                 <option value="Purchase">Purchase</option>
@@ -73,7 +73,7 @@ export default function Inquiry() {
                   id=""
                   className="block w-full h-10 px-2 border solid border-black-1"
                 >
-                  <option value="" selected="selected">
+                  <option value="" selected>
                     Select
                   </option>
                   <option value="Purchase">I'm a first time buyer</option>

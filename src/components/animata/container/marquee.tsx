@@ -21,14 +21,14 @@ export default function Marquee({
   return (
     <div
       {...props}
-      className={`group relative flex h-full w-full p-2 [--duration:30s] [--gap:12px] [gap:var(--gap)] ${
+      className={`group relative flex items-center h-full w-full p-2 [--duration:30s] [--gap:12px] [gap:var(--gap)] ${
         vertical ? 'flex-col' : 'flex-row'
       } ${className}`}
     >
       {Array.from({ length: repeat }).map((_, index) => (
         <div
           key={`item-${index}`}
-          className={`flex shrink-0 [gap:var(--gap)] ${
+          className={`flex items-center shrink-0 [gap:var(--gap)] ${
             pauseOnHover ? 'group-hover:[animation-play-state:paused]' : ''
           } ${reverse ? '[animation-direction:reverse]' : ''} ${
             vertical ? 'animate-marquee-vertical flex-col' : 'animate-marquee-horizontal flex-row'

@@ -5,7 +5,7 @@ import Cards from '../cards/page'
 import Inquiry from '../inquiry/page'
 import Populars from '../populars/page'
 
-export default function () {
+export default function Page() {
   return (
     <>
       <div className="py-5">

@@ -4,25 +4,14 @@ import Image from 'next/image'
 export default function PartnersCarousel() {
   return (
     <div className="storybook-fix relative flex h-full min-h-122 w-full min-w-72 items-center justify-center overflow-hidden border solid">
-      <Marquee pauseOnHover reverse>
+      <Marquee pauseOnHover reverse repeat={2}>
         <div className="px-10">
           <Image
             decoding="async"
             className="self-center"
-            src="/Home/DCGBlak.png"
-            width={50}
-            height={200}
-            alt=""
-          />
-        </div>
-
-        <div className="px-10">
-          <Image
-            decoding="async"
-            className="self-center"
-            src="/Home/DEECREATIVEZLOGO.png"
-            width={50}
-            height={200}
+            src="/images/partners/DCG Blak.png"
+            width={150}
+            height={100}
             alt=""
           />
         </div>
@@ -31,8 +20,8 @@ export default function PartnersCarousel() {
           <Image
             decoding="async"
             className="self-center"
-            src="/Home/Ganancia.png"
-            width={50}
+            src="/images/partners/Ganancia.png"
+            width={75}
             height={200}
             alt=""
           />
@@ -41,76 +30,21 @@ export default function PartnersCarousel() {
         <div className="px-10">
           <Image
             decoding="async"
+            className="self-center"
+            src="/images/partners/DEECREATIVEZ LOGO.png"
+            width={150}
+            height={100}
+            alt=""
+          />
+        </div>
+
+        <div className="px-10">
+          <Image
+            decoding="async"
             className="eael-lc-img-src"
-            src="/Home/MadisonGardens.png"
-            width={50}
+            src="/images/partners/Madison Gardens.png"
+            width={100}
             height={200}
-            alt=""
-          />
-        </div>
-
-        <div className="px-10">
-          <Image
-            decoding="async"
-            className="eael-lc-img-src"
-            src="/Home/DCGBlak.png"
-            width={50}
-            height={100}
-            alt=""
-          />
-        </div>
-
-        <div className="px-10">
-          <Image
-            decoding="async"
-            className="eael-lc-img-src"
-            src="/Home/DEECREATIVEZLOGO.png"
-            width={50}
-            height={100}
-            alt=""
-          />
-        </div>
-
-        <div className="px-10">
-          <Image
-            decoding="async"
-            className="eael-lc-img-src"
-            src="/Home/Ganancia.png"
-            width={50}
-            height={100}
-            alt=""
-          />
-        </div>
-
-        <div className="px-10">
-          <Image
-            decoding="async"
-            className="eael-lc-img-src"
-            src="/Home/MadisonGardens.png"
-            width={50}
-            height={100}
-            alt=""
-          />
-        </div>
-
-        <div>
-          <Image
-            decoding="async"
-            className="eael-lc-img-src"
-            src="/Home/DCGBlak.png"
-            width={50}
-            height={100}
-            alt=""
-          />
-        </div>
-
-        <div className="px-10">
-          <Image
-            decoding="async"
-            className="eael-lc-img-src"
-            src="/Home/DEECREATIVEZLOGO.png"
-            width={50}
-            height={100}
             alt=""
           />
         </div>
