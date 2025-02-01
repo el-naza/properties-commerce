@@ -1,3 +1,6 @@
+'use client'
+
+import { Button } from '@/components/ui/button'
 import {
   Select,
   SelectContent,
@@ -5,68 +8,139 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { useForm } from '@tanstack/react-form'
 
-export default function Searchform() {
+// type Search {
+//   category: string;
+// }
+
+export default function SearchForm() {
+  const form = useForm({
+    onSubmit: async ({ value }) => {
+      // Do something with form data
+      console.log(value)
+    },
+  })
+
   return (
-    <div className="  ">
-      <div className="py-8 justify-center flex border-2 border-solid mx-auto rounded gap-2">
-        <div>
-          <p className="text-">LOOKING FOR</p>
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="All Cities"></SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        form.handleSubmit()
+      }}
+    >
+      <div className="p-8 flex border-2 border-solid rounded gap-2 mx-auto">
+        <form.Field name="category">
+          {(field) => (
+            <div>
+              <p className="text-">SEARCHING FOR</p>
+              <Select
+                value={field.state.value as string}
+                onOpenChange={(isOpen) => (isOpen ? null : field.handleBlur())}
+                onValueChange={(value) => field.handleChange(value)}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select Category"></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Category1">Category1</SelectItem>
+                  <SelectItem value="Category2">Category2</SelectItem>
+                  <SelectItem value="Category3">Category3</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+        </form.Field>
 
-        <div>
-          <p>LOCATION</p>
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="All Cities"></SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <p>PROPERTY SIZE</p>
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="All Cities"></SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <p>YOUR BUDGET</p>
-          <Select>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="All Cities"></SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Abeokuta</SelectItem>
-              <SelectItem value="light">Asokoro</SelectItem>
-              <SelectItem value="light">Ibadan</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="bg-[#FF6731] text-white text-base rounded px-14 mt-auto py-2">
-          <p>Search</p>
-        </div>
+        <form.Field name="city">
+          {(field) => (
+            <div>
+              <p>LOCATION</p>
+              <Select
+                value={field.state.value as string}
+                onOpenChange={(isOpen) => (isOpen ? null : field.handleBlur())}
+                onValueChange={(value) => field.handleChange(value)}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select City"></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Abuja">Abuja</SelectItem>
+                  <SelectItem value="Enugu">Enugu</SelectItem>
+                  <SelectItem value="Lagos">Lagos</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+        </form.Field>
+
+        <form.Field name="size">
+          {(field) => (
+            <div>
+              <p>PROPERTY SIZE</p>
+              <Select
+                value={field.state.value as string}
+                onOpenChange={(isOpen) => (isOpen ? null : field.handleBlur())}
+                onValueChange={(value) => field.handleChange(value)}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select No. Of Rooms"></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {' '}
+                  Bedrooms
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((size, i) => (
+                    <SelectItem value={size.toString()} key={i}>
+                      {size}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+        </form.Field>
+
+        <form.Field name="priceRange">
+          {(field) => (
+            <div>
+              <p>PRICE RANGE</p>
+              <Select
+                value={field.state.value as string}
+                onOpenChange={(isOpen) => (isOpen ? null : field.handleBlur())}
+                onValueChange={(value) => field.handleChange(value)}
+              >
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Select Price Range"></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="0">Any</SelectItem>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 50, 100]
+                    .map((v) => v * 100_000)
+                    .map((size, i) => (
+                      <SelectItem value={size.toString()} key={i}>
+                        ₦{size.toLocaleString()}
+                      </SelectItem>
+                    ))}
+                  <SelectItem value="-1">Max</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+        </form.Field>
+
+        <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
+          {([canSubmit, isSubmitting]) => (
+            <Button
+              type="submit"
+              disabled={!canSubmit}
+              className="bg-[#100D2C] text-white text-base rounded px-14 mt-auto py-2"
+            >
+              {isSubmitting ? '...' : 'Search'}
+            </Button>
+          )}
+        </form.Subscribe>
       </div>
-    </div>
+    </form>
   )
 }

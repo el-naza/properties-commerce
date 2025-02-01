@@ -1,8 +1,12 @@
+'use client'
+
 import { cn } from 'src/utilities/cn'
-import { Montserrat } from 'next/font/google'
+import { Montserrat, Sora } from 'next/font/google'
 import React from 'react'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import './globals.css'
+import { Toaster } from 'sonner'
 
 const montserrat = Montserrat({
   // weight: ['400', '500', '600', '700'],
@@ -12,10 +16,20 @@ const montserrat = Montserrat({
   fallback: ['sans-serif'],
 })
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+const sora = Sora({
+  // weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-sora',
+  display: 'swap',
+  fallback: ['sans-serif'],
+})
+
+const queryClient = new QueryClient()
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      className={cn(montserrat.variable, montserrat.className, 'tracking-[0.37px]')}
+      className={cn(sora.variable, montserrat.variable, montserrat.className)}
       lang="en"
       suppressHydrationWarning
     >
@@ -24,7 +38,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
-        <div className="tracking-[0.37px]">{children}</div>
+        <QueryClientProvider client={queryClient}>
+          <div>{children}</div>
+        </QueryClientProvider>
+        <Toaster />
       </body>
     </html>
   )

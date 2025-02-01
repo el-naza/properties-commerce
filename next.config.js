@@ -1,8 +1,13 @@
 import { withPayload } from '@payloadcms/next/withPayload'
 
+// aws secret stub
+function secret() {}
+
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : undefined || process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+
+console.log('major stuff', secret('S3_SECRET_ACCESS_KEY'), 'afterwards')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -22,6 +27,14 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       destination: '/index.html',
+  //     },
+  //   ]
+  // },
 }
 
 export default withPayload(nextConfig)

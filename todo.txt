@@ -1,0 +1,9 @@
+only super admin can edit shortlet checkin and checkout dates after payment has been approved
+
+when shortlet booking payment has been approved, don't allow another booking for the shortlet till after the checkOut
+
+Use a UI field on the shortlet collection to show the current booking for a particular shortlet
+
+Use a UI field on the shortlet booking collection to show the total amount for booking calculated by price * no of days
+
+CHECK HOW THE DOMAINS FOR DAMBO WERE GOTTEN AND ADDED ON AWS AMPLIFY
