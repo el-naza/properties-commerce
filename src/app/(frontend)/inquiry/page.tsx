@@ -1,8 +1,8 @@
 export default function Inquiry() {
   return (
     <div>
-      <div className="flex flex-wrap px-14 gap-12 bg-[url('/Home/Fully-detached-3.jpg')] bg-cover text-white py-24  items-start justify-center">
-        <div className="md:max-w-[27.5%]">
+      <div className="flex flex-wrap px-14 gap-12 bg-[url('/Home/Fully-detached-3.jpg')] bg-cover py-24  items-start justify-center">
+        <div className="md:max-w-[27.5%] text-white">
           <div>
             <h1 className="text-[1.7rem] py-36">Why You Should Deal With Eden Oasis.</h1>
             <div className="w-[30%] bg-white h-[1px]"></div>
@@ -18,7 +18,7 @@ export default function Inquiry() {
             <div className="w-[30%] bg-white h-[1px] mt-10"></div>
           </div>
         </div>
-        <div className="md:max-w-[27.5%]">
+        <div className="md:max-w-[27.5%] text-white">
           <div>
             <h1 className="pb-3 text-[2.5rem]">02.</h1>
             <h2 className="text-[1.38rem]">We Know What To Look For</h2>
@@ -53,10 +53,12 @@ export default function Inquiry() {
               <label htmlFor="" className="font-bold">
                 Inquiry Type <span className="text-red-800">*</span>
               </label>
-              <select name="" id="" className="block w-full h-10 px-2 border solid border-black-1">
-                <option value="" selected>
-                  Select
-                </option>
+              <select
+                name=""
+                id=""
+                defaultValue={'Select'}
+                className="block w-full h-10 px-2 border solid border-black-1"
+              >
                 <option value="Purchase">Purchase</option>
                 <option value="Rent">Rent</option>
                 <option value="Mortgage">Mortgage</option>
@@ -72,10 +74,8 @@ export default function Inquiry() {
                   name=""
                   id=""
                   className="block w-full h-10 px-2 border solid border-black-1"
+                  defaultValue={'Select'}
                 >
-                  <option value="" selected>
-                    Select
-                  </option>
                   <option value="Purchase">I'm a first time buyer</option>
                   <option value="Rent">I'm a real estate investor</option>
                   <option value="Mortgage">I'm a real estate agent</option>
@@ -123,11 +123,9 @@ export default function Inquiry() {
                 <select
                   name=""
                   id=""
+                  defaultValue={'Select Type'}
                   className="block w-full h-10 px-2 border solid border-black-1"
                 >
-                  <option value="" selected="selected">
-                    Select Type
-                  </option>
                   <option value="Commercial Land">Commercial Land</option>
                   <option value="Residential Land">Residential Land</option>
                   <option value="Office">Office</option>
@@ -148,10 +146,12 @@ export default function Inquiry() {
                   className="border solid w-full h-10 px-2 border-black-1 rounded-sm"
                   placeholder="Max Price"
                 />
-                <select name="" id="" className="w-full h-10 px-2 border solid border-black-1">
-                  <option value="" selected="selected">
-                    Number of Beds
-                  </option>
+                <select
+                  name=""
+                  id=""
+                  defaultValue={'Number of Beds'}
+                  className="w-full h-10 px-2 border solid border-black-1"
+                >
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

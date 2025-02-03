@@ -30,7 +30,7 @@ export default function SearchForm() {
         form.handleSubmit()
       }}
     >
-      <div className="p-8 flex border-2 border-solid rounded gap-2 mx-auto">
+      <div className="p-8 flex justify-center border-2 border-solid rounded gap-2">
         <form.Field name="category">
           {(field) => (
             <div>

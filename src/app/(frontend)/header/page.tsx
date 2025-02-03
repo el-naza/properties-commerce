@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <div className={`bg-primary/45 text-white border-b-[#5D5BA9] border-b-[1px]`}>
       <div className="flex container justify-between py-7 items-center">
-        <Image src="/logos/Vastel LS.png" width={160} height={60.79} alt="logo" />
+        <Image src="/images/logos/Vastel LS.png" width={160} height={60.79} alt="logo" />
 
         <div className="flex gap-6 items-center">
           <div className="gap-11 flex text-sm leading-[17.64px] font-sora">
