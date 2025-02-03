@@ -71,7 +71,7 @@ export default function Footer() {
             height={48}
             className="py-4 self-center h-40 w-40 aspect-square"
           />
-          {/* <div className="flex flex-1  gap-2 justify-center md:justify-end md:justify-self-end">
+          <div className="flex flex-1  gap-2 justify-center md:justify-end md:justify-self-end">
             <Link href="#">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
                 <rect width="24" height="24" fill="none" />
@@ -132,7 +132,7 @@ export default function Footer() {
                 </g>
               </svg>
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

@@ -34,6 +34,8 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'marquee-horizontal': 'marquee-x var(--duration) infinite linear',
+        'marquee-vertical': 'marquee-y var(--duration) linear infinite',
       },
       colors: {
         primary: {
@@ -69,6 +71,18 @@ export default {
           to: {
             height: '0',
           },
+        },
+        'marquee-x': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-y': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+        },
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
       },
     },
