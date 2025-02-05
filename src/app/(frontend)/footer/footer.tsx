@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <div className="bg-primary/[.988]">
-      <div className="container md:flex md:pt-[100px] pb-[70px] md:px-20 text-white text-sm gap-44 p-5">
+      <div className="container md:flex md:pt-[100px] pb-[70px] text-white text-sm gap-44 py-5">
         <div>
           <h3 className="pb-[25px] text-lg font-medium">Discover</h3>
 
@@ -60,7 +60,7 @@ export default function Footer() {
       </div>
 
       <div className="bg-primary">
-        <div className="container py-[50px] text-white flex max-md:flex-col max-md:gap-10 md:px-20 items-center">
+        <div className="container py-[50px] text-white flex max-md:flex-col max-md:gap-10 items-center">
           <p className="flex-1 text-sm max-md:text-center md:justify-self-start">
             &copy; Vastel Credence - All rights reserved
           </p>

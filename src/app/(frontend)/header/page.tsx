@@ -22,13 +22,13 @@ export default function Header() {
 
         <div className="flex gap-6 items-center">
           <div className="gap-11 flex text-sm leading-[17.64px] font-sora">
-            <HeaderLink href="/home/index.html">Home</HeaderLink>
+            <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/listings/index.html">Listings</HeaderLink>
             <HeaderLink href="/shortlet/index.html">Shortlets</HeaderLink>
             <HeaderLink href="/services/index.html">Services</HeaderLink>
             <HeaderLink href="/inquiry-form/index.html">Inquiry Form</HeaderLink>
-            <HeaderLink href="/about/index.html">About</HeaderLink>
-            <HeaderLink href="/frequently-asked-questions/index.html">FAQs</HeaderLink>
+            <HeaderLink href="/about">About</HeaderLink>
+            <HeaderLink href="/faqs">FAQs</HeaderLink>
           </div>
 
           <div className="flex">
@@ -37,8 +37,13 @@ export default function Header() {
               size={'lg'}
               className="flex gap-2 font-sora text-xs leading-[15.12px]"
             >
-              <Image src="/icons/contact-icon.svg" width={14} height={14} alt="contact-icon" /> 070
-              100 10389
+              <Image src="/icons/contact-icon.svg" width={14} height={14} alt="contact-icon" />{' '}
+              <a
+                href="tel:070
+              100 10389"
+              >
+                070 100 10389
+              </a>
             </Button>
             <Button
               variant={'secondary'}

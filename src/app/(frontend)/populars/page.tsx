@@ -1,4 +1,4 @@
-import Popular from '../popular/page'
+import Popular from '../../../components/popular/page'
 
 export default function Populars() {
   return (

@@ -9,6 +9,8 @@ import type { Viewport } from 'next'
 import './globals.css'
 import { Toaster } from 'sonner'
 import { Montserrat, Sora } from 'next/font/google'
+import Footer from './footer/footer'
+import Header from './header/page'
 
 const montserrat = Montserrat({
   // weight: ['400', '500', '600', '700'],
@@ -37,8 +39,13 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
     <>
       <QueryClientProvider client={queryClient}>
         <div className={cn(sora.variable, montserrat.variable, montserrat.className)}>
-          {/* <div> */}
+          <div className="absolute w-full top-0 z-10">
+            <Header />
+          </div>
           {children}
+          <div className="pt-5">
+            <Footer />
+          </div>
         </div>
       </QueryClientProvider>
       {/* <Toaster /> */}

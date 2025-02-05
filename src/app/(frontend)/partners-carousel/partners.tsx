@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function PartnersCarousel() {
   return (
     <div className="storybook-fix relative flex h-full min-h-122 w-full min-w-72 items-center justify-center overflow-hidden border solid">
-      <Marquee reverse repeat={4}>
+      <Marquee reverse pauseOnHover repeat={4} className="p-4">
         <div className="px-10">
           <Image
             decoding="async"

@@ -134,7 +134,7 @@ export default function SearchForm() {
             <Button
               type="submit"
               disabled={!canSubmit}
-              className="bg-[#100D2C] text-white text-base rounded px-14 mt-auto py-2"
+              className="hover:bg-[#100D2C] bg-secondary active:bg-secondary text-white text-base rounded px-14 mt-auto py-2"
             >
               {isSubmitting ? '...' : 'Search'}
             </Button>

@@ -6,6 +6,7 @@ interface MarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
   reverse?: boolean
   pauseOnHover?: boolean
   applyMask?: boolean
+  duration?: number
 }
 
 export default function Marquee({
@@ -15,13 +16,13 @@ export default function Marquee({
   pauseOnHover = false,
   reverse = false,
   className,
-  applyMask = true,
+  applyMask = false,
   ...props
 }: MarqueeProps) {
   return (
     <div
       {...props}
-      className={`group relative flex items-center h-full w-full p-2 [--duration:30s] [--gap:12px] [gap:var(--gap)] ${
+      className={`group relative flex items-center h-full w-full [--duration:70s] [--gap:12px] [gap:var(--gap)] ${
         vertical ? 'flex-col' : 'flex-row'
       } ${className}`}
     >

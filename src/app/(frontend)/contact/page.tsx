@@ -61,7 +61,7 @@ export default function Contact() {
             <textarea
               id="message"
               name="message"
-              rows="4"
+              // rows={"4"}
               className="border solid w-full px-2 border-black-1 rounded-sm"
               placeholder="Type your enquiry here"
               required

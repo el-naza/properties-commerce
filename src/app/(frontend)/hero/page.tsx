@@ -1,12 +1,8 @@
 import Image from 'next/image'
-import Header from '../header/page'
 
 export default function Hero() {
   return (
     <div className="relative text-white flex items-center min-h-[45.11vw]">
-      <div className="absolute w-full top-0">
-        <Header />
-      </div>
       <Image
         src="/images/banner-image.png"
         className="absolute w-full -z-10 top-0 bottom-0"
