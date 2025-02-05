@@ -38,11 +38,18 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <div className={cn(sora.variable, montserrat.variable, montserrat.className)}>
+        <div
+          className={cn(
+            sora.variable,
+            montserrat.variable,
+            montserrat.className,
+            'flex flex-col min-h-screen',
+          )}
+        >
           <div className="absolute w-full top-0 z-10">
             <Header />
           </div>
-          {children}
+          <main className="flex-1">{children}</main>
           <div className="pt-5">
             <Footer />
           </div>
