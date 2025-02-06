@@ -1,7 +1,6 @@
 import { cn } from 'src/utilities/cn'
 import { Montserrat, Sora } from 'next/font/google'
 import React from 'react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { Viewport } from 'next'
 
 import './globals.css'
@@ -24,8 +23,6 @@ const sora = Sora({
   fallback: ['sans-serif'],
 })
 
-const queryClient = new QueryClient()
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -38,9 +35,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
-        {/* <QueryClientProvider client={queryClient}>
-          <div>{children}</div>
-        </QueryClientProvider> */}
         <LayoutClient>{children}</LayoutClient>
         <Toaster />
       </body>
@@ -49,7 +43,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 
 export const viewport: Viewport = {
-  // width: 'device-width',
   width: 1024,
   initialScale: 0.3,
   // initialScale: 1,
@@ -58,7 +51,3 @@ export const viewport: Viewport = {
   // Also supported but less commonly used
   // interactiveWidget: 'resizes-visual',
 }
-
-// export const metadata = {
-//   viewport: false,
-// }

@@ -29,7 +29,7 @@ export const Logo = (props: Props) => {
         // 'max-w-[9.375rem] w-[full] h-[96px]',
         className,
       )}
-      src="/logos/Vastel LS org.png"
+      src="/images/logos/Vastel LS org.png"
     />
   )
 }

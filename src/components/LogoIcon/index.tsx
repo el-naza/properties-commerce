@@ -28,7 +28,7 @@ export default function LogoIcon(props: Props) {
         'w-full h-full object-contain', // filter grayscale invert contrast-200 brightness-150',
         className,
       )}
-      src="/logos/Vastel icon.png"
+      src="/images/logos/Vastel icon.png"
     />
   )
 }
