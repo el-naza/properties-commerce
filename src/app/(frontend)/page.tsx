@@ -11,7 +11,7 @@ import Cards from './cards/page'
 import Inquiry from './inquiry/page'
 import Populars from './populars/page'
 import Featuring from '../../components/featuring/page'
-import Shortlets from './shortlets/page'
+import Shortlets from './shortlets-preview/page'
 
 export default function Page() {
   const router = useRouter()

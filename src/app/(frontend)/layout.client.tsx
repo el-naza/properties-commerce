@@ -50,9 +50,7 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
             <Header />
           </div>
           <main className="flex-1">{children}</main>
-          <div className="pt-5">
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </QueryClientProvider>
       {/* <Toaster /> */}
