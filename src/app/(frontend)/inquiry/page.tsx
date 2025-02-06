@@ -1,7 +1,7 @@
 export default function Inquiry() {
   return (
     <div>
-      <div className="flex relative flex-wrap px-14 gap-12 bg-[url('/Home/Fully-detached-3.jpg')] bg-cover py-24  items-center justify-center">
+      <div className="flex relative flex-wrap px-14 gap-12 bg-[url('/home/Fully-detached-3.jpg')] bg-cover py-24  items-center justify-center">
         <div className="bg-primary/[.85] absolute top-0 bottom-0 w-full" />
         <div className="container flex flex-wrap gap-16 items-center justify-center z-10">
           <div className="md:max-w-[25%] text-white">

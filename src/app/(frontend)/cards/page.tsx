@@ -17,31 +17,31 @@ export default function Cards() {
         <div className="w-[30%] bg-black-1 h-[1px] mt-16"></div>
       </div>
       <ResidentialCard
-        src="/Home/Fully-detached-3.jpg"
+        src="/home/Fully-detached-3.jpg"
         numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
-        src="/Home/Fully-detached-3.jpg"
+        src="/home/Fully-detached-3.jpg"
         numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
-        src="/Home/Fully-detached-3.jpg"
+        src="/home/Fully-detached-3.jpg"
         numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
-        src="/Home/Fully-detached-3.jpg"
+        src="/home/Fully-detached-3.jpg"
         numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
-        src="/Home/Fully-detached-3.jpg"
+        src="/home/Fully-detached-3.jpg"
         numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
@@ -57,13 +57,13 @@ export default function Cards() {
         <div className="w-[30%] bg-black-1 h-[1px] mt-16"></div>
       </div>
       <ResidentialCard
-        src="/Home/Fully-detached-3.jpg"
+        src="/home/Fully-detached-3.jpg"
         numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
-        src="/Home/Fully-detached-3.jpg"
+        src="/home/Fully-detached-3.jpg"
         numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
