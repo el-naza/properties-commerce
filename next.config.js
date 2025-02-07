@@ -12,16 +12,21 @@ console.log('major stuff', secret('S3_SECRET_ACCESS_KEY'), 'afterwards', process
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      ...[NEXT_PUBLIC_SERVER_URL /* 'https://example.com' */].map((item) => {
-        const url = new URL(item)
+    // remotePatterns: [
+    //   ...[
+    //     // NEXT_PUBLIC_SERVER_URL,
+    //     'https://main.diruvqs3dia45.amplifyapp.com' /* 'https://example.com' */,
+    //   ].map((item) => {
+    //     const url = new URL(item)
 
-        return {
-          hostname: url.hostname,
-          protocol: url.protocol.replace(':', ''),
-        }
-      }),
-    ],
+    //     return {
+    //       hostname: url.hostname,
+    //       protocol: url.protocol.replace(':', ''),
+    //     }
+    //   }),
+    // ],
+    loader: 'custom',
+    loaderFile: './loader.ts',
   },
   reactStrictMode: false,
   typescript: {
