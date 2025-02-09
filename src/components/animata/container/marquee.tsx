@@ -17,14 +17,18 @@ export default function Marquee({
   reverse = false,
   className,
   applyMask = false,
+  // duration = 70,
   ...props
 }: MarqueeProps) {
   return (
     <div
       {...props}
-      className={`group relative flex items-center h-full w-full [--duration:70s] [--gap:12px] [gap:var(--gap)] ${
-        vertical ? 'flex-col' : 'flex-row'
-      } ${className}`}
+      className={cn(
+        `group relative flex items-center h-full w-full [--duration:70s] [--gap:12px] [gap:var(--gap)] ${
+          vertical ? 'flex-col' : 'flex-row'
+        }`,
+        className || '',
+      )}
     >
       {Array.from({ length: repeat }).map((_, index) => (
         <div

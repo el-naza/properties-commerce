@@ -6,5 +6,5 @@ import axiosInstance from '@/utilities/axiosInstance'
 
 export default async function fetchHotSales(): Promise<Property[]> {
   const data = (await axiosInstance.get('/api/properties')).data
-  return duplicateArray(data.docs, 10)
+  return data?.docs?.slice?.(0, 10)
 }

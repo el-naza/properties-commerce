@@ -18,7 +18,11 @@ export default function Featuring() {
       <p className="text-base">Discover some of our recent and finest listings</p>
 
       <div className="container mt-10 flex flex-wrap gap-6 text-left rounded-lg">
-        <Marquee pauseOnHover className="overflow-hidden rounded-lg">
+        <Marquee
+          pauseOnHover
+          className="overflow-hidden rounded-lg"
+          // duration={(query.data?.length && query.data?.length * 10) || undefined}
+        >
           {query.data?.map((item, i) => <PropertyOrShortletCard key={i} {...item} />)}
         </Marquee>
       </div>
@@ -28,11 +32,11 @@ export default function Featuring() {
 
 export function PropertyOrShortletCard(props: Property | Shortlet) {
   return (
-    <Card className="overflow-hidden bg-white">
-      <div className="relative w-[400px] h-[300px]">
+    <Card className="overflow-hidden bg-white min-h-[519px] w-[400px]">
+      <div className="relative  h-[300px]">
         <Image
           src={(props.media[0] as Media).url!}
-          className="w-[400px] h-[300px] object-cover absolute"
+          className="w-full h-[300px] object-cover absolute"
           alt="image"
           width={400}
           height={300}
@@ -47,16 +51,20 @@ export function PropertyOrShortletCard(props: Property | Shortlet) {
       </div>
       <CardHeader>
         <CardTitle>
-          <h1 className="text-base">{props.title}</h1>
-          <div className="text-gray-400 text-sm">
+          <h1 className="text-base text-wrap">{props.title}</h1>
+          <div className="text-gray-400 text-sm text-wrap">
             {(props.area as Area).name}, {((props.area as Area).city as City).name}
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-sm">
-          {(props as Property).bedroomsCount && <span>{(props as Property).bedroomsCount}</span>}
-          {(props as Property).bathroomsCount && <span>{(props as Property).bathroomsCount}</span>}
+        <div className="text-sm flex flex-wrap gap-4">
+          {(props as Property).bedroomsCount && (
+            <span>{(props as Property).bedroomsCount} Rooms</span>
+          )}
+          {(props as Property).bathroomsCount && (
+            <span>{(props as Property).bathroomsCount} Bathrooms</span>
+          )}
           {(props as Property).squareMeters && (
             <span>{(props as Property).squareMeters?.toLocaleString()} Square Meters</span>
           )}
