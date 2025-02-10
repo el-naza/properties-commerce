@@ -6,6 +6,7 @@ import type { Viewport } from 'next'
 import './globals.css'
 import { Toaster } from 'sonner'
 import LayoutClient from './layout.client'
+import Footer from './footer/footer'
 
 const montserrat = Montserrat({
   // weight: ['400', '500', '600', '700'],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <LayoutClient>{children}</LayoutClient>
+        <Footer />
         <Toaster />
       </body>
     </html>

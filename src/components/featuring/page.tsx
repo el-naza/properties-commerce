@@ -40,7 +40,6 @@ export function PropertyOrShortletCard(props: Property | Shortlet) {
           alt="image"
           width={400}
           height={300}
-          objectFit="cover"
         />
         <div className="bg-black/30 absolute h-full w-full hover:opacity-0" />
         <div className="absolute bottom-0 left-0 font-medium text-white">
@@ -51,8 +50,10 @@ export function PropertyOrShortletCard(props: Property | Shortlet) {
       </div>
       <CardHeader>
         <CardTitle>
-          <h1 className="text-base text-wrap">{props.title}</h1>
-          <div className="text-gray-400 text-sm text-wrap">
+          <h1 className="text-base text-ellipsis overflow-hidden whitespace-nowrap">
+            {props.title}
+          </h1>
+          <div className="text-gray-400 text-sm">
             {(props.area as Area).name}, {((props.area as Area).city as City).name}
           </div>
         </CardTitle>
@@ -63,11 +64,11 @@ export function PropertyOrShortletCard(props: Property | Shortlet) {
             <span>{(props as Property).bedroomsCount} Rooms</span>
           )}
           {(props as Property).bathroomsCount && (
-            <span>{(props as Property).bathroomsCount} Bathrooms</span>
+            <span>{(props as Property).bathroomsCount || '&nbsp;'} Bathrooms</span>
           )}
-          {(props as Property).squareMeters && (
+          {((props as Property).squareMeters && (
             <span>{(props as Property).squareMeters?.toLocaleString()} Square Meters</span>
-          )}
+          )) || <br />}
         </div>
         <div className="text-xs">
           {(props as Property).categories

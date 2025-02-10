@@ -1,35 +1,39 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { getPayload } from 'payload'
+import config from '@payload-config'
+import { stringify } from 'qs-esm'
 
-export default function Footer() {
+const payload = await getPayload({ config })
+
+export default async function Footer() {
+  const listOfCities = (
+    await payload.find({
+      collection: 'cities',
+      limit: Infinity,
+      pagination: false,
+    })
+  ).docs
+
   return (
     <div className="bg-primary/[.988]">
-      <div className="container md:flex md:pt-[100px] pb-[70px] text-white text-sm gap-44 py-5">
+      <div className="container md:flex items-start md:pt-[100px] pb-[70px] text-white text-sm gap-44 py-5">
         <div>
-          <h3 className="pb-[25px] text-lg font-medium">Discover</h3>
-
-          <Link href="#" className="flex gap-1 pt-2">
-            <span>-</span>
-            <p>Lagos Island</p>
-          </Link>
-
-          <Link href="#" className="flex gap-1 pt-2">
-            <span>-</span>
-            <p>Ibadan</p>
-          </Link>
-
-          <Link href="#" className="flex gap-1 pt-2">
-            <span>-</span>
-            <p>Lagos Mainland</p>
-          </Link>
-
-          <Link href="#" className="flex gap-1 pt-2">
-            <span>-</span>
-            <p>Asokoro</p>
-          </Link>
+          <h3 className="pb-[25px] text-lg font-medium">Discover Cities </h3>
+          {listOfCities?.length
+            ? listOfCities.map((item, i) => (
+                <Link
+                  className="flex gap-1 pt-2"
+                  href={`/listings?${stringify({ city: item.id })}`}
+                  key={i}
+                >
+                  - {item.name}
+                </Link>
+              ))
+            : 'NO CITIES ADDED YET'}
         </div>
         <div>
-          <h3 className="pb-[25px] text-lg font-medium pt-5">Contact Us</h3>
+          <h3 className="pb-[25px] text-lg font-medium pb-5">Contact Us</h3>
           <div className="md:max-w-sm py-[5px] items-center flex gap-2">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">

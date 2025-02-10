@@ -3,10 +3,12 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Header() {
   // const [isLight, setIsLight] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const pathname = window.parent ? window.parent.location.pathname : window.location.pathname
@@ -16,7 +18,9 @@ export default function Header() {
   }, [])
 
   return (
-    <div className={`bg-primary/45 text-white border-b-[#5D5BA9] border-b-[1px]`}>
+    <div
+      className={`${pathname === '/' ? 'bg-primary/45' : 'bg-primary'} text-white border-b-[#5D5BA9] border-b-[1px]`}
+    >
       <div className="flex container justify-between py-7 items-center">
         <Image src="/images/logos/Vastel LS.png" width={160} height={60.79} alt="logo" />
 
@@ -24,7 +28,7 @@ export default function Header() {
           <div className="gap-11 flex text-sm leading-[17.64px] font-sora">
             <HeaderLink href="/">Home</HeaderLink>
             <HeaderLink href="/listings">Listings</HeaderLink>
-            <HeaderLink href="/shortlets">Shortlets</HeaderLink>
+            <HeaderLink href="/listings?categories=shortlets">Shortlets</HeaderLink>
             {/* <HeaderLink href="/services">Services</HeaderLink> */}
             <HeaderLink href="/inquiry-form">Inquiry Form</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
