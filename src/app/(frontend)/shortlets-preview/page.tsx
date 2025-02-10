@@ -4,9 +4,19 @@ import Marquee from '@/components/animata/container/marquee'
 import fetchHotSales from '@/services/fetchHotSales'
 import { useQuery } from '@tanstack/react-query'
 import { PropertyOrShortletCard } from '../../../components/featuring/page'
+import searchProperties from '@/services/searchProperties'
 
 export default function Shortlets() {
-  const query = useQuery({ queryKey: ['shortlets'], queryFn: fetchHotSales })
+  const query = useQuery({
+    queryKey: ['shortlets'],
+    queryFn: async () => {
+      return (
+        await searchProperties({
+          categories: 'shortlets',
+        })
+      ).docs
+    },
+  })
 
   return (
     <div>
