@@ -24,7 +24,7 @@ export default function Page() {
         <SearchForm />
       </div>
       <Featuring />
-      <div className="py-5 md:py-20">
+      <div className="py-5 md:py-20 overflow-hidden">
         <Shortlets />
       </div>
       <div className="py-5 md:py-20">
