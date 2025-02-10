@@ -8,14 +8,19 @@ import Link from 'next/link'
 const payload = await getPayload({ config })
 
 export default async function Page({
-  params,
+  // params,
   searchParams,
 }: {
   params: Promise<{ slug: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const query = await searchParams
-  const { page = '1', sort = 'asc', categories = '', city = '' } = query
+  const {
+    // page = '1',
+    // sort = 'asc',
+    categories = '',
+    city = '',
+  } = query
   const isShortlets = (categories as string)?.toLowerCase?.()?.startsWith?.('shortlet')
 
   const list = (

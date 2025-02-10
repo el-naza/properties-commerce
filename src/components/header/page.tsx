@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 
 export default function Header() {
   // const [isLight, setIsLight] = useState(false)

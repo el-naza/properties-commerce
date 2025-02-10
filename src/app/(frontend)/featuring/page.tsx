@@ -1,13 +1,8 @@
 'use client'
 
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Area, City, Media, Property, PropertyCategory, Shortlet } from '@/payload-types'
 import fetchHotSales from '@/services/fetchHotSales'
 import { useQuery } from '@tanstack/react-query'
-import Image from 'next/image'
-import { formatDistanceToNow } from 'date-fns'
 import Marquee from '@/components/animata/container/marquee'
-import formatPrice from '@/utilities/formatPrice'
 import { PropertyOrShortletCard } from '@/components/featuring/page'
 
 export default function Featuring() {

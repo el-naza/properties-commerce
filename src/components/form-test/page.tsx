@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-// import { Message } from '@/payload-types'
+import { Message } from '@/payload-types'
 import saveMessage from '@/services/saveMessage'
 import { ValidationErrors } from '@/utilities/types'
 import { FieldApi, useForm } from '@tanstack/react-form'
@@ -19,7 +19,7 @@ import { toast } from 'sonner'
 // type Search {
 //   category: string;
 // }
-type Message = object
+// type Message = object
 function FieldError({ field }: { field: FieldApi<any, any, any, any> }) {
   return (
     <>

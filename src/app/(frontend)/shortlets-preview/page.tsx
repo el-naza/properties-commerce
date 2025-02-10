@@ -1,7 +1,6 @@
 'use client'
 
 import Marquee from '@/components/animata/container/marquee'
-import fetchHotSales from '@/services/fetchHotSales'
 import { useQuery } from '@tanstack/react-query'
 import { PropertyOrShortletCard } from '../../../components/featuring/page'
 import searchProperties from '@/services/searchProperties'

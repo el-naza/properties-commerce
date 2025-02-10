@@ -29,12 +29,12 @@ const nextConfig = {
     loaderFile: './loader.ts',
   },
   reactStrictMode: false,
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // typescript: {
+  //   ignoreBuildErrors: true,
+  // },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
   // async rewrites() {
   //   return [
   //     {

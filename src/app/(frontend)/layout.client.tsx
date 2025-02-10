@@ -2,15 +2,15 @@
 
 import { cn } from 'src/utilities/cn'
 
-import React, { useEffect } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import type { Viewport } from 'next'
+// import type { Viewport } from 'next'
 
 import './globals.css'
-import { Toaster } from 'sonner'
+// import { Toaster } from 'sonner'
 import { Montserrat, Sora } from 'next/font/google'
-import Footer from './footer/footer'
-import Header from './header/page'
+// import Footer from './footer/footer'
+import Header from '../../components/header/page'
 
 const montserrat = Montserrat({
   // weight: ['400', '500', '600', '700'],
@@ -47,7 +47,9 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
           )}
         >
           <div className="absolute w-full top-0 z-10">
-            <Header />
+            <Suspense>
+              <Header />
+            </Suspense>
           </div>
           <main className="flex-1">{children}</main>
           <div></div>

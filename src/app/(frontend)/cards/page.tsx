@@ -18,31 +18,31 @@ export default function Cards() {
       </div>
       <ResidentialCard
         src="/home/Fully-detached-3.jpg"
-        numberOfProperties="20 Properties"
+        // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
         src="/home/Fully-detached-3.jpg"
-        numberOfProperties="20 Properties"
+        // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
         src="/home/Fully-detached-3.jpg"
-        numberOfProperties="20 Properties"
+        // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
         src="/home/Fully-detached-3.jpg"
-        numberOfProperties="20 Properties"
+        // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
         src="/home/Fully-detached-3.jpg"
-        numberOfProperties="20 Properties"
+        // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
@@ -58,13 +58,13 @@ export default function Cards() {
       </div>
       <ResidentialCard
         src="/home/Fully-detached-3.jpg"
-        numberOfProperties="20 Properties"
+        // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />
       <ResidentialCard
         src="/home/Fully-detached-3.jpg"
-        numberOfProperties="20 Properties"
+        // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
       />

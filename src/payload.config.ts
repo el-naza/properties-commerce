@@ -20,8 +20,8 @@ import { ShortletBookings } from './collections/ShortletBookings'
 import { Areas } from './collections/Areas'
 import { Contacts } from './collections/Contacts'
 import { Inquiries } from './collections/Inquiries'
-import { TourSchedules } from './collections/TourSchedules'
-import { Reviews } from './collections/Reviews'
+// import { TourSchedules } from './collections/TourSchedules'
+// import { Reviews } from './collections/Reviews'
 import { Messages } from './collections/Messages'
 
 const filename = fileURLToPath(import.meta.url)
@@ -80,7 +80,7 @@ export default buildConfig({
     Shortlets,
     IdDocuments,
     ShortletBookings,
-    // Messages,
+    Messages,
     // Reviews,
     Contacts,
     Inquiries,

@@ -1,7 +1,6 @@
 'use server'
 
 import { Property, Shortlet } from '@/payload-types'
-import axiosInstance from '@/utilities/axiosInstance'
 import { Where } from 'payload'
 import { stringify } from 'qs-esm'
 import { getPayload } from 'payload'

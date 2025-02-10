@@ -1,6 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
+import Image from 'next/image'
 
 interface Props {
   className?: string
@@ -16,8 +17,7 @@ export default function LogoIcon(props: Props) {
   const priority = priorityFromProps || 'low'
 
   return (
-    /* eslint-disable @next/next/no-img-element */
-    <img
+    <Image
       alt="VASTEL CREDENCE"
       width={890}
       height={1365}

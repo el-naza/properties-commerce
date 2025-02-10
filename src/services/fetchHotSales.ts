@@ -1,7 +1,6 @@
 'use server'
 
-import { City, Property, PropertyCategory } from '@/payload-types'
-import { duplicateArray } from '@/utilities'
+import { Property } from '@/payload-types'
 import axiosInstance from '@/utilities/axiosInstance'
 
 export default async function fetchHotSales(): Promise<Property[]> {

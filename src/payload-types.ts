@@ -22,6 +22,7 @@ export interface Config {
     shortlets: Shortlet;
     'id-documents': IdDocument;
     'shortlet-bookings': ShortletBooking;
+    messages: Message;
     contacts: Contact;
     inquiries: Inquiry;
     'payload-locked-documents': PayloadLockedDocument;
@@ -41,6 +42,7 @@ export interface Config {
     shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
     'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
     'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
+    messages: MessagesSelect<false> | MessagesSelect<true>;
     contacts: ContactsSelect<false> | ContactsSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -284,6 +286,19 @@ export interface ShortletBooking {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages".
+ */
+export interface Message {
+  id: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+  message: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "contacts".
  */
 export interface Contact {
@@ -366,6 +381,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'shortlet-bookings';
         value: string | ShortletBooking;
+      } | null)
+    | ({
+        relationTo: 'messages';
+        value: string | Message;
       } | null)
     | ({
         relationTo: 'contacts';
@@ -590,6 +609,18 @@ export interface ShortletBookingsSelect<T extends boolean = true> {
   idType?: T;
   idDocument?: T;
   paymentConfirmed?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "messages_select".
+ */
+export interface MessagesSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
   updatedAt?: T;
   createdAt?: T;
 }
