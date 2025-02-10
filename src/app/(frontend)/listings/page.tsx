@@ -47,7 +47,7 @@ export default async function Page({
         {/* <div className="container grid grid-cols-[auto_auto] items-start pb-14"> */}
         <div className="container flex gap-8 items-start justify-stretch pb-16">
           {/* <div className="grid grid-cols-[auto_auto] gap-y-8 px-8"> */}
-          <div className="flex flex-wrap min-w-[832px] gap-8">
+          <div className="flex flex-wrap min-w-[832px] max-w-[832px] items-start gap-8">
             {list?.length
               ? list.map((item, i) => <PropertyOrShortletCard key={i} {...item} />)
               : 'NOTHING TO SHOW FOR NOW'}
@@ -55,7 +55,7 @@ export default async function Page({
 
           <div className="grid gap-6 w-full">
             {!isShortlets && (
-              <div className="bg-white p-8 rounded-sm flex flex-col  items-start">
+              <div className="bg-white p-8 rounded-sm flex flex-col items-start">
                 <h2 className="text-2xl pb-2 font-medium">CATEGORIES</h2>
                 {listOfCategories?.length
                   ? listOfCategories.map((item, i) => (
