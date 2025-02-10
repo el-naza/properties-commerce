@@ -3,19 +3,21 @@
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
+import { useEffect, useMemo, useState } from 'react'
 
 export default function Header() {
   // const [isLight, setIsLight] = useState(false)
   const pathname = usePathname()
+  const params = useSearchParams()
 
-  useEffect(() => {
-    const pathname = window.parent ? window.parent.location.pathname : window.location.pathname
-    if (pathname !== '/heo' && pathname !== '/home/index.html') {
-      // setIsLight(true)
-    }
-  }, [])
+  const isShortlets = useMemo(
+    () =>
+      pathname === '/listings' &&
+      (params.get('categories') as string)?.toLowerCase?.()?.startsWith?.('shortlet'),
+    [params, pathname],
+  )
 
   return (
     <div
@@ -27,8 +29,18 @@ export default function Header() {
         <div className="flex gap-6 items-center">
           <div className="gap-11 flex text-sm leading-[17.64px] font-sora">
             <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/listings">Listings</HeaderLink>
-            <HeaderLink href="/listings?categories=shortlets">Shortlets</HeaderLink>
+            <Link
+              href={'/listings'}
+              className={`${pathname === '/listings' && !isShortlets ? 'text-secondary' : ''}`}
+            >
+              Listings
+            </Link>
+            <Link
+              href={'/listings?categories=shortlets'}
+              className={`${isShortlets ? 'text-secondary' : ''}`}
+            >
+              Shortlets
+            </Link>
             {/* <HeaderLink href="/services">Services</HeaderLink> */}
             <HeaderLink href="/inquiry-form">Inquiry Form</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
@@ -66,23 +78,10 @@ export default function Header() {
 }
 
 function HeaderLink({ href = '#', children }: { href?: string; children: React.ReactNode }) {
-  const [pathname, setPathname] = useState('/home/index.html')
-
-  useEffect(() => {
-    const pathname = window.parent ? window.parent.location.pathname : window.location.pathname
-    if (pathname !== '/hero') {
-      setPathname(pathname)
-    }
-  }, [])
+  const pathname = usePathname()
 
   return (
-    <Link
-      href={href}
-      onClick={() => {
-        ;(window.parent || window).location.href = href
-      }}
-      className={`${pathname === href ? 'text-secondary' : ''}`}
-    >
+    <Link href={href} className={`${pathname === href ? 'text-secondary' : ''}`}>
       {children}
     </Link>
   )
