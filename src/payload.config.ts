@@ -5,6 +5,7 @@ import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { resendAdapter } from '@payloadcms/email-resend'
 
 import { Media } from './collections/Media'
 import { Admins } from './collections/Admins'
@@ -87,6 +88,11 @@ export default buildConfig({
     // TourSchedules,
   ],
   cors: [getServerSideURL()].filter(Boolean),
+  email: resendAdapter({
+    defaultFromAddress: process.env.EMAIL_USER!,
+    defaultFromName: 'Vastel Credence',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
   plugins: [
     ...(process.env.S3_BUCKET! || (secret('S3_BUCKET') as unknown as string)
       ? [

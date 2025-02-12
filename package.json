@@ -21,6 +21,7 @@
   "dependencies": {
     "@nouance/payload-better-fields-plugin": "^1.4.1",
     "@payloadcms/db-mongodb": "latest",
+    "@payloadcms/email-resend": "latest",
     "@payloadcms/next": "latest",
     "@payloadcms/plugin-form-builder": "latest",
     "@payloadcms/storage-s3": "latest",
@@ -34,8 +35,8 @@
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slider": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
-    "@radix-ui/react-toast": "^1.2.5",
     "@radix-ui/react-tabs": "^1.1.2",
+    "@radix-ui/react-toast": "^1.2.5",
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@tanstack/react-form": "^0.41.3",
