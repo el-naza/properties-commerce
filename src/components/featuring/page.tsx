@@ -36,8 +36,8 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
 
   return (
     <Card className="overflow-hidden bg-white min-h-[519px] w-[400px]">
-      <div className="relative  h-[300px]">
-        <Link href={href}>
+      <Link href={href}>
+        <div className="relative  h-[300px]">
           <Image
             src={(props.media[0] as Media).url!}
             className="w-full h-[300px] object-cover absolute"
@@ -45,14 +45,14 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
             width={400}
             height={300}
           />
-        </Link>
-        <div className="bg-black/30 absolute h-full w-full hover:opacity-0" />
-        <div className="absolute bottom-0 left-0 font-medium text-white">
-          <CardContent className="text-lg">
-            Ranging From ₦{formatPrice(props.price)} {/**shorten amounts to 100K or 5M or 1T */}
-          </CardContent>
+          <div className="bg-black/30 absolute h-full w-full hover:opacity-0" />
+          <div className="absolute bottom-0 left-0 font-medium text-white">
+            <CardContent className="text-lg">
+              Ranging From ₦{formatPrice(props.price)} {/**shorten amounts to 100K or 5M or 1T */}
+            </CardContent>
+          </div>
         </div>
-      </div>
+      </Link>
       <CardHeader>
         <CardTitle>
           <Link href={href}>
