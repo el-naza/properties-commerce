@@ -47,19 +47,13 @@ export default function Header() {
           </div>
 
           <div className="flex">
-            <Button
-              variant={'ghost'}
-              size={'lg'}
-              className="flex gap-2 font-sora text-xs leading-[15.12px]"
-            >
-              <Image src="/icons/contact-icon.svg" width={14} height={14} alt="contact-icon" />{' '}
-              <a
-                href="tel:070
-              100 10389"
-              >
-                070 100 10389
-              </a>
-            </Button>
+            <div className="flex items-center gap-2 font-sora text-xs leading-[15.12px] px-5">
+              <Image src="/icons/contact-icon.svg" width={18} height={18} alt="contact-icon" />{' '}
+              <div className="grid">
+                <a href="tel:07019114104">0701 911 4104</a>
+                <a href="tel:08139945537">0813 994 5537</a>
+              </div>
+            </div>
             <Link href={'/contact-us'}>
               <Button
                 variant={'secondary'}

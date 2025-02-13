@@ -32,4 +32,5 @@ export const Areas: CollectionConfig = {
       index: true,
     },
   ],
+  timestamps: false,
 }

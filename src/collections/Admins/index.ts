@@ -26,6 +26,12 @@ export const Admins: CollectionConfig = {
       type: 'text',
     },
     {
+      name: 'phone',
+      label: 'Contact Phone Number',
+      type: 'text',
+      required: true,
+    },
+    {
       name: 'role',
       type: 'select',
       options: ['Super Admin', 'Agent'],

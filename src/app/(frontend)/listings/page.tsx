@@ -54,7 +54,9 @@ export default async function Page({
           {/* <div className="grid grid-cols-[auto_auto] gap-y-8 px-8"> */}
           <div className="flex flex-wrap min-w-[832px] max-w-[832px] items-start gap-8">
             {list?.length
-              ? list.map((item, i) => <PropertyOrShortletCard key={i} {...item} />)
+              ? list.map((item, i) => (
+                  <PropertyOrShortletCard key={i} {...item} isShortlet={isShortlets} />
+                ))
               : 'NOTHING TO SHOW FOR NOW'}
           </div>
 

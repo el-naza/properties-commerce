@@ -35,4 +35,5 @@ export const Cities: CollectionConfig = {
       required: true,
     },
   ],
+  timestamps: false,
 }

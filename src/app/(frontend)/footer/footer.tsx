@@ -44,7 +44,7 @@ export default async function Footer() {
                 />
               </svg>
             </span>
-            <p>4th floor Kunech Towers, Km 18 Osapa, Lekki Penninsula II, Lagos, Nigeria</p>
+            <p>No 5b chief Collins uchidiuno street, Lekki phase 1, Lagos State, Nigeria.</p>
           </div>
           <div className="max-w-sm py-[5px] items-center flex gap-2">
             <span>
@@ -58,7 +58,7 @@ export default async function Footer() {
                 <path fill="none" d="M0 0h36v36H0z" />
               </svg>
             </span>
-            <p>info@edenoasisrealty.com</p>
+            <p>info@vastelcredence.com</p>
           </div>
         </div>
       </div>

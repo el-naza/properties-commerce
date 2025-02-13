@@ -25,6 +25,10 @@ export const Shortlets: CollectionConfig = {
       unique: true,
     },
     {
+      name: 'description',
+      type: 'text',
+    },
+    {
       name: 'price',
       label: 'Starting Price',
       type: 'number',

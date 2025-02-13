@@ -40,7 +40,9 @@ export default function Shortlets() {
         </div>
         <div className=" text-black-1 md:max-w-[40%] z-10">
           <Marquee pauseOnHover className="overflow-hidden rounded-lg">
-            {query.data?.map((item, i) => <PropertyOrShortletCard key={i} {...item} />)}
+            {query.data?.map((item, i) => (
+              <PropertyOrShortletCard key={i} {...item} isShortlet={true} />
+            ))}
           </Marquee>
         </div>
       </div>

@@ -28,4 +28,5 @@ export const PropertyStatuses: CollectionConfig = {
       type: 'text',
     },
   ],
+  timestamps: false,
 }

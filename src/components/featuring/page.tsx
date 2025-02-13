@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { formatDistanceToNow } from 'date-fns'
 import Marquee from '@/components/animata/container/marquee'
 import formatPrice from '@/utilities/formatPrice'
+import Link from 'next/link'
 
 export default function Featuring() {
   const query = useQuery({ queryKey: ['properties'], queryFn: fetchHotSales })
@@ -30,17 +31,21 @@ export default function Featuring() {
   )
 }
 
-export function PropertyOrShortletCard(props: Property | Shortlet) {
+export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortlet?: boolean }) {
+  const href = `/details/${props.isShortlet ? 'shortlet' : 'property'}/${props.id}`
+
   return (
     <Card className="overflow-hidden bg-white min-h-[519px] w-[400px]">
       <div className="relative  h-[300px]">
-        <Image
-          src={(props.media[0] as Media).url!}
-          className="w-full h-[300px] object-cover absolute"
-          alt="image"
-          width={400}
-          height={300}
-        />
+        <Link href={href}>
+          <Image
+            src={(props.media[0] as Media).url!}
+            className="w-full h-[300px] object-cover absolute"
+            alt="image"
+            width={400}
+            height={300}
+          />
+        </Link>
         <div className="bg-black/30 absolute h-full w-full hover:opacity-0" />
         <div className="absolute bottom-0 left-0 font-medium text-white">
           <CardContent className="text-lg">
@@ -50,9 +55,11 @@ export function PropertyOrShortletCard(props: Property | Shortlet) {
       </div>
       <CardHeader>
         <CardTitle>
-          <h1 className="text-base text-ellipsis overflow-hidden whitespace-nowrap">
-            {props.title}
-          </h1>
+          <Link href={href}>
+            <h1 className="text-base text-ellipsis overflow-hidden whitespace-nowrap">
+              {props.title}
+            </h1>
+          </Link>
           <div className="text-gray-400 text-sm">
             {(props.area as Area).name}, {((props.area as Area).city as City).name}
           </div>
