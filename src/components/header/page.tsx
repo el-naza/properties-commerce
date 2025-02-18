@@ -4,10 +4,12 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 export default function Header() {
   // const [isLight, setIsLight] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
   const pathname = usePathname()
   const params = useSearchParams()
 
@@ -17,10 +19,14 @@ export default function Header() {
       (params.get('categories') as string)?.toLowerCase?.()?.startsWith?.('shortlet'),
     [params, pathname],
   )
+  const isServices = useMemo(
+    () => ['/services/buildings', '/services/interiors'].includes(pathname),
+    [params, pathname],
+  )
 
   return (
     <div
-      className={`${pathname === '/' ? 'bg-primary/45' : 'bg-primary'} text-white border-b-[#5D5BA9] border-b-[1px]`}
+      className={`${pathname === '/' ? 'bg-primary/45' : isServices ? 'bg-black/20' : 'bg-primary'} text-white border-b-[#5D5BA9] border-b-[1px]`}
     >
       <div className="flex container justify-between py-7 items-center">
         <Image src="/images/logos/Vastel LS.png" width={160} height={60.79} alt="logo" />
@@ -43,15 +49,51 @@ export default function Header() {
             {/* <HeaderLink href="/services">Services</HeaderLink> */}
             <HeaderLink href="/inquiry-form">Inquiry Form</HeaderLink>
             <HeaderLink href="/about">About</HeaderLink>
+
+            <div className="group relative cursor-pointer">
+              <Link
+                href={'/#'}
+                className={`${isServices ? 'text-secondary' : ''} flex items-center gap-1`}
+                onClick={(e) => {
+                  console.log('clicked')
+                  e.preventDefault()
+                  setIsOpen(!isOpen)
+                }}
+              >
+                Services
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="w-4 h-4"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </Link>
+              <div
+                className={`pt-3 absolute ${isOpen ? 'visible' : 'invisible'} group-hover:visible hover:visible active:visible`}
+              >
+                <div className="flex flex-col w-[270px] bg-transparent backdrop-blur-sm border-[#5d5ca9] border-[1px] p-3 rounded-[16px] left-[-13px] gap-y-[8px] justify-between z-50 shadow-[0px_0px_30px_0px_#0000001A]">
+                  <HeaderLink href={'/services/buildings'}>Buildings and Constructions</HeaderLink>
+                  <HeaderLink href={'/services/interiors'}>
+                    Interior Designs and Decorations
+                  </HeaderLink>
+                </div>
+              </div>
+            </div>
             <HeaderLink href="/faqs">FAQs</HeaderLink>
           </div>
 
           <div className="flex">
             <div className="flex items-center gap-2 font-sora text-xs leading-[15.12px] px-5">
-              <Image src="/icons/contact-icon.svg" width={18} height={18} alt="contact-icon" />{' '}
+              <Image src="/icons/contact-icon.svg" width={16} height={16} alt="contact-icon" />{' '}
               <div className="grid">
                 <a href="tel:07019114104">0701 911 4104</a>
-                <a href="tel:08139945537">0813 994 5537</a>
+                {/* <a href="tel:08139945537">0813 994 5537</a> */}
               </div>
             </div>
             <Link href={'/contact-us'}>
