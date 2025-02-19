@@ -1,22 +1,10 @@
 'use client'
 import Image from 'next/image'
-import {
-  Building,
-  Crane,
-  HardHat,
-  Phone,
-  Envelope,
-  Leaf,
-  ChartBar,
-  Users,
-  Lightbulb,
-} from '@phosphor-icons/react'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
 import {
   Select,
   SelectContent,
@@ -24,7 +12,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Separator } from '@/components/ui/separator'
+import { Textarea } from '@/components/ui/textarea'
+import {
+  Building2Icon,
+  HomeIcon,
+  LeafIcon,
+  LightbulbIcon,
+  PaintbrushIcon,
+  UsersIcon,
+  ZoomInIcon,
+} from 'lucide-react'
 
 export default function ConstructionServices() {
   return (
@@ -60,31 +57,30 @@ export default function ConstructionServices() {
         {/* Services Grid */}
         <div className="mb-20">
           <h2 className="mb-12 text-center text-3xl font-bold text-[#100D2C] tracking-tight">
-            Our Core Services
+            Our Design Services
           </h2>
           <div className="grid gap-8 md:grid-cols-3">
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <Building className="h-12 w-12 text-[#fc861e]" />
-                <CardTitle className="text-[#100D2C]">Commercial Construction</CardTitle>
+                <HomeIcon className="h-12 w-12 text-[#fc861e]" />
+                <CardTitle className="text-[#100D2C]">Residential Design</CardTitle>
                 <CardDescription className="text-gray-600">
-                  State-of-the-art commercial buildings and office spaces designed for modern
-                  businesses, emphasizing functionality, aesthetics, and sustainability.
+                  Create a home that reflects your personality and meets your lifestyle needs.
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-gray-300">
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Office Buildings
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Living Spaces</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Retail Spaces
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Bedrooms</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Industrial Facilities
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Kitchens & Bathrooms</span>
                   </li>
                 </ul>
               </CardContent>
@@ -92,26 +88,25 @@ export default function ConstructionServices() {
 
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <Crane className="h-12 w-12 text-[#fc861e]" />
-                <CardTitle className="text-[#100D2C]">Infrastructure Development</CardTitle>
+                <Building2Icon className="h-12 w-12 text-[#fc861e]" />
+                <CardTitle className="text-[#100D2C]">Commercial Design</CardTitle>
                 <CardDescription className="text-gray-600">
-                  Critical infrastructure projects that connect and power communities, focusing on
-                  durability, efficiency, and environmental impact.
+                  Enhance your business environment with functional and inspiring commercial spaces.
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-gray-300">
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Roads & Bridges
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Office Spaces</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Water Systems
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Retail Stores</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Power Plants
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Hospitality Venues</span>
                   </li>
                 </ul>
               </CardContent>
@@ -119,26 +114,25 @@ export default function ConstructionServices() {
 
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <HardHat className="h-12 w-12 text-[#fc861e]" />
-                <CardTitle className="text-[#100D2C]">Project Management</CardTitle>
+                <PaintbrushIcon className="h-12 w-12 text-[#fc861e]" />
+                <CardTitle className="text-[#100D2C]">Renovation & Styling</CardTitle>
                 <CardDescription className="text-gray-600">
-                  Comprehensive project management services ensuring timely delivery, cost
-                  efficiency, and the highest quality standards throughout the construction process.
+                  Breathe new life into existing spaces with our renovation and styling expertise.
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-gray-300">
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Planning & Design
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Space Planning</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Cost Management
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Color Consultation</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Quality Control
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Furniture Selection</span>
                   </li>
                 </ul>
               </CardContent>
@@ -149,187 +143,172 @@ export default function ConstructionServices() {
         {/* Our Approach */}
         <div className="mb-20">
           <h2 className="mb-12 text-center text-3xl font-bold text-[#100D2C] tracking-tight">
-            Our Approach
+            Our Design Approach
           </h2>
           <div className="grid gap-8 md:grid-cols-4">
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <Leaf className="h-12 w-12 text-[#fc861e]" />
-                <CardTitle className="text-[#100D2C]">Sustainability</CardTitle>
+                <LightbulbIcon className="h-12 w-12 text-[#fc861e]" />
+                <CardTitle className="text-[#100D2C]">Innovative Concepts</CardTitle>
                 <CardDescription className="text-gray-600">
-                  We prioritize eco-friendly practices and materials in all our projects.
+                  We create unique design solutions tailored to your specific needs and preferences.
                 </CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <ChartBar className="h-12 w-12 text-[#fc861e]" />
-                <CardTitle className="text-[#100D2C]">Efficiency</CardTitle>
+                <ZoomInIcon className="h-12 w-12 text-[#fc861e]" />
+                <CardTitle className="text-[#100D2C]">Attention to Detail</CardTitle>
                 <CardDescription className="text-gray-600">
-                  Our streamlined processes ensure optimal resource utilization and timely delivery.
+                  Every aspect of your space is carefully considered and expertly executed.
                 </CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <Users className="h-12 w-12 text-[#fc861e]" />
-                <CardTitle className="text-[#100D2C]">Collaboration</CardTitle>
+                <UsersIcon className="h-12 w-12 text-[#fc861e]" />
+                <CardTitle className="text-[#100D2C]">Collaborative Process</CardTitle>
                 <CardDescription className="text-gray-600">
-                  We work closely with clients, architects, and stakeholders throughout the project
-                  lifecycle.
+                  We work closely with you to ensure your vision is brought to life.
                 </CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <Lightbulb className="h-12 w-12 text-[#fc861e]" />
-                <CardTitle className="text-[#100D2C]">Innovation</CardTitle>
+                <LeafIcon className="h-12 w-12 text-[#fc861e]" />
+                <CardTitle className="text-[#100D2C]">Sustainable Design</CardTitle>
                 <CardDescription className="text-gray-600">
-                  We leverage cutting-edge technologies and methodologies to stay ahead of industry
-                  trends.
+                  We prioritize eco-friendly materials and energy-efficient solutions.
                 </CardDescription>
               </CardHeader>
             </Card>
           </div>
         </div>
 
-        {/* Core Competencies */}
+        {/* Why Choose Us */}
         <div className="mb-20">
           <h2 className="mb-12 text-center text-3xl font-bold text-[#100D2C] tracking-tight">
-            Our Expertise
+            Why Choose Us
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-6 text-gray-300">
-              <h3 className="text-xl font-semibold text-[#100D2C]">Core Areas of Competence</h3>
+              <h3 className="text-xl font-semibold text-[#100D2C]">Our Expertise</h3>
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Project Management & Execution</span>
+                  <span>Experienced team of certified interior designers</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Civil Construction & General Contracting</span>
+                  <span>Comprehensive design services from concept to completion</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Engineering Services</span>
+                  <span>Expertise in both residential and commercial projects</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Equipment Sales and Leasing</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Land Acquisition & Consultancy</span>
+                  <span>Strong relationships with suppliers and craftsmen</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Sustainable Design and Green Building Practices</span>
+                  <span>Use of cutting-edge design software and visualization tools</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Building Information Modeling (BIM) Implementation</span>
+                  <span>Commitment to sustainable and eco-friendly design practices</span>
                 </li>
               </ul>
             </div>
             <div className="space-y-6 text-gray-300">
-              <h3 className="text-xl font-semibold text-[#100D2C]">Why Choose Us</h3>
+              <h3 className="text-xl font-semibold text-[#100D2C]">Our Commitment</h3>
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Innovative approach to construction challenges</span>
+                  <span>Personalized attention to every client's unique needs</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Highly skilled and certified professional team</span>
+                  <span>Transparent communication throughout the design process</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Commitment to safety and quality</span>
+                  <span>Adherence to budgets and timelines</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>State-of-the-art construction methods</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="h-2 w-2 bg-[#100D2C] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Sustainable building practices</span>
+                  <span>Attention to detail in every aspect of the project</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Cutting-edge technology integration in construction processes</span>
+                  <span>Ongoing support and follow-up after project completion</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                  <span>Strong partnerships with suppliers and subcontractors</span>
+                  <span>Commitment to client satisfaction and exceeding expectations</span>
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
-        {/* Vision and Mission */}
+        {/* Design Process */}
         <div className="mb-20">
           <h2 className="mb-12 text-center text-3xl font-bold text-[#100D2C] tracking-tight">
-            Our Vision and Mission
+            Our Design Process
           </h2>
           <div className="grid gap-8 md:grid-cols-2">
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <CardTitle className="text-[#100D2C]">Vision</CardTitle>
+                <CardTitle className="text-[#100D2C]">
+                  1. Consultation & Concept Development
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-2">
-                  To be the leading force in transforming the construction industry through
-                  innovation, sustainability, and unparalleled quality, shaping skylines and
-                  communities for generations to come.
+                <p className="text-gray-700 mb-4">
+                  We begin with an in-depth consultation to understand your vision, needs, and
+                  preferences. Our team then develops initial concepts and mood boards to visualize
+                  the design direction.
                 </p>
-                <p className="text-gray-700 mb-2">We aspire to:</p>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    <span>
-                      Set new standards for sustainable and eco-friendly construction practices
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    <span>
-                      Pioneer the integration of cutting-edge technologies in construction processes
-                    </span>
-                  </li>
-                </ul>
               </CardContent>
             </Card>
 
             <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <CardTitle className="text-[#100D2C]">Mission</CardTitle>
+                <CardTitle className="text-[#100D2C]">2. Design & Planning</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700">
-                  Our mission is to deliver exceptional construction services that exceed client
-                  expectations, foster sustainable development, and create lasting value for our
-                  stakeholders. We are committed to:
+                <p className="text-gray-700 mb-4">
+                  Based on your feedback, we refine the concept and create detailed design plans,
+                  including space layouts, color schemes, and material selections. We also provide
+                  3D renderings to help you visualize the final result.
                 </p>
-                <ul className="mt-4 space-y-2 text-gray-700">
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    <span>Embracing cutting-edge technologies and methodologies</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    <span>Prioritizing safety and quality in every project</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    <span>Nurturing a culture of innovation and continuous improvement</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    <span>Building strong, lasting relationships with clients and partners</span>
-                  </li>
-                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+              <CardHeader>
+                <CardTitle className="text-[#100D2C]">3. Implementation & Coordination</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 mb-4">
+                  Once the design is approved, we manage the implementation process, coordinating
+                  with contractors, craftsmen, and suppliers to bring your vision to life. Our team
+                  oversees every detail to ensure quality and adherence to the design plan.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-gray-200 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
+              <CardHeader>
+                <CardTitle className="text-[#100D2C]">4. Styling & Final Touches</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 mb-4">
+                  In the final stage, we style the space with carefully selected furnishings,
+                  artwork, and accessories. We pay attention to every detail to create a cohesive
+                  and personalized environment that exceeds your expectations.
+                </p>
               </CardContent>
             </Card>
           </div>
@@ -341,7 +320,7 @@ export default function ConstructionServices() {
             <CardHeader>
               <CardTitle className="text-[#100D2C]">Get in Touch</CardTitle>
               <CardDescription className="text-gray-600">
-                Contact us to discuss your construction needs
+                Contact us to discuss your interior design project
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -370,16 +349,6 @@ export default function ConstructionServices() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company" className="text-[#100D2C]">
-                    Company
-                  </Label>
-                  <Input
-                    id="company"
-                    placeholder="Your company name"
-                    className="border-gray-200 bg-white text-gray-900 placeholder:text-gray-500"
-                  />
-                </div>
-                <div className="space-y-2">
                   <Label htmlFor="phone" className="text-[#100D2C]">
                     Phone
                   </Label>
@@ -399,24 +368,24 @@ export default function ConstructionServices() {
                       <SelectValue placeholder="Select a project type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="commercial">Commercial Construction</SelectItem>
-                      <SelectItem value="infrastructure">Infrastructure Development</SelectItem>
-                      <SelectItem value="residential">Residential Construction</SelectItem>
+                      <SelectItem value="residential">Residential Design</SelectItem>
+                      <SelectItem value="commercial">Commercial Design</SelectItem>
+                      <SelectItem value="renovation">Renovation & Styling</SelectItem>
                       <SelectItem value="other">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="project" className="text-[#100D2C]">
+                  <Label htmlFor="project-details" className="text-[#100D2C]">
                     Project Details
                   </Label>
                   <Textarea
-                    id="project"
+                    id="project-details"
                     placeholder="Tell us about your project"
                     className="border-gray-200 bg-white text-gray-900 placeholder:text-gray-500"
                   />
                 </div>
-                <Button className="w-full bg-secondary hover:bg-[#100D2C]/90 text-white font-semibold">
+                <Button className="w-full bg-[#100D2C] hover:bg-[#100D2C]/90 text-white font-semibold">
                   Submit Inquiry
                 </Button>
               </form>

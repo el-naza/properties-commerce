@@ -1,22 +1,11 @@
 'use client'
+import { Building, ChartBar, Crane, HardHat, Leaf, Lightbulb, Users } from '@phosphor-icons/react'
 import Image from 'next/image'
-import {
-  Building,
-  Crane,
-  HardHat,
-  Phone,
-  Envelope,
-  Leaf,
-  ChartBar,
-  Users,
-  Lightbulb,
-} from '@phosphor-icons/react'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
 import {
   Select,
   SelectContent,
@@ -24,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Separator } from '@/components/ui/separator'
+import { Textarea } from '@/components/ui/textarea'
 
 export default function ConstructionServices() {
   return (
@@ -73,17 +62,17 @@ export default function ConstructionServices() {
               </CardHeader>
               <CardContent className="text-gray-300">
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Office Buildings
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Office Buildings</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Retail Spaces
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Retail Spaces</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Industrial Facilities
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Industrial Facilities</span>
                   </li>
                 </ul>
               </CardContent>
@@ -100,17 +89,17 @@ export default function ConstructionServices() {
               </CardHeader>
               <CardContent className="text-gray-300">
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Roads & Bridges
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Roads & Bridges</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Water Systems
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Water Systems</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Power Plants
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Power Plants</span>
                   </li>
                 </ul>
               </CardContent>
@@ -127,17 +116,17 @@ export default function ConstructionServices() {
               </CardHeader>
               <CardContent className="text-gray-300">
                 <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Planning & Design
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Planning & Design</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Cost Management
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Cost Management</span>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 mt-2 flex-shrink-0" />
-                    Quality Control
+                  <li className="grid grid-cols-[auto_1fr] items-center gap-2">
+                    <div className="h-2 w-2 bg-[#fc861e] rotate-45 justify-self-end" />
+                    <span className="justify-self-start">Quality Control</span>
                   </li>
                 </ul>
               </CardContent>

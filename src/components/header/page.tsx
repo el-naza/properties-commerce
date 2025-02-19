@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useMemo, useState } from 'react'
 
@@ -55,7 +55,6 @@ export default function Header() {
                 href={'/#'}
                 className={`${isServices ? 'text-secondary' : ''} flex items-center gap-1`}
                 onClick={(e) => {
-                  console.log('clicked')
                   e.preventDefault()
                   setIsOpen(!isOpen)
                 }}
@@ -77,9 +76,21 @@ export default function Header() {
               <div
                 className={`pt-3 absolute ${isOpen ? 'visible' : 'invisible'} group-hover:visible hover:visible active:visible`}
               >
-                <div className="flex flex-col w-[270px] bg-transparent backdrop-blur-sm border-[#5d5ca9] border-[1px] p-3 rounded-[16px] left-[-13px] gap-y-[8px] justify-between z-50 shadow-[0px_0px_30px_0px_#0000001A]">
-                  <HeaderLink href={'/services/buildings'}>Buildings and Constructions</HeaderLink>
-                  <HeaderLink href={'/services/interiors'}>
+                <div className="flex flex-col w-[270px] bg-transparent backdrop-blur-[1.5px] border-[#5d5ca9] border-[1px] p-3 rounded-[16px] left-[-13px] gap-y-[8px] justify-between z-50 shadow-[0px_0px_30px_0px_#0000001A]">
+                  <HeaderLink
+                    href={'/services/buildings'}
+                    onClick={() => {
+                      setIsOpen(false)
+                    }}
+                  >
+                    Buildings and Constructions
+                  </HeaderLink>
+                  <HeaderLink
+                    href={'/services/interiors'}
+                    onClick={() => {
+                      setIsOpen(false)
+                    }}
+                  >
                     Interior Designs and Decorations
                   </HeaderLink>
                 </div>
@@ -112,11 +123,18 @@ export default function Header() {
   )
 }
 
-function HeaderLink({ href = '#', children }: { href?: string; children: React.ReactNode }) {
+function HeaderLink({
+  href = '#',
+  children,
+  ...props
+}: {
+  href?: string
+  children: React.ReactNode
+} & LinkProps) {
   const pathname = usePathname()
 
   return (
-    <Link href={href} className={`${pathname === href ? 'text-secondary' : ''}`}>
+    <Link href={href} className={`${pathname === href ? 'text-secondary' : ''}`} {...props}>
       {children}
     </Link>
   )
