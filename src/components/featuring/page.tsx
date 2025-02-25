@@ -48,7 +48,7 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
           <div className="bg-black/30 absolute h-full w-full hover:opacity-0" />
           <div className="absolute bottom-0 left-0 font-medium text-white">
             <CardContent className="text-lg">
-              Ranging From ₦{formatPrice(props.price)} {/**shorten amounts to 100K or 5M or 1T */}
+              ₦{formatPrice(props.price)} {/**shorten amounts to 100K or 5M or 1T */}
             </CardContent>
           </div>
         </div>
