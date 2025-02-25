@@ -11,6 +11,9 @@ import './globals.css'
 import { Montserrat, Sora } from 'next/font/google'
 // import Footer from './footer/footer'
 import Header from '../../components/header/page'
+import { Toaster } from '@/components/ui/sonner'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
 
 const montserrat = Montserrat({
   // weight: ['400', '500', '600', '700'],
@@ -38,25 +41,27 @@ export default function LayoutClient({ children }: { children: React.ReactNode }
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <div
-          className={cn(
-            sora.variable,
-            montserrat.variable,
-            montserrat.className,
-            // 'flex flex-col min-h-screen',
-          )}
-        >
-          <div className="absolute w-full top-0 z-10">
-            <Suspense>
-              <Header />
-            </Suspense>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <div
+            className={cn(
+              sora.variable,
+              montserrat.variable,
+              montserrat.className,
+              // 'flex flex-col min-h-screen',
+            )}
+          >
+            <div className="absolute w-full top-0 z-10">
+              <Suspense>
+                <Header />
+              </Suspense>
+            </div>
+            <main className="flex-1">{children}</main>
+            <div></div>
+            {/* <Footer /> */}
           </div>
-          <main className="flex-1">{children}</main>
-          <div></div>
-          {/* <Footer /> */}
-        </div>
+        </LocalizationProvider>
       </QueryClientProvider>
-      {/* <Toaster /> */}
+      <Toaster />
     </>
   )
 }

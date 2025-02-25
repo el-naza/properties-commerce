@@ -64,6 +64,7 @@ export interface Config {
   auth: {
     admins: AdminAuthOperations;
   };
+  blocks: {};
   collections: {
     media: Media;
     admins: Admin;

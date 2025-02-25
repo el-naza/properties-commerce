@@ -87,7 +87,7 @@ export default buildConfig({
     Inquiries,
     // TourSchedules,
   ],
-  cors: [getServerSideURL()].filter(Boolean),
+  cors: [getServerSideURL(), ...process.env.DOMAINS!].filter(Boolean),
   email: resendAdapter({
     defaultFromAddress: process.env.EMAIL_USER!,
     defaultFromName: 'Vastel Credence',

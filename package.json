@@ -19,6 +19,8 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@emotion/styled": "^11.14.0",
+    "@mui/x-date-pickers": "^7.27.0",
     "@nouance/payload-better-fields-plugin": "^1.4.1",
     "@payloadcms/db-mongodb": "latest",
     "@payloadcms/email-resend": "latest",

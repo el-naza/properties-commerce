@@ -76,7 +76,7 @@ export default function Header() {
               <div
                 className={`pt-3 absolute ${isOpen ? 'visible' : 'invisible'} group-hover:visible hover:visible active:visible`}
               >
-                <div className="flex flex-col w-[270px] bg-transparent backdrop-blur-[1.5px] border-[#5d5ca9] border-[1px] p-3 rounded-[16px] left-[-13px] gap-y-[8px] justify-between z-50 shadow-[0px_0px_30px_0px_#0000001A]">
+                <div className="flex flex-col w-[270px] bg-primary/85 border-[#5d5ca9] border-[1px] p-3 rounded-[3px] left-[-13px] gap-y-[8px] justify-between z-50 shadow-[0px_0px_30px_0px_#0000001A]">
                   <HeaderLink
                     href={'/services/buildings'}
                     onClick={() => {
