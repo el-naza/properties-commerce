@@ -1,7 +1,7 @@
 'use client'
 
 import { ShortletBookings } from '@/collections/ShortletBookings'
-import { FieldError } from '@/components'
+import { FieldError, FormError } from '@/components'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -28,6 +28,7 @@ import { CalendarIcon } from 'lucide-react'
 import { format } from 'date-fns'
 import { Textarea } from '@/components/ui/textarea'
 import { PhoneInput } from '@/components/ui/phone-input'
+import Spinner from '@/components/animata/progress/spinner'
 
 export default function Page() {
   return (
@@ -106,11 +107,11 @@ type FormField = Field & {
 const fields = ShortletBookings.fields as FormField[]
 
 // function GenForm({ fields }: { fields?: Array<object> }) {
-function GenForm({
+function GenForm<T>({
   // fields,
   // onSubmit,
   formClassName = 'space-y-4',
-  submitButtonClassName = 'px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600',
+  submitButtonClassName = '',
   submitButtonText = 'Submit',
 }: any) {
   const router = useRouter()
@@ -147,8 +148,7 @@ function GenForm({
           }
         }
 
-        const userCreationObj = { ...value }
-        const res = await saveDocMtn.mutateAsync(userCreationObj)
+        const res = await saveDocMtn.mutateAsync(value)
         if ((res as ValidationErrors)?.errors?.[0]?.data?.errors?.length) {
           return {
             form: (res as ValidationErrors).errors[0].message,
@@ -165,7 +165,7 @@ function GenForm({
         form.reset()
 
         router.refresh()
-        toast.success('Sign up successful, enter your matric no. to continue')
+        toast.success('Submitted successfully.')
 
         return null
       },
@@ -204,7 +204,7 @@ function GenForm({
                               )}
                             >
                               {field.state.value ? (
-                                format(field.state.value as unknown as Date, 'MM/dd/yyyy')
+                                format(field.state.value as unknown as Date, 'PPPP')
                               ) : (
                                 <span>MM/DD/YYYY</span>
                               )}
@@ -257,15 +257,15 @@ function GenForm({
                   case 'upload':
                     Field = <Input type="file" />
                     break
-                  case 'phone' as any:
-                    Field = (
-                      <PhoneInput
-                        value={(field.state.value as any) || ''}
-                        onBlur={field.handleBlur}
-                        placeholder={formField.placeholder}
-                        onChange={(e) => field.handleChange(e)}
-                      />
-                    )
+                  // case 'phone' as any:
+                  //   Field = (
+                  //     <PhoneInput
+                  //       value={(field.state.value as any) || ''}
+                  //       onBlur={field.handleBlur}
+                  //       placeholder={formField.placeholder}
+                  //       onChange={(e) => field.handleChange(e)}
+                  //     />
+                  //   )
                   case 'textarea':
                     Field = (
                       <Textarea
@@ -297,9 +297,22 @@ function GenForm({
           </div>
         )
       })}
-      <button type="submit" className={submitButtonClassName}>
-        {submitButtonText}
-      </button>
+      <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
+        {([canSubmit, isSubmitting]) => (
+          <>
+            <Button
+              type="submit"
+              disabled={!canSubmit}
+              size="lg"
+              className={cn('w-full mt-5', submitButtonClassName)}
+              variant="secondary"
+            >
+              {submitButtonText} {isSubmitting && <Spinner />}
+            </Button>
+            <FormError form={form} />
+          </>
+        )}
+      </form.Subscribe>
     </form>
   )
 }

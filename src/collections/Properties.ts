@@ -33,6 +33,14 @@ export const Properties: CollectionConfig = {
       type: 'number',
       required: true,
       index: true,
+      admin: {
+        components: {
+          Field: '@/components/AdminPriceInput',
+          // Description: '@payloadcms/ui#FieldDescription',
+          Error: '@payloadcms/ui#FieldError',
+          // Label: '@payloadcms/ui#FieldLabel',
+        },
+      },
     },
     {
       name: 'categories',

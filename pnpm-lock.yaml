@@ -14,9 +14,6 @@ importers:
       '@mui/x-date-pickers':
         specifier: ^7.27.0
         version: 7.27.0(@emotion/react@11.14.0(@types/react@19.0.1)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.1)(react@19.0.0))(@types/react@19.0.1)(react@19.0.0))(@mui/material@6.4.5(@emotion/react@11.14.0(@types/react@19.0.1)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.1)(react@19.0.0))(@types/react@19.0.1)(react@19.0.0))(@types/react@19.0.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@mui/system@6.4.3(@emotion/react@11.14.0(@types/react@19.0.1)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.1)(react@19.0.0))(@types/react@19.0.1)(react@19.0.0))(@types/react@19.0.1)(react@19.0.0))(@types/react@19.0.1)(date-fns@4.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@nouance/payload-better-fields-plugin':
-        specifier: ^1.4.1
-        version: 1.4.1(date-fns@4.1.0)(payload@3.24.0(graphql@16.9.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@payloadcms/db-mongodb':
         specifier: latest
         version: 3.24.0(@aws-sdk/credential-providers@3.699.0(@aws-sdk/client-sso-oidc@3.699.0(@aws-sdk/client-sts@3.699.0)))(payload@3.24.0(graphql@16.9.0)(typescript@5.7.2))
@@ -1222,11 +1219,6 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
-
-  '@nouance/payload-better-fields-plugin@1.4.1':
-    resolution: {integrity: sha512-EZXXFnNocd46t9WXcgJjVR4LYVAzzuSyfrwKmFCo4t1xSlyfrK2EacqagvLWhOEpFOiF1fx0rPMh9VGI2seshg==}
-    peerDependencies:
-      payload: ^2.0.0
 
   '@payloadcms/db-mongodb@3.24.0':
     resolution: {integrity: sha512-mx6rpZkp+oRpzBqP57T7ywYB9SUF/wvj1GDmsResa5UXBuW8t8w13RTh19GJpAJJ2VPWkzSG7sMw/9aXFfY9sA==}
@@ -2918,9 +2910,6 @@ packages:
     resolution: {integrity: sha512-1rXeuUUiGGrykh+CeBdu5Ie7OJwinCgQY0bc7GCRxy5xVHy+moaqkpL/jqQq0MtQOeYcrqEz4abc5f0KtU7W4A==}
     engines: {node: '>=12.5.0'}
 
-  colord@2.9.3:
-    resolution: {integrity: sha512-jeC1axXpnb0/2nn/Y1LPuLdgXBLH7aDcHu4KEKfqw3CUhX7ZpfBSlPKyqXE6btIgEzfWtrX3/tyBCaCvXvMkOw==}
-
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
@@ -3017,11 +3006,6 @@ packages:
 
   dataloader@2.2.3:
     resolution: {integrity: sha512-y2krtASINtPFS1rSDjacrFgn1dcUuoREVabwlOGOe4SdxenREqwjwjElAdwvbGM7kgZz9a3KVicWR7vcz8rnzA==}
-
-  date-fns-tz@2.0.1:
-    resolution: {integrity: sha512-fJCG3Pwx8HUoLhkepdsP7Z5RsucUi+ZBOxyM5d0ZZ6c4SdYustq0VMmOu6Wf7bli+yS/Jwp91TOCqn9jMcVrUA==}
-    peerDependencies:
-      date-fns: 2.x
 
   date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
@@ -4370,12 +4354,6 @@ packages:
     resolution: {integrity: sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==}
     engines: {node: '>= 0.6'}
 
-  react-colorful@5.6.1:
-    resolution: {integrity: sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-
   react-datepicker@7.6.0:
     resolution: {integrity: sha512-9cQH6Z/qa4LrGhzdc3XoHbhrxNcMi9MKjZmYgF/1MNNaJwvdSjv3Xd+jjvrEEbKEf71ZgCA3n7fQbdwd70qCRw==}
     peerDependencies:
@@ -4419,12 +4397,6 @@ packages:
 
   react-is@19.0.0:
     resolution: {integrity: sha512-H91OHcwjZsbq3ClIDHMzBShc1rotbfACdWENsmEf0IFvZ3FgGPtdHMcsv45bQ1hAbgdfiA8SnxTKfDS+x/8m2g==}
-
-  react-number-format@5.4.3:
-    resolution: {integrity: sha512-VCY5hFg/soBighAoGcdE+GagkJq0230qN6jcS5sp8wQX1qy1fYN/RX7/BXkrs0oyzzwqR8/+eSUrqXbGeywdUQ==}
-    peerDependencies:
-      react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   react-phone-number-input@3.4.11:
     resolution: {integrity: sha512-ypN9hXwUModpngho9brCHLLD40xzb1DKAZFacbF0J+fFaMVLEJo+zul9sZfSRlKehSjpttT4b1pLMcOWXI228g==}
@@ -4651,10 +4623,6 @@ packages:
   slash@5.1.0:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
-
-  slugify@1.6.6:
-    resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
-    engines: {node: '>=8.0.0'}
 
   sonic-boom@4.2.0:
     resolution: {integrity: sha512-INb7TM37/mAcsGmc9hyyI6+QR3rR1zVRu36B0NeGXKnOOLiZOfER5SA+N7X7k3yUYRzLWafduTDvJAfDswwEww==}
@@ -5007,9 +4975,6 @@ packages:
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
-
-  validate-color@2.2.4:
-    resolution: {integrity: sha512-Znolz+b6CwW6eBXYld7MFM3O7funcdyRfjKC/X9hqYV/0VcC5LB/L45mff7m3dIn9wdGdNOAQ/fybNuD5P/HDw==}
 
   web-encoding@1.1.5:
     resolution: {integrity: sha512-HYLeVCdJ0+lBYV2FvNZmv3HJ2Nt0QYXqZojk3d9FJOLkwnuhzM9tmamh8d7HPM8QqjKH8DeHkFTx+CFlWpZZDA==}
@@ -6695,21 +6660,6 @@ snapshots:
       fastq: 1.17.1
 
   '@nolyfill/is-core-module@1.0.39': {}
-
-  '@nouance/payload-better-fields-plugin@1.4.1(date-fns@4.1.0)(payload@3.24.0(graphql@16.9.0)(typescript@5.7.2))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
-    dependencies:
-      colord: 2.9.3
-      date-fns-tz: 2.0.1(date-fns@4.1.0)
-      payload: 3.24.0(graphql@16.9.0)(typescript@5.7.2)
-      react-colorful: 5.6.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react-number-format: 5.4.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react-phone-number-input: 3.4.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      slugify: 1.6.6
-      validate-color: 2.2.4
-    transitivePeerDependencies:
-      - date-fns
-      - react
-      - react-dom
 
   '@payloadcms/db-mongodb@3.24.0(@aws-sdk/credential-providers@3.699.0(@aws-sdk/client-sso-oidc@3.699.0(@aws-sdk/client-sts@3.699.0)))(payload@3.24.0(graphql@16.9.0)(typescript@5.7.2))':
     dependencies:
@@ -8786,8 +8736,6 @@ snapshots:
       color-string: 1.9.1
     optional: true
 
-  colord@2.9.3: {}
-
   colorette@2.0.20: {}
 
   combined-stream@1.0.8:
@@ -8879,10 +8827,6 @@ snapshots:
       is-data-view: 1.0.1
 
   dataloader@2.2.3: {}
-
-  date-fns-tz@2.0.1(date-fns@4.1.0):
-    dependencies:
-      date-fns: 4.1.0
 
   date-fns@3.6.0: {}
 
@@ -10359,11 +10303,6 @@ snapshots:
 
   range-parser@1.2.1: {}
 
-  react-colorful@5.6.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-
   react-datepicker@7.6.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@floating-ui/react': 0.27.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -10416,11 +10355,6 @@ snapshots:
   react-is@16.13.1: {}
 
   react-is@19.0.0: {}
-
-  react-number-format@5.4.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
 
   react-phone-number-input@3.4.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
@@ -10701,8 +10635,6 @@ snapshots:
   sisteransi@1.0.5: {}
 
   slash@5.1.0: {}
-
-  slugify@1.6.6: {}
 
   sonic-boom@4.2.0:
     dependencies:
@@ -11077,8 +11009,6 @@ snapshots:
   uuid@10.0.0: {}
 
   uuid@9.0.1: {}
-
-  validate-color@2.2.4: {}
 
   web-encoding@1.1.5:
     dependencies:

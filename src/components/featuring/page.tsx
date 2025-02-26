@@ -1,17 +1,35 @@
 'use client'
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Area, City, Media, Property, PropertyCategory, Shortlet } from '@/payload-types'
+import { Admin, Area, City, Media, Property, PropertyCategory, Shortlet } from '@/payload-types'
 import fetchHotSales from '@/services/fetchHotSales'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { formatDistanceToNow } from 'date-fns'
 import Marquee from '@/components/animata/container/marquee'
-import formatPrice from '@/utilities/formatPrice'
 import Link from 'next/link'
+import {
+  BedDouble,
+  BedIcon,
+  ClockIcon,
+  Ruler,
+  ShowerHeadIcon,
+  UserIcon,
+  UserRound,
+} from 'lucide-react'
+import searchProperties from '@/services/searchProperties'
 
 export default function Featuring() {
-  const query = useQuery({ queryKey: ['properties'], queryFn: fetchHotSales })
+  const query = useQuery({
+    queryKey: ['properties'],
+    queryFn: async () => {
+      return (
+        await searchProperties({
+          isFeatured: true,
+        })
+      ).docs
+    },
+  })
 
   return (
     <section className="container mt-10 text-center">
@@ -48,7 +66,9 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
           <div className="bg-black/30 absolute h-full w-full hover:opacity-0" />
           <div className="absolute bottom-0 left-0 font-medium text-white">
             <CardContent className="text-lg">
-              ₦{formatPrice(props.price)} {/**shorten amounts to 100K or 5M or 1T */}
+              ₦{props.price.toLocaleString()}
+              {/* ₦{formatPrice(props.price)} */}
+              {/**shorten amounts to 100K or 5M or 1T */}
             </CardContent>
           </div>
         </div>
@@ -56,28 +76,41 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
       <CardHeader>
         <CardTitle>
           <Link href={href}>
-            <h1 className="text-base text-ellipsis overflow-hidden whitespace-nowrap">
+            <h1 className="text-lg text-ellipsis overflow-hidden whitespace-nowrap">
               {props.title}
             </h1>
           </Link>
-          <div className="text-gray-400 text-sm">
+          <div className="text-gray-400 text-base">
             {(props.area as Area).name}, {((props.area as Area).city as City).name}
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-sm flex flex-wrap gap-4">
+        <div className="text-base flex flex-wrap gap-4 -mt-1 mb-[2px]">
           {(props as Property).bedroomsCount && (
-            <span>{(props as Property).bedroomsCount} Rooms</span>
+            <span className="flex items-center gap-2">
+              <BedDouble size={24} /> {(props as Property).bedroomsCount}
+            </span>
           )}
           {(props as Property).bathroomsCount && (
-            <span>{(props as Property).bathroomsCount || '&nbsp;'} Bathrooms</span>
+            <span className="flex items-center gap-2">
+              <ShowerHeadIcon size={24} /> {(props as Property).bathroomsCount || '&nbsp;'}
+            </span>
           )}
           {((props as Property).squareMeters && (
-            <span>{(props as Property).squareMeters?.toLocaleString()} Square Meters</span>
+            <span className="flex items-center gap-2">
+              {/* <Ruler size={16} />  */}
+              <Image
+                alt="ruler"
+                src={'/icons/icons8-ruler-combined-32.png'}
+                width={24}
+                height={24}
+              />
+              {(props as Property).squareMeters?.toLocaleString()} SQMs
+            </span>
           )) || <br />}
         </div>
-        <div className="text-xs">
+        <div className="text-sm">
           {(props as Property).categories
             ? (props as Property).categories
                 .map((category) => (category as PropertyCategory).title)
@@ -86,9 +119,20 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
         </div>
       </CardContent>
       <div className="bg-gray-300 w-full h-[1px] mb-6" />
-      <CardFooter className="justify-between text-xs text-gray-400">
-        <span>Uploaded</span>
-        <span>{formatDistanceToNow(new Date(props.createdAt), { addSuffix: true })}</span>
+      <CardFooter className="justify-between text-sm text-gray-400 items-center">
+        <div className="inline-flex gap-[6px] items-center">
+          <UserRound size={16} />
+          <span>
+            {/* {props.uploadedBy} */}
+            {(props.uploadedBy as Admin).role === 'Super Admin'
+              ? 'Vastel Credence'
+              : (props.uploadedBy as Admin).name}
+          </span>
+        </div>
+        <div className="inline-flex gap-[6px] items-center">
+          <ClockIcon size={16} />
+          <span>{formatDistanceToNow(new Date(props.createdAt), { addSuffix: true })}</span>
+        </div>
       </CardFooter>
     </Card>
   )
