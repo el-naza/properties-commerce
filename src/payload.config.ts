@@ -80,7 +80,7 @@ export default buildConfig({
     Properties,
     Shortlets,
     IdDocuments,
-    // ShortletBookings,
+    ShortletBookings,
     // Messages,
     // Reviews,
     // Contacts,

@@ -76,6 +76,7 @@ export interface Config {
     properties: Property;
     shortlets: Shortlet;
     'id-documents': IdDocument;
+    'shortlet-bookings': ShortletBooking;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -92,6 +93,7 @@ export interface Config {
     properties: PropertiesSelect<false> | PropertiesSelect<true>;
     shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
     'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
+    'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -305,6 +307,27 @@ export interface IdDocument {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlet-bookings".
+ */
+export interface ShortletBooking {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  shortlet: string | Shortlet;
+  checkInDay?: string | null;
+  checkOutDay?: string | null;
+  idType: 'NATIONAL ID' | 'PASSPORT' | 'DRIVERS LICENSE' | 'VOTERS CARD';
+  idDocument: string | IdDocument;
+  /**
+   * Only the Super Admin can confirm payments to approve the booking
+   */
+  paymentConfirmed?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -349,6 +372,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'id-documents';
         value: string | IdDocument;
+      } | null)
+    | ({
+        relationTo: 'shortlet-bookings';
+        value: string | ShortletBooking;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -543,6 +570,23 @@ export interface IdDocumentsSelect<T extends boolean = true> {
   filesize?: T;
   width?: T;
   height?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlet-bookings_select".
+ */
+export interface ShortletBookingsSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  shortlet?: T;
+  checkInDay?: T;
+  checkOutDay?: T;
+  idType?: T;
+  idDocument?: T;
+  paymentConfirmed?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
