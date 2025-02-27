@@ -18,6 +18,15 @@ import {
   UserRound,
 } from 'lucide-react'
 import searchProperties from '@/services/searchProperties'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '../ui/carousel'
+import { duplicateArray } from '@/utilities'
+import Autoplay from 'embla-carousel-autoplay'
 
 export default function Featuring() {
   const query = useQuery({
@@ -37,13 +46,33 @@ export default function Featuring() {
       <p className="text-base">Discover some of our recent and finest listings</p>
 
       <div className="container mt-10 flex flex-wrap gap-6 text-left rounded-lg">
-        <Marquee
+        <Carousel
+          className="w-full"
+          plugins={[
+            Autoplay({
+              delay: 4000,
+            }),
+          ]}
+          opts={{ loop: true }}
+        >
+          <CarouselContent className="flex">
+            {query.data &&
+              duplicateArray(query.data, 2).map((item, i) => (
+                <CarouselItem key={i} className="basis-[416px] pl-4">
+                  <PropertyOrShortletCard {...item} />
+                </CarouselItem>
+              ))}
+          </CarouselContent>
+          <CarouselPrevious className="bg-white" />
+          <CarouselNext className="bg-white" />
+        </Carousel>
+        {/* <Marquee
           pauseOnHover
           className="overflow-hidden rounded-lg"
           // duration={(query.data?.length && query.data?.length * 10) || undefined}
         >
           {query.data?.map((item, i) => <PropertyOrShortletCard key={i} {...item} />)}
-        </Marquee>
+        </Marquee> */}
       </div>
     </section>
   )
@@ -57,7 +86,7 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
       <Link href={href}>
         <div className="relative  h-[300px]">
           <Image
-            src={(props.media[0] as Media).url!}
+            src={(props.media?.[0] as Media)?.url || '/images/placeholder.jpg'}
             className="w-full h-[300px] object-cover absolute"
             alt="image"
             width={400}
@@ -66,7 +95,7 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
           <div className="bg-black/30 absolute h-full w-full hover:opacity-0" />
           <div className="absolute bottom-0 left-0 font-medium text-white">
             <CardContent className="text-lg">
-              ₦{props.price.toLocaleString()}
+              ₦{props.price?.toLocaleString()}
               {/* ₦{formatPrice(props.price)} */}
               {/**shorten amounts to 100K or 5M or 1T */}
             </CardContent>
@@ -86,11 +115,11 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-sm flex flex-wrap gap-4 -mt-1 mb-[2px]">
+        <div className="text-sm flex flex-wrap gap-4 -mt-3 mb-[2px] font-medium">
           {(props as Property).bedroomsCount && (
             <span className="flex items-center gap-2">
-              <Image alt="ruler" src={'/icons/icons8-bed-50.png'} width={18} height={18} />
-              {/* <BedDouble size={18} /> */}
+              {/* <Image alt="ruler" src={'/icons/icons8-bed-50.png'} width={18} height={18} /> */}
+              <BedDouble size={18} />
               {(props as Property).bedroomsCount}
             </span>
           )}
@@ -114,10 +143,10 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
             </span>
           )) || <br />}
         </div>
-        <div className="text-xs">
+        <div className="text-sm font-semibold mt-2">
           {(props as Property).categories
             ? (props as Property).categories
-                .map((category) => (category as PropertyCategory).title)
+                .map((category) => (category as PropertyCategory).title.toUpperCase())
                 .join(', ')
             : 'Shortlet'}
         </div>

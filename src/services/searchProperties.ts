@@ -66,6 +66,7 @@ export default async function searchProperties(
       where: query,
       limit: Infinity,
       pagination: false,
+      depth: 2,
     })
   }
 
@@ -74,6 +75,7 @@ export default async function searchProperties(
     where: query,
     limit: Infinity,
     pagination: false,
+    depth: 2,
   })
 
   // if (search?.categories?.toString().toLowerCase().includes?.('shortlets')) {

@@ -4,6 +4,15 @@ import Marquee from '@/components/animata/container/marquee'
 import { useQuery } from '@tanstack/react-query'
 import { PropertyOrShortletCard } from '../../../components/featuring/page'
 import searchProperties from '@/services/searchProperties'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from '@/components/ui/carousel'
+import { duplicateArray } from '@/utilities'
+import Autoplay from 'embla-carousel-autoplay'
 
 export default function Shortlets() {
   const query = useQuery({
@@ -39,11 +48,31 @@ export default function Shortlets() {
           </div>
         </div>
         <div className=" text-black-1 md:max-w-[40%] z-10">
-          <Marquee pauseOnHover className="overflow-hidden rounded-lg">
+          <Carousel
+            className="w-full"
+            plugins={[
+              Autoplay({
+                delay: 4000,
+              }),
+            ]}
+            opts={{ loop: true }}
+          >
+            <CarouselContent className="flex">
+              {query.data &&
+                query.data?.map((item, i) => (
+                  <CarouselItem key={i} className="basis-[416px] pl-4">
+                    <PropertyOrShortletCard {...item} isShortlet={true} />
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className="ml-16 bg-white/45 hover:bg-white" />
+            <CarouselNext className="mr-16 bg-white/45 hover:bg-white" />
+          </Carousel>
+          {/* <Marquee pauseOnHover className="overflow-hidden rounded-lg">
             {query.data?.map((item, i) => (
               <PropertyOrShortletCard key={i} {...item} isShortlet={true} />
             ))}
-          </Marquee>
+          </Marquee> */}
         </div>
       </div>
     </div>

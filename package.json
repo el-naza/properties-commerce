@@ -51,6 +51,7 @@
     "cmdk": "1.0.0",
     "cross-env": "^7.0.3",
     "date-fns": "^4.1.0",
+    "embla-carousel-autoplay": "^8.5.2",
     "embla-carousel-react": "^8.5.2",
     "graphql": "^16.8.2",
     "lucide-react": "^0.378.0",

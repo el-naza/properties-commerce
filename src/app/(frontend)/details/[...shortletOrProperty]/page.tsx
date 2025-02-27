@@ -22,7 +22,7 @@ export default async function Page({
   if (!id) {
     redirect(`/listings${type === 'shortlet' ? '?categories=shortlets' : ''}`)
   }
-  console.log('before deets')
+  // console.log('before deets')
 
   const details = await payload
     .findByID({
@@ -31,7 +31,7 @@ export default async function Page({
     })
     .catch(() => undefined)
 
-  console.log('deets', details)
+  // console.log('deets', details)
 
   if (!details) {
     redirect('/not-found')
