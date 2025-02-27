@@ -23,6 +23,7 @@ export const ShortletBookings: CollectionConfig = {
   admin: {
     useAsTitle: 'fullName',
     // listSearchableFields: ['fullName', 'email'],
+    hidden: true,
   },
   fields: [
     {
