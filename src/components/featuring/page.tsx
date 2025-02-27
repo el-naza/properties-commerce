@@ -76,28 +76,28 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
       <CardHeader>
         <CardTitle>
           <Link href={href}>
-            <h1 className="text-lg text-ellipsis overflow-hidden whitespace-nowrap">
+            <h1 className="text-base text-ellipsis overflow-hidden whitespace-nowrap">
               {props.title}
             </h1>
           </Link>
-          <div className="text-gray-400 text-base">
+          <div className="text-gray-400 text-sm">
             {(props.area as Area).name}, {((props.area as Area).city as City).name}
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-base flex flex-wrap gap-4 -mt-1 mb-[2px]">
+        <div className="text-sm flex flex-wrap gap-4 -mt-1 mb-[2px]">
           {(props as Property).bedroomsCount && (
             <span className="flex items-center gap-2">
-              <Image alt="ruler" src={'/icons/icons8-bed-50.png'} width={24} height={24} />
-              {/* <BedDouble size={24} /> */}
+              <Image alt="ruler" src={'/icons/icons8-bed-50.png'} width={18} height={18} />
+              {/* <BedDouble size={18} /> */}
               {(props as Property).bedroomsCount}
             </span>
           )}
           {(props as Property).bathroomsCount && (
             <span className="flex items-center gap-2">
-              <Image alt="ruler" src={'/icons/icons8-shower-50.png'} width={24} height={24} />
-              {/* <ShowerHeadIcon size={24} /> */}
+              <Image alt="ruler" src={'/icons/icons8-shower-50.png'} width={18} height={18} />
+              {/* <ShowerHeadIcon size={18} /> */}
               {(props as Property).bathroomsCount || '&nbsp;'}
             </span>
           )}
@@ -107,14 +107,14 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
               <Image
                 alt="ruler"
                 src={'/icons/icons8-ruler-combined-32.png'}
-                width={24}
-                height={24}
+                width={18}
+                height={18}
               />
               {(props as Property).squareMeters?.toLocaleString()} SQMs
             </span>
           )) || <br />}
         </div>
-        <div className="text-sm">
+        <div className="text-xs">
           {(props as Property).categories
             ? (props as Property).categories
                 .map((category) => (category as PropertyCategory).title)
@@ -123,7 +123,7 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
         </div>
       </CardContent>
       <div className="bg-gray-300 w-full h-[1px] mb-6" />
-      <CardFooter className="justify-between text-sm text-gray-400 items-center">
+      <CardFooter className="justify-between text-xs text-gray-400 items-center">
         <div className="inline-flex gap-[6px] items-center">
           <UserRound size={16} />
           <span>
