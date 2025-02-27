@@ -89,12 +89,16 @@ export function PropertyOrShortletCard(props: (Property | Shortlet) & { isShortl
         <div className="text-base flex flex-wrap gap-4 -mt-1 mb-[2px]">
           {(props as Property).bedroomsCount && (
             <span className="flex items-center gap-2">
-              <BedDouble size={24} /> {(props as Property).bedroomsCount}
+              <Image alt="ruler" src={'/icons/icons8-bed-50.png'} width={24} height={24} />
+              {/* <BedDouble size={24} /> */}
+              {(props as Property).bedroomsCount}
             </span>
           )}
           {(props as Property).bathroomsCount && (
             <span className="flex items-center gap-2">
-              <ShowerHeadIcon size={24} /> {(props as Property).bathroomsCount || '&nbsp;'}
+              <Image alt="ruler" src={'/icons/icons8-shower-50.png'} width={24} height={24} />
+              {/* <ShowerHeadIcon size={24} /> */}
+              {(props as Property).bathroomsCount || '&nbsp;'}
             </span>
           )}
           {((props as Property).squareMeters && (
