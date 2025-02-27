@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import Image from 'next/image'
-import { BadgeCheck, ChevronRight, MapPin, Phone, Share2 } from 'lucide-react'
+import { BadgeCheck, BedDouble, ChevronRight, MapPin, Phone, Share2 } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -170,34 +170,35 @@ function PropertyOverview(props: (Property | Shortlet) & { isShortlet?: boolean 
 function PropertyDetails(props: (Property | Shortlet) & { isShortlet?: boolean }) {
   return (
     <div className="space-y-8">
-      <div className="grid gap-6">
+      <div className="grid gap-4">
         <h2 className="text-xl font-medium">
           {props.isShortlet ? 'Shortlet' : 'Property'} Details
         </h2>
-        <div className="sm:columns-2 lg:columns-4">
-          {!props.isShortlet && (
-            <div className="space-y-1">
-              <div className="text-sm text-gray-600">
-                {props.isShortlet ? 'Shortlet' : 'Property'} Category
-              </div>
-              <div className="font-medium">
-                {props.isShortlet
-                  ? 'Shortlet'
-                  : ((props as Property).categories as PropertyCategory[])
-                      .map((c) => c.title)
-                      .join(', ')}
-              </div>
+        {!props.isShortlet && (
+          <div className="space-x-1 inline-flex">
+            <div className="text-gray-600">Category:</div>
+            <div className="font-medium">
+              {props.isShortlet
+                ? 'Shortlet'
+                : ((props as Property).categories as PropertyCategory[])
+                    .map((c) => c.title)
+                    .join(', ')}
             </div>
-          )}
+          </div>
+        )}
+        <div className="space-x-8 inline-flex">
+          {/* <div className="sm:columns-2 lg:columns-4"> */}
           {!!props.bedroomsCount?.length && (
             <div className=" flex items-center gap-2">
-              <div className="text-sm text-gray-600">Bedrooms</div>
+              {/* <div className="text-sm text-gray-600">Bedrooms</div> */}
+              <BedDouble size={18} />
               <div className="leading-none font-medium">{props.bedroomsCount?.toString()}</div>
             </div>
           )}
           {!!props.bathroomsCount?.length && (
             <div className=" flex items-center gap-2">
-              <div className="text-sm text-gray-600">Bathrooms</div>
+              {/* <div className="text-sm text-gray-600">Bathrooms</div> */}
+              <Image alt="ruler" src={'/icons/icons8-shower-50.png'} width={18} height={18} />
               <div className="leading-none font-medium">{props.bathroomsCount?.toString()}</div>
             </div>
           )}
@@ -275,21 +276,42 @@ function PropertyDetails(props: (Property | Shortlet) & { isShortlet?: boolean }
 
 function PropertyVideo(props: (Property | Shortlet) & { isShortlet?: boolean }) {
   return (
-    !!props.youtubeVideo && (
-      <div className="space-y-4">
-        <h2 className="text-xl font-medium">{props.isShortlet ? 'Shortlet' : 'Property'} Video</h2>
-        <div className="relative aspect-video overflow-hidden rounded-lg">
-          <iframe
-            className="absolute top-0 left-0 w-full h-full"
-            src={props.youtubeVideo}
-            title="Property Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+    <>
+      {!!props.youtubeVideo && (
+        <div className="space-y-4">
+          <h2 className="text-xl font-medium">
+            {props.isShortlet ? 'Shortlet' : 'Property'} Video
+          </h2>
+          <div className="relative aspect-video overflow-hidden rounded-lg">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src={props.youtubeVideo}
+              title="Property Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
-      </div>
-    )
+      )}
+
+      {!!props.instagramVideo && (
+        <div className="space-y-4">
+          <h2 className="text-xl font-medium">
+            {props.isShortlet ? 'Shortlet' : 'Property'} Video
+          </h2>
+          <div className="relative aspect-square overflow-hidden rounded-lg">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src={props.instagramVideo}
+              title="Instagram Property Video"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

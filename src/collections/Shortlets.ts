@@ -104,6 +104,11 @@ export const Shortlets: CollectionConfig = {
       label: 'YouTube Video URL',
     },
     {
+      name: 'instagramVideo',
+      type: 'text',
+      label: 'Instagram Video URL',
+    },
+    {
       name: 'additionalDeatils',
       type: 'array',
       fields: [

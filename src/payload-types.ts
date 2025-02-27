@@ -238,6 +238,7 @@ export interface Property {
   yearBuilt?: string | null;
   features?: (string | PropertyFeature)[] | null;
   youtubeVideo?: string | null;
+  instagramVideo?: string | null;
   additionalDeatils?:
     | {
         title: string;
@@ -276,6 +277,7 @@ export interface Shortlet {
   yearBuilt?: string | null;
   features?: (string | PropertyFeature)[] | null;
   youtubeVideo?: string | null;
+  instagramVideo?: string | null;
   additionalDeatils?:
     | {
         title: string;
@@ -512,6 +514,7 @@ export interface PropertiesSelect<T extends boolean = true> {
   yearBuilt?: T;
   features?: T;
   youtubeVideo?: T;
+  instagramVideo?: T;
   additionalDeatils?:
     | T
     | {
@@ -543,6 +546,7 @@ export interface ShortletsSelect<T extends boolean = true> {
   yearBuilt?: T;
   features?: T;
   youtubeVideo?: T;
+  instagramVideo?: T;
   additionalDeatils?:
     | T
     | {
