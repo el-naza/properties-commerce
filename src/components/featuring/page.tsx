@@ -63,8 +63,8 @@ export default function Featuring() {
                 </CarouselItem>
               ))}
           </CarouselContent>
-          <CarouselPrevious className="bg-white" />
-          <CarouselNext className="bg-white" />
+          <CarouselPrevious className="bg-white opacity-40" />
+          <CarouselNext className="bg-white opacity-40" />
         </Carousel>
         {/* <Marquee
           pauseOnHover
