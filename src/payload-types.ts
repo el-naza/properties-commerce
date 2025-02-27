@@ -76,10 +76,6 @@ export interface Config {
     properties: Property;
     shortlets: Shortlet;
     'id-documents': IdDocument;
-    'shortlet-bookings': ShortletBooking;
-    messages: Message;
-    contacts: Contact;
-    inquiries: Inquiry;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -96,10 +92,6 @@ export interface Config {
     properties: PropertiesSelect<false> | PropertiesSelect<true>;
     shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
     'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
-    'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
-    messages: MessagesSelect<false> | MessagesSelect<true>;
-    contacts: ContactsSelect<false> | ContactsSelect<true>;
-    inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -313,74 +305,6 @@ export interface IdDocument {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "shortlet-bookings".
- */
-export interface ShortletBooking {
-  id: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  shortlet: string | Shortlet;
-  checkInDay?: string | null;
-  checkOutDay?: string | null;
-  idType: 'NATIONAL ID' | 'PASSPORT' | 'DRIVERS LICENSE' | 'VOTERS CARD';
-  idDocument: string | IdDocument;
-  /**
-   * Only the Super Admin can confirm payments to approve the booking
-   */
-  paymentConfirmed?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "messages".
- */
-export interface Message {
-  id: string;
-  fullName: string;
-  email: string;
-  phone?: string | null;
-  message: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contacts".
- */
-export interface Contact {
-  id: string;
-  fullName: string;
-  email: string;
-  phone: string;
-  whatsapp?: string | null;
-  identifiesAs: 'New Customer' | 'Returning Customer' | 'An Agent';
-  message?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "inquiries".
- */
-export interface Inquiry {
-  id: string;
-  type: 'Purchase' | 'Rent' | 'Mortgage';
-  firstName: string;
-  lastName: string;
-  identifiesAsA: 'First Time Buyer' | 'Real Estate Investor' | 'Real Estate Agent';
-  email: string;
-  phone: string;
-  categoryInterested: string | PropertyCategory;
-  maxPrice?: number | null;
-  numberOfBeds?: number | null;
-  message?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -425,22 +349,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'id-documents';
         value: string | IdDocument;
-      } | null)
-    | ({
-        relationTo: 'shortlet-bookings';
-        value: string | ShortletBooking;
-      } | null)
-    | ({
-        relationTo: 'messages';
-        value: string | Message;
-      } | null)
-    | ({
-        relationTo: 'contacts';
-        value: string | Contact;
-      } | null)
-    | ({
-        relationTo: 'inquiries';
-        value: string | Inquiry;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -635,67 +543,6 @@ export interface IdDocumentsSelect<T extends boolean = true> {
   filesize?: T;
   width?: T;
   height?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "shortlet-bookings_select".
- */
-export interface ShortletBookingsSelect<T extends boolean = true> {
-  fullName?: T;
-  email?: T;
-  phone?: T;
-  shortlet?: T;
-  checkInDay?: T;
-  checkOutDay?: T;
-  idType?: T;
-  idDocument?: T;
-  paymentConfirmed?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "messages_select".
- */
-export interface MessagesSelect<T extends boolean = true> {
-  fullName?: T;
-  email?: T;
-  phone?: T;
-  message?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contacts_select".
- */
-export interface ContactsSelect<T extends boolean = true> {
-  fullName?: T;
-  email?: T;
-  phone?: T;
-  whatsapp?: T;
-  identifiesAs?: T;
-  message?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "inquiries_select".
- */
-export interface InquiriesSelect<T extends boolean = true> {
-  type?: T;
-  firstName?: T;
-  lastName?: T;
-  identifiesAsA?: T;
-  email?: T;
-  phone?: T;
-  categoryInterested?: T;
-  maxPrice?: T;
-  numberOfBeds?: T;
-  message?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
