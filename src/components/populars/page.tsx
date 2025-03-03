@@ -1,4 +1,4 @@
-import Popular from '../../../components/popular/page'
+import Popular from '../popular/page'
 
 export default function Populars({
   propertiesAreasCards,

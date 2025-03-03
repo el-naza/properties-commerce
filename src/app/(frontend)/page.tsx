@@ -5,11 +5,11 @@ import Hero from './hero/page'
 import SearchForm from './search-form/page'
 import PartnersCarousel from './partners-carousel/partners'
 import Testimonial from '../../components/testimonials/page'
-import Cards from './cards/page'
+import Cards from '../../components/cards/page'
 import Inquiry from './inquiry/page'
-import Populars from './populars/page'
+import Populars from '../../components/populars/page'
 import Featuring from '../../components/featuring/page'
-import Shortlets from './shortlets-preview/page'
+import Shortlets from '../../components/shortlets-preview/page'
 import homePageView from '@/services/homePageView'
 import { Area, City, Media, Property, PropertyCategory, Shortlet } from '@/payload-types'
 
@@ -101,7 +101,7 @@ type HomeView = {
   }[]
 }
 
-export function transformToHomeView(properties: Property[], shortlets: Shortlet[]): HomeView {
+function transformToHomeView(properties: Property[], shortlets: Shortlet[]): HomeView {
   // Extract categories
   const categoryMap = new Map<string, { count: number; img: string; id: string }>()
   properties.forEach((property) => {

@@ -2,7 +2,7 @@
 
 import Marquee from '@/components/animata/container/marquee'
 import { useQuery } from '@tanstack/react-query'
-import { PropertyOrShortletCard } from '../../../components/featuring/page'
+import { PropertyOrShortletCard } from '../featuring/page'
 import searchProperties from '@/services/searchProperties'
 import {
   Carousel,

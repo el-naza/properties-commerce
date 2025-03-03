@@ -1,4 +1,4 @@
-import ResidentialCard from '../../../components/card/page'
+import ResidentialCard from '../card/page'
 
 export default function Cards({
   propertiesCategoriesCards,
