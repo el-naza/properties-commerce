@@ -1,6 +1,20 @@
 import ResidentialCard from '../../../components/card/page'
 
-export default function Cards() {
+export default function Cards({
+  propertiesCategoriesCards,
+  propertiesCitiesCards,
+}: {
+  propertiesCategoriesCards: {
+    numberOfProperties: number
+    name: string
+    img: string
+  }[]
+  propertiesCitiesCards: {
+    numberOfProperties: number
+    name: string
+    img: string
+  }[]
+}) {
   return (
     <div className="container flex flex-wrap gap-8 justify-center">
       <div className="w-80 h-80">
@@ -16,36 +30,15 @@ export default function Cards() {
         </div>
         <div className="w-[30%] bg-black-1 h-[1px] mt-16"></div>
       </div>
-      <ResidentialCard
-        src="/home/Fully-detached-3.jpg"
-        // numberOfProperties="20 Properties"
-        propertyType="Semi Detached Duplex"
-        link="/carousels"
-      />
-      <ResidentialCard
-        src="/home/Fully-detached-3.jpg"
-        // numberOfProperties="20 Properties"
-        propertyType="Semi Detached Duplex"
-        link="/carousels"
-      />
-      <ResidentialCard
-        src="/home/Fully-detached-3.jpg"
-        // numberOfProperties="20 Properties"
-        propertyType="Semi Detached Duplex"
-        link="/carousels"
-      />
-      <ResidentialCard
-        src="/home/Fully-detached-3.jpg"
-        // numberOfProperties="20 Properties"
-        propertyType="Semi Detached Duplex"
-        link="/carousels"
-      />
-      <ResidentialCard
-        src="/home/Fully-detached-3.jpg"
-        // numberOfProperties="20 Properties"
-        propertyType="Semi Detached Duplex"
-        link="/carousels"
-      />
+      {propertiesCategoriesCards.map((v, i) => (
+        <ResidentialCard
+          src={v.img}
+          numberOfProperties={v.numberOfProperties}
+          propertyType={v.name}
+          link="/carousels"
+          key={i}
+        />
+      ))}
       <div className="w-80 h-80">
         <div className="pt-8">
           <h2 className="text-[20px]">Explore More</h2>
@@ -56,7 +49,16 @@ export default function Cards() {
         </div>
         <div className="w-[30%] bg-black-1 h-[1px] mt-16"></div>
       </div>
-      <ResidentialCard
+      {propertiesCitiesCards.map((v, i) => (
+        <ResidentialCard
+          src={v.img}
+          numberOfProperties={v.numberOfProperties}
+          propertyType={v.name}
+          link="/carousels"
+          key={i}
+        />
+      ))}
+      {/* <ResidentialCard
         src="/home/Fully-detached-3.jpg"
         // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
@@ -67,7 +69,7 @@ export default function Cards() {
         // numberOfProperties="20 Properties"
         propertyType="Semi Detached Duplex"
         link="/carousels"
-      />
+      /> */}
     </div>
   )
 }

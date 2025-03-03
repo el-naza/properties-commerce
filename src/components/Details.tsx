@@ -204,7 +204,12 @@ function PropertyDetails(props: (Property | Shortlet) & { isShortlet?: boolean }
           )}
           {!!props.squareMeters?.length && (
             <div className=" flex items-center gap-2">
-              <div className="text-sm text-gray-600">Total Area</div>
+              <Image
+                alt="ruler"
+                src={'/icons/icons8-ruler-combined-32.png'}
+                width={18}
+                height={18}
+              />
               <div className="leading-none font-medium">{props.squareMeters?.toString()} SqM</div>
             </div>
           )}

@@ -28,17 +28,17 @@ import {
 import { duplicateArray } from '@/utilities'
 import Autoplay from 'embla-carousel-autoplay'
 
-export default function Featuring() {
-  const query = useQuery({
-    queryKey: ['properties'],
-    queryFn: async () => {
-      return (
-        await searchProperties({
-          isFeatured: true,
-        })
-      ).docs
-    },
-  })
+export default function Featuring({ properties }: { properties: Property[] }) {
+  // const query = useQuery({
+  //   queryKey: ['properties'],
+  //   queryFn: async () => {
+  //     return (
+  //       await searchProperties({
+  //         isFeatured: true,
+  //       })
+  //     ).docs
+  //   },
+  // })
 
   return (
     <section className="container mt-10 text-center">
@@ -56,8 +56,8 @@ export default function Featuring() {
           opts={{ loop: true }}
         >
           <CarouselContent className="flex">
-            {query.data &&
-              duplicateArray(query.data, 2).map((item, i) => (
+            {properties &&
+              duplicateArray(properties, 2).map((item, i) => (
                 <CarouselItem key={i} className="basis-[416px] pl-4">
                   <PropertyOrShortletCard {...item} />
                 </CarouselItem>

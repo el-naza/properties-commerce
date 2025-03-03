@@ -1,13 +1,30 @@
 import Popular from '../../../components/popular/page'
 
-export default function Populars() {
+export default function Populars({
+  propertiesAreasCards,
+}: {
+  propertiesAreasCards: {
+    numberOfProperties: number
+    name: string
+    img: string
+  }[]
+}) {
   return (
     <div className="flex max-md:flex-wrap px-14 gap-6">
       <div className="w-full self-center">
         <h1 className="text-[1.75rem]">Explore Our Most Popular Areas</h1>
         <p className="text-sm">See what these areas have to offer and buy your perfect home.</p>
       </div>
-      <Popular
+      {propertiesAreasCards.map((v, i) => (
+        <Popular
+          src={v.img}
+          numberOfProperties={v.numberOfProperties}
+          propertyLocation={v.name}
+          link="/"
+          key={i}
+        />
+      ))}
+      {/* <Popular
         src="/home/Fully-detached-3.jpg"
         numberOfProperties="12 Properties"
         propertyLocation="Lekki Phase 1"
@@ -30,7 +47,7 @@ export default function Populars() {
         numberOfProperties="12 Properties"
         propertyLocation="Lekki Phase 1"
         link="/"
-      />
+      /> */}
     </div>
   )
 }

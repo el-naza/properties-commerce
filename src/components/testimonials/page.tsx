@@ -1,3 +1,5 @@
+'use client'
+
 import { PropertyOrShortletCard } from '@/components/featuring/page'
 import {
   Carousel,

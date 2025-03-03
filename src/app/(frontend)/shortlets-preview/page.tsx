@@ -13,18 +13,19 @@ import {
 } from '@/components/ui/carousel'
 import { duplicateArray } from '@/utilities'
 import Autoplay from 'embla-carousel-autoplay'
+import { Shortlet } from '@/payload-types'
 
-export default function Shortlets() {
-  const query = useQuery({
-    queryKey: ['shortlets'],
-    queryFn: async () => {
-      return (
-        await searchProperties({
-          categories: 'shortlets',
-        })
-      ).docs
-    },
-  })
+export default function Shortlets({ shortlets }: { shortlets: Shortlet[] }) {
+  // const query = useQuery({
+  //   queryKey: ['shortlets'],
+  //   queryFn: async () => {
+  //     return (
+  //       await searchProperties({
+  //         categories: 'shortlets',
+  //       })
+  //     ).docs
+  //   },
+  // })
 
   return (
     <div>
@@ -58,8 +59,8 @@ export default function Shortlets() {
             opts={{ loop: true }}
           >
             <CarouselContent className="flex">
-              {query.data &&
-                query.data?.map((item, i) => (
+              {shortlets &&
+                shortlets?.map((item, i) => (
                   <CarouselItem key={i} className="basis-[416px] pl-4">
                     <PropertyOrShortletCard {...item} isShortlet={true} />
                   </CarouselItem>
