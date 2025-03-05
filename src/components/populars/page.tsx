@@ -7,6 +7,8 @@ export default function Populars({
     numberOfProperties: number
     name: string
     img: string
+    id: string
+    cityId: string
   }[]
 }) {
   return (
@@ -20,7 +22,7 @@ export default function Populars({
           src={v.img}
           numberOfProperties={v.numberOfProperties}
           propertyLocation={v.name}
-          link="/"
+          link={`/search?title=Properties at ${v.name}&area=${v.id}&city=${v.cityId}`}
           key={i}
         />
       ))}

@@ -1,3 +1,4 @@
+import { stringify } from 'node:querystring'
 import ResidentialCard from '../card/page'
 
 export default function Cards({
@@ -8,10 +9,12 @@ export default function Cards({
     numberOfProperties: number
     name: string
     img: string
+    id: string
   }[]
   propertiesCitiesCards: {
     numberOfProperties: number
     name: string
+    id: string
     img: string
   }[]
 }) {
@@ -35,7 +38,7 @@ export default function Cards({
           src={v.img}
           numberOfProperties={v.numberOfProperties}
           propertyType={v.name}
-          link="/carousels"
+          link={`/listings?${stringify({ categories: v.id })}`}
           key={i}
         />
       ))}
@@ -54,7 +57,7 @@ export default function Cards({
           src={v.img}
           numberOfProperties={v.numberOfProperties}
           propertyType={v.name}
-          link="/carousels"
+          link={`/listings?${stringify({ city: v.id })}`}
           key={i}
         />
       ))}

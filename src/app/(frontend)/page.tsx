@@ -97,6 +97,7 @@ type HomeView = {
     numberOfProperties: number
     name: string
     id: string
+    cityId: string
     img: string
   }[]
 }
@@ -126,13 +127,14 @@ function transformToHomeView(properties: Property[], shortlets: Shortlet[]): Hom
   }))
 
   // Extract areas
-  const areaMap = new Map<string, { count: number; img: string; id: string }>()
+  const areaMap = new Map<string, { count: number; img: string; id: string; cityId: string }>()
   ;[...properties, ...shortlets].forEach((item) => {
     const areaName = typeof item.area === 'string' ? item.area : item.area.name
     areaMap.set(areaName, {
       count: (areaMap.get(areaName)?.count || 0) + 1,
       img: (item.media[0] as Media).url!,
       id: (item.area as Area).id,
+      cityId: ((item.area as Area).city as City).id,
     })
   })
 
@@ -141,6 +143,7 @@ function transformToHomeView(properties: Property[], shortlets: Shortlet[]): Hom
     numberOfProperties: v.count,
     img: v.img,
     id: v.id,
+    cityId: v.cityId,
   }))
 
   // Extract cities (assuming they come from the area field)

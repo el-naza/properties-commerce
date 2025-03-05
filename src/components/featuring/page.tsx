@@ -55,7 +55,7 @@ export default function Featuring({ properties }: { properties: Property[] }) {
           ]}
           opts={{ loop: true }}
         >
-          <CarouselContent className="flex">
+          <CarouselContent className="flex items-center">
             {properties &&
               duplicateArray(properties, 2).map((item, i) => (
                 <CarouselItem key={i} className="basis-[416px] pl-4">
