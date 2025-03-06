@@ -9,16 +9,31 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useForm } from '@tanstack/react-form'
+import { useRouter } from 'next/navigation'
 
 // type Search {
 //   category: string;
 // }
 
-export default function SearchForm() {
-  const form = useForm({
+export default function SearchForm({
+  categories,
+  cities,
+}: {
+  categories: {
+    name: string
+    id: string
+  }[]
+  cities: {
+    name: string
+    id: string
+  }[]
+}) {
+  const router = useRouter()
+  const form = useForm<Record<string, string>>({
     onSubmit: async ({ value }) => {
       // Do something with form data
-      console.log(value)
+      // console.log(value)
+      router.push(`/search?${new URLSearchParams(value).toString()}`)
     },
   })
 
@@ -31,7 +46,7 @@ export default function SearchForm() {
       }}
     >
       <div className="p-8 flex justify-center border-2 border-solid rounded gap-2">
-        <form.Field name="category">
+        <form.Field name="categories">
           {(field) => (
             <div>
               <p className="text-">SEARCHING FOR</p>
@@ -44,9 +59,14 @@ export default function SearchForm() {
                   <SelectValue placeholder="Select Category"></SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Category1">Category1</SelectItem>
+                  {categories.map((category, i) => (
+                    <SelectItem value={category.id} key={i}>
+                      {category.name}
+                    </SelectItem>
+                  ))}
+                  {/* <SelectItem value="Category1">Category1</SelectItem>
                   <SelectItem value="Category2">Category2</SelectItem>
-                  <SelectItem value="Category3">Category3</SelectItem>
+                  <SelectItem value="Category3">Category3</SelectItem> */}
                 </SelectContent>
               </Select>
             </div>
@@ -66,9 +86,14 @@ export default function SearchForm() {
                   <SelectValue placeholder="Select City"></SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Abuja">Abuja</SelectItem>
+                  {cities.map((city, i) => (
+                    <SelectItem value={city.id} key={i}>
+                      {city.name}
+                    </SelectItem>
+                  ))}
+                  {/* <SelectItem value="Abuja">Abuja</SelectItem>
                   <SelectItem value="Enugu">Enugu</SelectItem>
-                  <SelectItem value="Lagos">Lagos</SelectItem>
+                  <SelectItem value="Lagos">Lagos</SelectItem> */}
                 </SelectContent>
               </Select>
             </div>
@@ -101,7 +126,7 @@ export default function SearchForm() {
           )}
         </form.Field>
 
-        <form.Field name="priceRange">
+        <form.Field name="price">
           {(field) => (
             <div>
               <p>PRICE RANGE</p>

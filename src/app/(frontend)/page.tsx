@@ -2,7 +2,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 
 import Hero from './hero/page'
-import SearchForm from './search-form/page'
+import SearchForm from '../../components/search-form/page'
 import PartnersCarousel from './partners-carousel/partners'
 import Testimonial from '../../components/testimonials/page'
 import Cards from '../../components/cards/page'
@@ -41,7 +41,7 @@ export default async function Page() {
     <div>
       <Hero />
       <div className="container flex mt-12 mb-20 justify-center">
-        <SearchForm />
+        <SearchForm categories={homeView.categories} cities={homeView.cities} />
       </div>
       <Featuring properties={properties.docs} />
       <div className="py-5 md:py-20 overflow-hidden">
