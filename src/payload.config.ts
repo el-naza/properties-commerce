@@ -84,7 +84,7 @@ export default buildConfig({
     // Messages,
     // Reviews,
     // Contacts,
-    // Inquiries,
+    Inquiries,
     // TourSchedules,
   ],
   cors: [getServerSideURL(), ...process.env.DOMAINS!.split(',')].filter(Boolean),

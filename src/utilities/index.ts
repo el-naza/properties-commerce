@@ -2,7 +2,7 @@ export { cn } from './cn'
 
 export const duplicateArray = (arr, times) => Array(times).fill(arr).flat()
 
-export function camelToTitleCase(str: string): string {
+export function camelToTitleCase(str: string = ''): string {
   return str
     .replace(/([a-z])([A-Z])/g, '$1 $2') // Add space between lowercase and uppercase
     .replace(/([A-Z])([A-Z][a-z])/g, '$1 $2') // Add space between uppercase groups and lowercase

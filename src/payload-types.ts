@@ -77,6 +77,7 @@ export interface Config {
     shortlets: Shortlet;
     'id-documents': IdDocument;
     'shortlet-bookings': ShortletBooking;
+    inquiries: Inquiry;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -94,6 +95,7 @@ export interface Config {
     shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
     'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
     'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
+    inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -330,6 +332,24 @@ export interface ShortletBooking {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries".
+ */
+export interface Inquiry {
+  id: string;
+  type: 'Purchase' | 'Rent' | 'Mortgage';
+  identifiesAsA: 'First Time Buyer' | 'Real Estate Investor' | 'Real Estate Agent';
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  categoryInterested: string | PropertyCategory;
+  maxPrice?: number | null;
+  numberOfBeds?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -378,6 +398,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'shortlet-bookings';
         value: string | ShortletBooking;
+      } | null)
+    | ({
+        relationTo: 'inquiries';
+        value: string | Inquiry;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -589,6 +613,23 @@ export interface ShortletBookingsSelect<T extends boolean = true> {
   idType?: T;
   idDocument?: T;
   paymentConfirmed?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries_select".
+ */
+export interface InquiriesSelect<T extends boolean = true> {
+  type?: T;
+  identifiesAsA?: T;
+  firstName?: T;
+  lastName?: T;
+  email?: T;
+  phone?: T;
+  categoryInterested?: T;
+  maxPrice?: T;
+  numberOfBeds?: T;
   updatedAt?: T;
   createdAt?: T;
 }

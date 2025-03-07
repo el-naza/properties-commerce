@@ -6,4 +6,9 @@ Use a UI field on the shortlet collection to show the current booking for a part
 
 Use a UI field on the shortlet booking collection to show the total amount for booking calculated by price * no of days
 
-CHECK HOW THE DOMAINS FOR DAMBO WERE GOTTEN AND ADDED ON AWS AMPLIFY
+
+
+* use the isPhone flag to know when a text field is to be rendered as phone input
+* use the multi-select input to handle all has many options
+
+

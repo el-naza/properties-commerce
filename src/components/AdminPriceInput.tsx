@@ -9,8 +9,8 @@ export default (function AdminPriceInput({ path, validate, field, readOnly }) {
     <div className="field-type">
       <FieldLabel htmlFor={`field-${path}`} label={field.label} required={field.required} />
       <TextInput
-        onChange={(e) => setValue(parseInt(e.target.value.replace(/\D/g, '')))}
-        value={value.toLocaleString().split(',').join(' ')}
+        onChange={(e) => setValue(parseInt(e.target.value.replace(/\D/g, '')) || '')}
+        value={value?.toLocaleString().split(',').join(' ') || ''}
         path={path || field.name}
         readOnly={Boolean(readOnly)}
       />
