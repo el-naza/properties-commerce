@@ -24,6 +24,9 @@ import { Inquiries } from './collections/Inquiries'
 // import { TourSchedules } from './collections/TourSchedules'
 // import { Reviews } from './collections/Reviews'
 import { Messages } from './collections/Messages'
+import { NodeHttpHandler } from '@smithy/node-http-handler'
+import { Agent as HttpAgent } from 'http'
+import { Agent as HttpsAgent } from 'https'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -111,6 +114,12 @@ export default buildConfig({
                   (secret('S3_SECRET_ACCESS_KEY') as unknown as string),
               },
               region: process.env.S3_REGION || (secret('S3_REGION') as unknown as string),
+              requestHandler: new NodeHttpHandler({
+                connectionTimeout: 5000,
+                socketTimeout: 120000,
+                httpAgent: new HttpAgent({ maxSockets: Infinity, keepAlive: true }),
+                httpsAgent: new HttpsAgent({ maxSockets: Infinity, keepAlive: true }),
+              }),
             },
           }),
         ]
