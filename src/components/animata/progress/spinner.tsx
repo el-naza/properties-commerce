@@ -14,7 +14,7 @@ export default function Spinner({ className, outerSize, childSize }: SpinnerProp
         outerSize,
       )}
     >
-      <div className={cn('h-6 w-6 rounded-full bg-white', childSize)} />
+      <div className={cn('h-3 w-3 rounded-full bg-white', childSize)} />
     </div>
   )
 }

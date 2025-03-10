@@ -1,9 +1,16 @@
 'use server'
 
-import { Property } from '@/payload-types'
 import axiosInstance from '@/utilities/axiosInstance'
+import { CollectionSlug } from 'payload'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
-export default async function fetchDocs(): Promise<Property[]> {
-  const data = (await axiosInstance.get('/api/properties')).data
-  return data?.docs?.slice?.(0, 10)
+const payload = await getPayload({ config })
+
+export default async function fetchDocs<T>(col: CollectionSlug): Promise<T[]> {
+  const data = await payload.find({
+    collection: col,
+  })
+  // const data = (await axiosInstance.get('/api/' + col)).data
+  return data?.docs as any
 }

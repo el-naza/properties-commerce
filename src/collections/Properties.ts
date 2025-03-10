@@ -118,6 +118,7 @@ export const Properties: CollectionConfig = {
     },
     {
       name: 'additionalDeatils',
+      label: 'Additional Details',
       type: 'array',
       fields: [
         {

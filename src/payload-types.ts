@@ -77,7 +77,9 @@ export interface Config {
     shortlets: Shortlet;
     'id-documents': IdDocument;
     'shortlet-bookings': ShortletBooking;
+    contacts: Contact;
     inquiries: Inquiry;
+    'tour-schedules': TourSchedule;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -95,7 +97,9 @@ export interface Config {
     shortlets: ShortletsSelect<false> | ShortletsSelect<true>;
     'id-documents': IdDocumentsSelect<false> | IdDocumentsSelect<true>;
     'shortlet-bookings': ShortletBookingsSelect<false> | ShortletBookingsSelect<true>;
+    contacts: ContactsSelect<false> | ContactsSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
+    'tour-schedules': TourSchedulesSelect<false> | TourSchedulesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -332,6 +336,21 @@ export interface ShortletBooking {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  whatsapp?: string | null;
+  identifiesAs: 'New Customer' | 'Returning Customer' | 'An Agent';
+  message?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "inquiries".
  */
 export interface Inquiry {
@@ -342,9 +361,25 @@ export interface Inquiry {
   lastName: string;
   email: string;
   phone: string;
-  categoryInterested: string | PropertyCategory;
+  categoryInterested: string;
   maxPrice?: number | null;
   numberOfBeds?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tour-schedules".
+ */
+export interface TourSchedule {
+  id: string;
+  type: 'In Person' | 'Video Chat';
+  date: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  message?: string | null;
+  property: string | Property;
   updatedAt: string;
   createdAt: string;
 }
@@ -400,8 +435,16 @@ export interface PayloadLockedDocument {
         value: string | ShortletBooking;
       } | null)
     | ({
+        relationTo: 'contacts';
+        value: string | Contact;
+      } | null)
+    | ({
         relationTo: 'inquiries';
         value: string | Inquiry;
+      } | null)
+    | ({
+        relationTo: 'tour-schedules';
+        value: string | TourSchedule;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -618,6 +661,20 @@ export interface ShortletBookingsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts_select".
+ */
+export interface ContactsSelect<T extends boolean = true> {
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  whatsapp?: T;
+  identifiesAs?: T;
+  message?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "inquiries_select".
  */
 export interface InquiriesSelect<T extends boolean = true> {
@@ -630,6 +687,21 @@ export interface InquiriesSelect<T extends boolean = true> {
   categoryInterested?: T;
   maxPrice?: T;
   numberOfBeds?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tour-schedules_select".
+ */
+export interface TourSchedulesSelect<T extends boolean = true> {
+  type?: T;
+  date?: T;
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
+  property?: T;
   updatedAt?: T;
   createdAt?: T;
 }

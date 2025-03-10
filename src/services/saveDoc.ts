@@ -11,16 +11,16 @@ export default async function saveDoc<T>(
 ): Promise<ServiceResponse<Response | ErrorResponse> | undefined> {
   return await axiosInstance
     .post(`/api/${col}`, data)
-    .catch((error: AxiosError) => {
-      if (error.response)
-        return {
-          status: error.response.status,
-          data: error.response.data as ErrorResponse,
-        }
-    })
     .then((res) => ({
       success: true,
       status: res?.status,
       data: res?.data,
     }))
+    .catch((error: AxiosError) => {
+      if (error.response)
+        return {
+          status: error.response.status,
+          ...(error.response.data as ErrorResponse),
+        }
+    })
 }

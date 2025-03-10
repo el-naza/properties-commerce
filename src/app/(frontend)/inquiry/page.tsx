@@ -1,4 +1,21 @@
-export default function Inquiry() {
+// 'use client'
+
+// import { getInquiriesFormFields } from '@/collections/Inquiries'
+import { GenForm } from '@/components/form-test/page'
+import type { Inquiry, PropertyCategory } from '@/payload-types'
+import fetchDocs from '@/services/fetchDocs'
+import { useQuery } from '@tanstack/react-query'
+
+export default async function Inquiry() {
+  // const inquiriesFormFields = useQuery({
+  //   queryKey: ['inquriesFormFields'],
+  //   queryFn: async () => {
+  //     return getInquiriesFormFields()
+  //   },
+  // })
+  const categories = await fetchDocs('property-categories')
+  const categoriesOptions = categories.map((category: PropertyCategory) => category.title)
+
   return (
     <div>
       <div className="flex relative flex-wrap px-14 gap-12 bg-[url('/home/Fully-detached-3.jpg')] bg-cover py-24  items-center justify-center">
@@ -57,13 +74,13 @@ export default function Inquiry() {
             </div>
           </div>
           <div className="bg-white p-12 text-black-1 md:max-w-[45%]">
-            <form action="">
+            <div>
               <h2 className="text-2xl font-[500]">Got Any Inquiry?</h2>
               <p className="text-[1.2rem] pt-1 pb-6">Start here</p>
               <p className="">
                 "<span className="text-red-800">*</span>" indicates required fields
               </p>
-              <div className="py-2">
+              {/* <div className="py-2">
                 <label htmlFor="" className="font-bold">
                   Inquiry Type <span className="text-red-800">*</span>
                 </label>
@@ -183,8 +200,92 @@ export default function Inquiry() {
                 <button type="submit" className="w-full bg-secondary text-white py-2 rounded-md">
                   Submit
                 </button>
-              </div>
-            </form>
+              </div> */}
+              <GenForm<Inquiry>
+                fields={
+                  [
+                    {
+                      name: 'type',
+                      label: 'Inquiry Type',
+                      type: 'select',
+                      options: ['Purchase', 'Rental', 'Mortgage'],
+                      required: true,
+                      placeholder: 'Select',
+                    },
+                    {
+                      name: 'identifiesAsA',
+                      label: 'Information',
+                      type: 'select',
+                      options: ['First Time Buyer', 'Real Estate Investor', 'Real Estate Agent'],
+                      required: true,
+                    },
+                    {
+                      type: 'row',
+                      fields: [
+                        {
+                          name: 'firstName',
+                          label: false,
+                          type: 'text',
+                          required: true,
+                        },
+                        {
+                          name: 'lastName',
+                          label: false,
+                          type: 'text',
+                          required: true,
+                        },
+                      ],
+                    },
+                    {
+                      name: 'email',
+                      label: false,
+                      type: 'text',
+                      required: true,
+                      placeholder: 'Email Address',
+                    },
+                    {
+                      name: 'phone',
+                      label: 'Phone Number',
+                      type: 'text',
+                      isPhone: true,
+                      required: true,
+                      placeholder: 'e.g. +234 812 345 6789',
+                    },
+                    {
+                      name: 'categoryInterested',
+                      // label: 'Categories of Interest',
+                      label: 'Category of Interest',
+                      type: 'select',
+                      required: true,
+                      options: ['Shortlets', ...categoriesOptions],
+                      hasMany: true,
+                      // relationTo: 'property-categories',
+                    },
+                    {
+                      type: 'row',
+                      fields: [
+                        {
+                          name: 'maxPrice',
+                          label: false,
+                          type: 'number',
+                        },
+                        {
+                          name: 'numberOfBeds',
+                          label: false,
+                          type: 'number',
+                        },
+                      ],
+                    },
+                    // {
+                    //   name: 'message',
+                    //   type: 'text',
+                    // },
+                  ] as any
+                }
+                collection="inquiries"
+                relationshipsOptions={{ categoryInterested: ['Shortlets'] }}
+              />
+            </div>
           </div>
         </div>
       </div>
