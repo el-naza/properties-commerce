@@ -80,6 +80,10 @@ export interface Config {
     contacts: Contact;
     inquiries: Inquiry;
     'tour-schedules': TourSchedule;
+    'constructions-inquiries': ConstructionsInquiry;
+    'interiors-inquiries': InteriorsInquiry;
+    'properties-agents-contacts': PropertiesAgentsContact;
+    'shortlets-agents-contacts': ShortletsAgentsContact;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -100,6 +104,10 @@ export interface Config {
     contacts: ContactsSelect<false> | ContactsSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
     'tour-schedules': TourSchedulesSelect<false> | TourSchedulesSelect<true>;
+    'constructions-inquiries': ConstructionsInquiriesSelect<false> | ConstructionsInquiriesSelect<true>;
+    'interiors-inquiries': InteriorsInquiriesSelect<false> | InteriorsInquiriesSelect<true>;
+    'properties-agents-contacts': PropertiesAgentsContactsSelect<false> | PropertiesAgentsContactsSelect<true>;
+    'shortlets-agents-contacts': ShortletsAgentsContactsSelect<false> | ShortletsAgentsContactsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -323,6 +331,7 @@ export interface ShortletBooking {
   email: string;
   phone: string;
   shortlet: string | Shortlet;
+  agent: string | Admin;
   checkInDay?: string | null;
   checkOutDay?: string | null;
   idType: 'NATIONAL ID' | 'PASSPORT' | 'DRIVERS LICENSE' | 'VOTERS CARD';
@@ -375,11 +384,72 @@ export interface TourSchedule {
   id: string;
   type: 'In Person' | 'Video Chat';
   date: string;
-  fullName: string;
+  timeOfDay: 'Morning' | 'Afternoon' | 'Evening';
+  name: string;
   email: string;
   phone: string;
   message?: string | null;
   property: string | Property;
+  agent: string | Admin;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "constructions-inquiries".
+ */
+export interface ConstructionsInquiry {
+  id: string;
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  projectType: 'Commercial Construction' | 'Infrastructure Development' | 'Residential Construction' | 'Other';
+  projectDetails: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interiors-inquiries".
+ */
+export interface InteriorsInquiry {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  projectType: 'Residential Design' | 'Commercial Design' | 'Renovation & Styling' | 'Other';
+  projectDetails: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties-agents-contacts".
+ */
+export interface PropertiesAgentsContact {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message?: string | null;
+  property: string | Property;
+  agent: string | Admin;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlets-agents-contacts".
+ */
+export interface ShortletsAgentsContact {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  message?: string | null;
+  shortlet: string | Shortlet;
+  agent: string | Admin;
   updatedAt: string;
   createdAt: string;
 }
@@ -445,6 +515,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'tour-schedules';
         value: string | TourSchedule;
+      } | null)
+    | ({
+        relationTo: 'constructions-inquiries';
+        value: string | ConstructionsInquiry;
+      } | null)
+    | ({
+        relationTo: 'interiors-inquiries';
+        value: string | InteriorsInquiry;
+      } | null)
+    | ({
+        relationTo: 'properties-agents-contacts';
+        value: string | PropertiesAgentsContact;
+      } | null)
+    | ({
+        relationTo: 'shortlets-agents-contacts';
+        value: string | ShortletsAgentsContact;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -651,6 +737,7 @@ export interface ShortletBookingsSelect<T extends boolean = true> {
   email?: T;
   phone?: T;
   shortlet?: T;
+  agent?: T;
   checkInDay?: T;
   checkOutDay?: T;
   idType?: T;
@@ -697,11 +784,68 @@ export interface InquiriesSelect<T extends boolean = true> {
 export interface TourSchedulesSelect<T extends boolean = true> {
   type?: T;
   date?: T;
-  fullName?: T;
+  timeOfDay?: T;
+  name?: T;
   email?: T;
   phone?: T;
   message?: T;
   property?: T;
+  agent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "constructions-inquiries_select".
+ */
+export interface ConstructionsInquiriesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  company?: T;
+  phone?: T;
+  projectType?: T;
+  projectDetails?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "interiors-inquiries_select".
+ */
+export interface InteriorsInquiriesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  projectType?: T;
+  projectDetails?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "properties-agents-contacts_select".
+ */
+export interface PropertiesAgentsContactsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
+  property?: T;
+  agent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shortlets-agents-contacts_select".
+ */
+export interface ShortletsAgentsContactsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  message?: T;
+  shortlet?: T;
+  agent?: T;
   updatedAt?: T;
   createdAt?: T;
 }

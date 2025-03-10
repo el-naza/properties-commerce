@@ -1,38 +1,20 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Field } from 'payload'
 
 import { superAdmin } from '@/access/superAdmin'
 import { notFromAdminPanel } from '@/access/notFromAdminPanel'
 
-export const TourSchedules: CollectionConfig = {
-  slug: 'tour-schedules',
+export const PropertiesAgentsContacts: CollectionConfig = {
+  slug: 'properties-agents-contacts',
   access: {
     create: notFromAdminPanel,
     update: () => false,
     delete: superAdmin,
   },
   admin: {
-    useAsTitle: 'type',
-    listSearchableFields: ['type', 'fullName', 'email', 'property'],
+    useAsTitle: 'name',
+    listSearchableFields: ['name', 'email', 'phone'],
   },
   fields: [
-    {
-      name: 'type',
-      label: 'Tour Type',
-      type: 'select',
-      options: ['In Person', 'Video Chat'],
-      required: true,
-    },
-    {
-      name: 'date',
-      type: 'date',
-      required: true,
-    },
-    {
-      name: 'timeOfDay',
-      type: 'select',
-      options: ['Morning', 'Afternoon', 'Evening'],
-      required: true,
-    },
     {
       name: 'name',
       type: 'text',
@@ -57,7 +39,6 @@ export const TourSchedules: CollectionConfig = {
       type: 'relationship',
       relationTo: 'properties',
       required: true,
-      index: true,
     },
     {
       name: 'agent',

@@ -27,6 +27,10 @@ import { NodeHttpHandler } from '@smithy/node-http-handler'
 import { Agent as HttpAgent } from 'http'
 import { Agent as HttpsAgent } from 'https'
 import { TourSchedules } from './collections/TourSchedules'
+import { ConstructionsInquiries } from './collections/ConstructionsInquiries'
+import { InteriorsInquiries } from './collections/InteriorsInquiries'
+import { PropertiesAgentsContacts } from './collections/PropertiesAgentsContacts'
+import { ShortletsAgentsContacts } from './collections/ShortletsAgentsContacts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -89,6 +93,12 @@ export default buildConfig({
     Contacts,
     Inquiries,
     TourSchedules,
+
+    ConstructionsInquiries,
+    InteriorsInquiries,
+
+    PropertiesAgentsContacts,
+    ShortletsAgentsContacts,
   ],
   cors: [getServerSideURL(), ...process.env.DOMAINS!.split(',')].filter(Boolean),
   email: resendAdapter({

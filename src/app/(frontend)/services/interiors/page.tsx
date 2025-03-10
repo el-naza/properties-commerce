@@ -22,6 +22,8 @@ import {
   UsersIcon,
   ZoomInIcon,
 } from 'lucide-react'
+import { GenForm } from '@/components/form-test/page'
+import { InteriorsInquiry } from '@/payload-types'
 
 export default function ConstructionServices() {
   return (
@@ -324,71 +326,55 @@ export default function ConstructionServices() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-[#100D2C]">
-                      Name
-                    </Label>
-                    <Input
-                      id="name"
-                      placeholder="Your name"
-                      className="border-gray-200 bg-white text-gray-900 placeholder:text-gray-500"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-[#100D2C]">
-                      Email
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Your email"
-                      className="border-gray-200 bg-white text-gray-900 placeholder:text-gray-500"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-[#100D2C]">
-                    Phone
-                  </Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="Your phone number"
-                    className="border-gray-200 bg-white text-gray-900 placeholder:text-gray-500"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="project-type" className="text-[#100D2C]">
-                    Project Type
-                  </Label>
-                  <Select>
-                    <SelectTrigger id="project-type">
-                      <SelectValue placeholder="Select a project type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="residential">Residential Design</SelectItem>
-                      <SelectItem value="commercial">Commercial Design</SelectItem>
-                      <SelectItem value="renovation">Renovation & Styling</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="project-details" className="text-[#100D2C]">
-                    Project Details
-                  </Label>
-                  <Textarea
-                    id="project-details"
-                    placeholder="Tell us about your project"
-                    className="border-gray-200 bg-white text-gray-900 placeholder:text-gray-500"
-                  />
-                </div>
-                <Button className="w-full bg-[#100D2C] hover:bg-[#100D2C]/90 text-white font-semibold">
-                  Submit Inquiry
-                </Button>
-              </form>
+              <GenForm<InteriorsInquiry>
+                fields={[
+                  {
+                    type: 'row',
+                    fields: [
+                      {
+                        name: 'name',
+                        type: 'text',
+                        required: true,
+                        placeholder: 'Your name',
+                      },
+                      {
+                        name: 'email',
+                        type: 'email',
+                        required: true,
+                        placeholder: 'Your email',
+                      },
+                    ],
+                  },
+                  {
+                    name: 'phone',
+                    type: 'text',
+                    required: true,
+                    placeholder: 'Your phone number',
+                  },
+                  {
+                    name: 'projectType',
+                    type: 'select',
+                    options: [
+                      'Residential Design',
+                      'Commercial Design',
+                      'Renovation & Styling',
+                      'Other',
+                    ],
+                    required: true,
+                    placeholder: 'Select a project type',
+                  },
+                  {
+                    name: 'projectDetails',
+                    type: 'textarea',
+                    required: true,
+                    placeholder: 'Tell us about your project',
+                  },
+                ]}
+                collection="interiors-inquiries"
+                relationshipsOptions={{ categoryInterested: ['Shortlets'] }}
+                submitButtonText="Submit Inquiry"
+                submitButtonClassName="font-semibold text-white bg-primary"
+              />
             </CardContent>
           </Card>
         </div>

@@ -67,7 +67,6 @@ export default function Page() {
                       },
                     ],
                   },
-
                   {
                     name: 'identifiesAs',
                     label: 'I am a ...',

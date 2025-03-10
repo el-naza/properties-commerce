@@ -377,7 +377,7 @@ export function GenForm<T>({
             <Button
               type="submit"
               disabled={!canSubmit}
-              size="lg"
+              // size="lg"
               className={cn('w-full mt-5', submitButtonClassName)}
               variant="secondary"
             >

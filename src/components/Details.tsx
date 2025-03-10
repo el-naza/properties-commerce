@@ -28,12 +28,17 @@ import {
   Area,
   City,
   Media,
+  PropertiesAgentsContact,
   Property,
   PropertyCategory,
   PropertyFeature,
   Shortlet,
+  ShortletBooking,
+  ShortletsAgentsContact,
+  TourSchedule,
 } from '@/payload-types'
 import Link from 'next/link'
+import { GenForm } from './form-test/page'
 
 export default function Details(props: (Property | Shortlet) & { isShortlet?: boolean }) {
   const type = props.isShortlet ? 'shortlet' : 'property'
@@ -67,6 +72,7 @@ export default function Details(props: (Property | Shortlet) & { isShortlet?: bo
           <div>
             <div className="sticky top-4 space-y-8">
               <ScheduleTour {...props} />
+              <BookShortlet {...props} />
               <ContactForm {...props} />
             </div>
           </div>
@@ -438,38 +444,122 @@ function ScheduleTour(props: (Property | Shortlet) & { isShortlet?: boolean }) {
         <CardTitle>Schedule a Tour</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="tour-date">Preferred Date</Label>
-            <Input type="date" id="tour-date" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="tour-time">Preferred Time</Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select time" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="morning">Morning</SelectItem>
-                <SelectItem value="afternoon">Afternoon</SelectItem>
-                <SelectItem value="evening">Evening</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="tour-name">Name</Label>
-            <Input id="tour-name" placeholder="Your name" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="tour-email">Email</Label>
-            <Input id="tour-email" type="email" placeholder="Your email" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="tour-phone">Phone</Label>
-            <Input id="tour-phone" type="tel" placeholder="Your phone number" />
-          </div>
-          <Button className="w-full bg-[#FF5A3C] hover:bg-[#FF5A3C]/90">Schedule Tour</Button>
-        </form>
+        <GenForm<TourSchedule>
+          fields={[
+            {
+              name: 'type',
+              label: 'Tour Type',
+              type: 'select',
+              options: ['In Person', 'Video Chat'],
+              required: true,
+            },
+            {
+              name: 'date',
+              type: 'date',
+              required: true,
+            },
+            {
+              name: 'timeOfDay',
+              type: 'select',
+              options: ['Morning', 'Afternoon', 'Evening'],
+              required: true,
+              placeholder: 'Select',
+            },
+            {
+              name: 'name',
+              type: 'text',
+              required: true,
+              placeholder: 'Your full name',
+            },
+            {
+              name: 'email',
+              type: 'text',
+              required: true,
+              placeholder: 'Your email',
+            },
+            {
+              name: 'phone',
+              type: 'text',
+              required: true,
+              placeholder: 'Your phone number',
+            },
+            {
+              name: 'message',
+              type: 'textarea',
+              placeholder: 'Feel free to mention any specifics',
+            },
+          ]}
+          collection="tour-schedules"
+          defaults={{
+            property: props.id,
+            agent: (props.uploadedBy as Admin)?.id || props.uploadedBy!,
+          }}
+          submitButtonClassName="text-white"
+          submitButtonText="Schedule Tour"
+        />
+      </CardContent>
+    </Card>
+  )
+}
+
+function BookShortlet(props: (Property | Shortlet) & { isShortlet?: boolean }) {
+  if (!props.isShortlet) return false
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Book this Shortlet</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <GenForm<ShortletBooking>
+          fields={[
+            {
+              name: 'fullName',
+              type: 'text',
+              required: true,
+              placeholder: 'Enter your full name',
+            },
+            {
+              name: 'email',
+              type: 'text',
+              required: true,
+              placeholder: 'Your email',
+            },
+            {
+              name: 'phone',
+              type: 'text',
+              required: true,
+              placeholder: 'Your phone number',
+            },
+            {
+              name: 'checkInDay',
+              type: 'date',
+            },
+            {
+              name: 'checkOutDay',
+              type: 'date',
+            },
+            {
+              name: 'idType',
+              label: 'ID Type',
+              type: 'select',
+              options: ['NATIONAL ID', 'PASSPORT', 'DRIVERS LICENSE', 'VOTERS CARD'],
+              required: true,
+            },
+            {
+              name: 'idDocument',
+              label: 'ID Document',
+              type: 'upload',
+              required: true,
+            },
+          ]}
+          collection="shortlet-bookings"
+          defaults={{
+            shortlet: props.id,
+            agent: (props.uploadedBy as Admin)?.id || props.uploadedBy!,
+          }}
+          submitButtonClassName="text-white"
+          submitButtonText="Book Shortlet"
+        />
       </CardContent>
     </Card>
   )
@@ -482,25 +572,40 @@ function ContactForm(props: (Property | Shortlet) & { isShortlet?: boolean }) {
         <CardTitle>Contact Agent</CardTitle>
       </CardHeader>
       <CardContent>
-        <form className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="contact-name">Name</Label>
-            <Input id="contact-name" placeholder="Your name" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="contact-email">Email</Label>
-            <Input id="contact-email" type="email" placeholder="Your email" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="contact-phone">Phone</Label>
-            <Input id="contact-phone" type="tel" placeholder="Your phone number" />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="contact-message">Message</Label>
-            <Textarea id="contact-message" placeholder="Your message" />
-          </div>
-          <Button className="w-full bg-[#FF5A3C] hover:bg-[#FF5A3C]/90">Send Message</Button>
-        </form>
+        <GenForm<ShortletsAgentsContact | PropertiesAgentsContact>
+          fields={[
+            {
+              name: 'name',
+              type: 'text',
+              required: true,
+              placeholder: 'Your name',
+            },
+            {
+              name: 'email',
+              type: 'text',
+              required: true,
+              placeholder: 'Your email',
+            },
+            {
+              name: 'phone',
+              type: 'text',
+              required: true,
+              placeholder: 'Your phone number',
+            },
+            {
+              name: 'message',
+              type: 'textarea',
+              placeholder: "Let us know if there's anything you need to know",
+            },
+          ]}
+          collection={props.isShortlet ? 'shortlets-agents-contacts' : 'properties-agents-contacts'}
+          defaults={{
+            ...(props.isShortlet ? { shortlet: props.id } : { property: props.id }),
+            agent: (props.uploadedBy as Admin)?.id || props.uploadedBy!,
+          }}
+          submitButtonClassName="text-white"
+          submitButtonText="Schedule Tour"
+        />
       </CardContent>
     </Card>
   )

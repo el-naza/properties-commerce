@@ -49,6 +49,12 @@ export const ShortletBookings: CollectionConfig = {
       index: true,
     },
     {
+      name: 'agent',
+      type: 'relationship',
+      relationTo: 'admins',
+      required: true,
+    },
+    {
       name: 'checkInDay',
       type: 'date',
       admin: {
