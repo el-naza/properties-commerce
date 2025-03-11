@@ -560,6 +560,7 @@ function BookShortlet(props: (Property | Shortlet) & { isShortlet?: boolean }) {
           submitButtonClassName="text-white"
           submitButtonText="Book Shortlet"
         />
+        {/* {((props.uploadedBy as Admin)?.id || props.uploadedBy!).toString() + props.id} */}
       </CardContent>
     </Card>
   )
@@ -604,7 +605,7 @@ function ContactForm(props: (Property | Shortlet) & { isShortlet?: boolean }) {
             agent: (props.uploadedBy as Admin)?.id || props.uploadedBy!,
           }}
           submitButtonClassName="text-white"
-          submitButtonText="Schedule Tour"
+          submitButtonText="Send Message"
         />
       </CardContent>
     </Card>

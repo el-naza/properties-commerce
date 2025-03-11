@@ -28,6 +28,7 @@ import { format } from 'date-fns'
 import { Textarea } from '@/components/ui/textarea'
 import { PhoneInput } from '@/components/ui/phone-input'
 import Spinner from '@/components/animata/progress/spinner'
+import uploadMedia, { UploadMediaResponse } from '@/services/uploadMedia'
 // import { getInquiriesFormFields, inquriesFormFields } from '@/collections/Inquiries'
 
 // export default function Page() {
@@ -126,6 +127,28 @@ export function GenForm<T>({
             form: 'Some required fields are missing. Please fill out all mandatory fields to proceed.',
             fields: emptyRequiredFields,
           }
+        }
+
+        // upload field types should be uploaded and converted to id
+        value = {
+          ...value,
+          ...(await fields.reduce(async (acc, field) => {
+            if (field?.type === 'upload')
+              console.log(
+                'upload type',
+                typeof value[field.name!],
+                value[field.name!] instanceof File,
+              )
+            return {
+              ...(await acc),
+              ...(field?.type === 'upload' && {
+                [field.name!]: (
+                  (await uploadMedia('id-documents', value[field.name!]))
+                    ?.data as UploadMediaResponse
+                )?.doc?.id,
+              }),
+            }
+          }, {})),
         }
 
         const res = await saveDocMtn.mutateAsync(value)
@@ -294,7 +317,27 @@ export function GenForm<T>({
                         )
                         break
                       case 'upload':
-                        Field = <Input type="file" />
+                        Field = (
+                          <Input
+                            type="file"
+                            // value={(field.state.value as any) || ''}
+                            onBlur={field.handleBlur}
+                            placeholder={
+                              formField.placeholder ||
+                              ((formField.label as any) === false &&
+                                camelToTitleCase(formField.name)) ||
+                              ''
+                            }
+                            onChange={(e) => {
+                              // console.log(
+                              //   'value type instance',
+                              //   e.target.files?.[0],
+                              //   typeof e.target.files?.[0],
+                              // )
+                              field.handleChange(e.target.files?.[0] as any)
+                            }}
+                          />
+                        )
                         break
                       // case 'phone' as any:
                       //   Field = (
