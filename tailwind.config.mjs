@@ -55,6 +55,14 @@ export default {
         poppins: ['var(--font-montserrat)'],
         sora: ['var(--font-sora)'],
       },
+      cssVariables: {
+        '--primary-rgb': '59, 130, 246', // This is a blue color in RGB format
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+      },
       keyframes: {
         'accordion-down': {
           from: {

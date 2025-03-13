@@ -14,6 +14,7 @@ import Header from '../../components/header/page'
 import { Toaster } from '@/components/ui/sonner'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
+import ContactButton from '@/components/contact-button'
 
 const montserrat = Montserrat({
   // weight: ['400', '500', '600', '700'],
