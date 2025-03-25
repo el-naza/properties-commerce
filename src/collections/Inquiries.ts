@@ -4,6 +4,7 @@ import { superAdmin } from '@/access/superAdmin'
 import { notFromAdminPanel } from '@/access/notFromAdminPanel'
 import fetchDocs from '@/services/fetchDocs'
 import { PropertyCategory } from '@/payload-types'
+import { kebabToTitleCase } from '@/utilities'
 
 export const inquriesFormFields: (Field & { placeholder?: false | string; isPhone?: boolean })[] = [
   {
@@ -174,6 +175,36 @@ export const Inquiries: CollectionConfig = {
     create: notFromAdminPanel,
     update: () => false,
     delete: superAdmin,
+  },
+  hooks: {
+    afterChange: [
+      async ({ operation, doc, req, collection }) => {
+        if (operation === 'create') {
+          console.log(`Sending email notification`)
+          const adminUrl = `${req.protocol}//${req.host}/admin/collections/${collection.slug}/${doc.id}`
+          console.log(`Admin URL: ${adminUrl}`)
+          req.payload
+            .sendEmail({
+              to: process.env.ADMIN_NOTIFICATION_EMAIL,
+              subject: 'EMAIL NOTIFICATION',
+              html: `Dear Admin,
+  <br/><br/>
+  A new submission has been received through the ${kebabToTitleCase(collection.slug!)} form on Vastel Credence Website.
+  <br/><br/>
+  You can access the submission details in the admin panel here: <a href="${adminUrl}">${adminUrl}</a>
+  <br/><br/>
+  Thank you,<br/>
+  Vastel Credence Notification System`,
+            })
+            .catch((error) => {
+              console.error(
+                `An error occured while attempting to send the email notification to the admin`,
+                error,
+              )
+            })
+        }
+      },
+    ],
   },
   admin: {
     useAsTitle: 'type',
