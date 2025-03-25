@@ -21,7 +21,7 @@ export const Contacts: CollectionConfig = {
       async ({ operation, doc, req, collection }) => {
         if (operation === 'create') {
           console.log(`Sending email notification`)
-          const adminUrl = `${req.protocol}//${req.host}/admin/collections/${collection.slug}/${doc.id}`
+          const adminUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/admin/collections/${collection.slug}/${doc.id}`
           console.log(`Admin URL: ${adminUrl}`)
           req.payload
             .sendEmail({
