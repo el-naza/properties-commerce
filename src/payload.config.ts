@@ -142,4 +142,26 @@ export default buildConfig({
 })
 
 // aws secret stub
-function secret(key: string) {}
+function secret(key: string) {
+  const obj = {
+    // Added by Payload
+    DATABASE_URI:
+      'mongodb+srv://app:eK4Y9lX3N8SKlRjI@cluster0.zgfez.mongodb.net/vastel-credence?retryWrites=true&w=majority&appName=Cluster0',
+
+    PAYLOAD_SECRET: '7a496a91ad3960423352a547',
+
+    // Used to configure CORS, format links and more. No trailing slash
+    NEXT_PUBLIC_SERVER_URL: 'https://main.d2bin8fvpzmc8y.amplifyapp.com',
+
+    DOMAINS:
+      'https://main.d2bin8fvpzmc8y.amplifyapp.com,http://zc44wsg0ks0scs4o8k84w8cc.51.44.178.140.sslip.io,https://staging.vastelcredence.com,https://www.vastelcredence.com,https://vastelcredence.com',
+
+    // S3 bucket configuration
+    S3_BUCKET: 'properties-commerce',
+    S3_ACCESS_KEY_ID: 'AKIA4VDBMEIZC74SNCOP',
+    S3_SECRET_ACCESS_KEY: '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',
+    S3_REGION: 'eu-west-3',
+  }
+
+  return obj[key]
+}
