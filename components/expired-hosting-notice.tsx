@@ -181,9 +181,18 @@ export function ExpiredHostingNotice() {
             </CardContent>
 
             <CardFooter className="flex flex-col gap-4 pt-6">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 text-base">
-                <CreditCard className="w-4 h-4 mr-2" />
-                Renew Hosting Now
+              <Button
+                asChild
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 text-base"
+              >
+                <a
+                  href="https://869935096370-xbju53xx.us-east-1.console.aws.amazon.com/billing/home#/paymentsoverview/payments-due"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CreditCard className="w-4 h-4 mr-2" />
+                  Renew Hosting Now
+                </a>
               </Button>
               <p className="text-xs text-muted-foreground text-center">
                 By clicking "Renew Hosting Now", you agree to our Terms of
