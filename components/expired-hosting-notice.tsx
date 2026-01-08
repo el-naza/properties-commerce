@@ -65,7 +65,7 @@ export function ExpiredHostingNotice() {
         <div className="w-full max-w-2xl space-y-8">
           {/* Alert Banner */}
           <div className="flex items-center gap-3 bg-primary/10 border border-primary/20 rounded-lg px-4 py-3">
-            <AlertTriangle className="w-5 h-5 text-primary flex-shrink-0" />
+            <AlertTriangle className="w-5 h-5 text-primary shrink-0" />
             <p className="text-sm text-foreground">
               <span className="font-semibold">Action Required:</span> Your
               hosting service has been suspended due to non-payment.
@@ -199,8 +199,8 @@ export function ExpiredHostingNotice() {
                 </a>
               </Button>
               <p className="text-xs text-muted-foreground text-center">
-                By clicking "Renew Hosting Now", you agree to our Terms of
-                Service and Privacy Policy.
+                By clicking &quot;Renew Hosting Now&quot;, you agree to our
+                Terms of Service and Privacy Policy.
               </p>
             </CardFooter>
           </Card>
