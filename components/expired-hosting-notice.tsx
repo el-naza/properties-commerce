@@ -22,7 +22,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function ExpiredHostingNotice() {
   // Calculate days since January 7, 2026
-  const [expirationDate] = useState(new Date("2026-01-07"));
+  const [expirationDate] = useState(new Date("2026-01-08"));
   const today = new Date();
   const daysSinceExpiration = Math.floor(
     (today.getTime() - expirationDate.getTime()) / (1000 * 60 * 60 * 24)
@@ -159,22 +159,26 @@ export function ExpiredHostingNotice() {
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-muted-foreground" />
                       <span className="font-medium text-foreground">
-                        Annual Hosting Plan
+                        Monthly Hosting Plan
                       </span>
                     </div>
-                    <div className="bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded font-semibold uppercase tracking-wide">
-                      Required
+                    <div className="flex items-center gap-2">
+                      <div className="bg-primary text-primary-foreground text-xs px-2 py-0.5 rounded font-semibold uppercase tracking-wide">
+                        selected
+                      </div>
+                      {/* <div className="bg-[green] text-primary-foreground text-xs px-2 py-0.5 rounded font-semibold uppercase tracking-wide">
+                        paid
+                      </div> */}
                     </div>
                   </div>
                   <div className="flex items-baseline gap-1 mb-2">
                     <span className="text-3xl font-bold text-foreground">
-                      $9.99
+                      $14.99
                     </span>
                     <span className="text-muted-foreground">/month</span>
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    Billed annually at $119.88/year. Includes SSL certificate
-                    and 24/7 support.
+                    Includes SSL certificate and 24/7 support.
                   </p>
                 </div>
               </div>
@@ -208,7 +212,7 @@ export function ExpiredHostingNotice() {
               Generated on January 8, 2026
             </p>
             <p className="text-xs text-muted-foreground">
-              Questions? Contact support at from the dashboard.
+              Questions? Contact support from the dashboard.
             </p>
           </div>
         </div>
